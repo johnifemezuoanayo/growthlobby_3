@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client"
 
 import React, { useRef, useState, useEffect, ReactNode } from "react";
 import { Plus, Minus, Monitor, Smartphone, Paintbrush, ArrowUpRight, LayoutTemplate } from "lucide-react";
+import Image from "next/image";
 
 /* ---------------------------------------------------------------------- */
 /*  Scroll-reveal primitive                                               */
@@ -224,7 +226,7 @@ export default function HomeFAQSection() {
 
   return (
     <section
-      className="w-full px-6 md:px-0 py-20 sm:py-28"
+      className="w-full px-6 md:px-5 lg:px-0 py-20 sm:py-28"
       style={{
         backgroundColor: COLORS.bg,
         backgroundImage: `radial-gradient(${COLORS.dot} 1.5px, transparent 1.5px)`,
@@ -240,7 +242,10 @@ export default function HomeFAQSection() {
               <CornerMarks />
               <span
                 className="inline-block px-5 py-2 text-sm font-medium tracking-wide"
-                style={{ backgroundColor: COLORS.badgeBg, color: COLORS.badgeText }}
+                style={{
+                  backgroundColor: COLORS.badgeBg,
+                  color: COLORS.badgeText,
+                }}
               >
                 FAQS
               </span>
@@ -252,8 +257,7 @@ export default function HomeFAQSection() {
               className="mt-6 text-3xl font-medium leading-tight sm:text-4xl"
               style={{ color: COLORS.heading }}
             >
-              Here are some quick answers to the things we get asked most
-              often
+              Here are some quick answers to the things we get asked most often
             </h2>
           </Reveal>
 
@@ -272,12 +276,13 @@ export default function HomeFAQSection() {
         </div>
 
         {/* right — product mockup */}
-         <img
-            src="/images/faqimg.png"
-            alt="Workspace"
-            className="h-[420px] w-full hidden md:block object-cover sm:h-[520px]"
-          />
-         
+        <Image
+          width={600}
+          height={600}
+          src="/images/faqimg.png"
+          alt="Workspace"
+          className="h-[420px] w-full hidden lg:block object-cover sm:h-[520px]"
+        />
       </div>
     </section>
   );

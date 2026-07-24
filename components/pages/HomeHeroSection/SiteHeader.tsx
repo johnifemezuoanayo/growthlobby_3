@@ -6,6 +6,9 @@ import { AnimatePresence, motion } from "motion/react";
 import { BrandLogo } from "../../BrandLogo";
 import { navLinks } from "./data";
 import Navbar from "../../ui/Navbar/Navbar";
+import { NoticeBanner } from "./NoticeBanner";
+import { useRef, useState } from "react";
+import NavButton from "@/components/ui/Navbar/NavButton";
 
 type SiteHeaderProps = {
   isMobileMenuOpen: boolean;
@@ -18,10 +21,14 @@ export function SiteHeader({
   onToggleMobileMenu,
   onCloseMobileMenu,
 }: SiteHeaderProps) {
+
+ 
   return (
     <>
-      <header className="stick top-0 z-50  px-4 py-4 sm:px-8 lg:px-16">
-        <div className="mx-auto flex max-w-7xl items-center justify-between">
+      <header className="fixed bg-[#050505]/20 backdrop-blur w-full top-0 z-50  px-0  sm:px-8 lg:px-0">
+        <NoticeBanner />
+
+        <div className="mx-auto flex lg:px-0 px-5 py-4 max-w-7xl items-center justify-between">
           <BrandLogo priority />
 
           {/* <nav className="hidden items-center gap-1.5 rounded-full border border-neutral-800/60 bg-[#0f110f]/90 p-1.5 backdrop-blur-md md:flex">
@@ -100,7 +107,7 @@ export function SiteHeader({
 
           <button
             onClick={onToggleMobileMenu}
-            className="cursor-pointer p-2 text-white transition-colors hover:text-brand-primary md:hidden"
+            className="cursor-pointer p-2 border rounded-full text-brand-color/80 transition-colors hover:text-brand-primary lg:hidden"
             aria-label="Toggle menu"
           >
             <Menu className="size-6" />
@@ -114,7 +121,7 @@ export function SiteHeader({
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}
-            className="absolute left-0 right-0 top-20 z-40 flex flex-col gap-4 border-b border-neutral-800 bg-[#0e100e] p-6 text-center backdrop-blur-xl md:hidden"
+            className="fixed left-0 right-0 top-0 w-full z-40 flex flex-col gap-4 pt-44 border-b border-neutral-800 h-screen bg-[#0e100e] p-6 text-center  backdrop-blur-xl lg:hidden"
           >
             {navLinks.map((link, index) => (
               <Link
@@ -130,13 +137,12 @@ export function SiteHeader({
                 {link.label}
               </Link>
             ))}
-            <Link
+            <NavButton
               href="/book-a-call"
-              onClick={onCloseMobileMenu}
-              className="mt-2 block rounded-full bg-brand-primary py-3 text-center font-bold uppercase tracking-wider text-black hover:bg-white transition-colors"
+              className="sm:ml-6 w-full  bg-brand-primary text-black hover:bg-white"
             >
               Schedule a call
-            </Link>
+            </NavButton>
           </motion.div>
         )}
       </AnimatePresence>

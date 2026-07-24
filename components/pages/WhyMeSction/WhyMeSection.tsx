@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client";
 
 import React, { useRef, useState, useEffect, ReactNode } from "react";
@@ -173,7 +174,7 @@ export default function WhySection(){
     <section className="bg-white" style={{ fontFamily: FONT }}>
       {/* top — sage panel with heading + copy + nav */}
       <div className="w-full px-6 pb-44 pt-20 sm:pt-28" style={{ backgroundColor: COLORS.sage }}>
-        <div className="mx-auto flex max-w-6xl flex-col items-start justify-between gap-8 sm:flex-row sm:items-end">
+        <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 sm:flex-row sm:items-end">
           <div>
             <Reveal className="flex">
               <span className="relative inline-block">
@@ -232,8 +233,8 @@ export default function WhySection(){
       </div>
 
       {/* bottom — white panel holding the carousel, card overlaps both panels */}
-      <div className="w-full px-6 -mt-36 pt-29 pb-24" >
-        <div className="mx-auto max-w-6xl">
+      <div className="w-full px-6 -mt-36 pt-29 overflow-hidden pb-24" >
+        <div className="mx-auto max-w-7xl">
           <Reveal delay={0.15} className="-mt-16 overflow-hidden lg:overflow-visible sm:-mt-24">
             <div
               className="flex gap-6 transition-transform duration-700 ease-out"

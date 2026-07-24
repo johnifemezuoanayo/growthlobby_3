@@ -1,10 +1,9 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
-import ProjectSvg from "../../Icons/ProjectSvg";
 import Image from "next/image";
-import NavButton from "../../ui/Navbar/NavButton";
-import { SectionBadge } from "@/components/ui/SectionBadge/SectionBadge";
+import ProjectSvg from "@/components/Icons/ProjectSvg";
+import NavButton from "@/components/ui/Navbar/NavButton";
 
 const projects = [
   {
@@ -24,7 +23,7 @@ const projects = [
   },
 ];
 
-export default function ProjectSection() {
+export default function DesignProjectSection() {
   const scrollerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false });
@@ -79,10 +78,10 @@ export default function ProjectSection() {
       className="relative bg-[#eef0e6] py-t md:pt-24 overflow-hidden [background-image:radial-gradient(circle,rgba(0,0,0,0.08)_1px,transparent_1px)] [background-size:14px_14px]"
     >
       {/* Header */}
-      <div className="mx-auto max-w-7xl mt-12 px-6 lg:px-0">
+      <div className="mx-auto max-w-7xl px-6 md:px-0">
         <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
           <div>
-            <SectionBadge>Projects</SectionBadge>
+            <ProjectSvg />
             <h2 className="mt-6 font-serif text-4xl leading-[1.05] tracking-tight text-neutral-900 sm:text-5xl md:text-6xl">
               Building Websites That
               <br />
@@ -124,7 +123,7 @@ export default function ProjectSection() {
             onClick={(e) => {
               if (drag.current.moved) e.preventDefault();
             }}
-            className="group relative overflow-hidden h-[800px] flex-none w-[85vw] sm:w-[520px] md:w-[600px] h-auto lg:w-[740px] rounded-2xl lg:rounded-4xl border-6 lg:border-12 border-[#EDF0DE] bg-white pt-6 lg:pt-14 pl-6 lg:pl-14 shadow-sm"
+            className="group relative overflow-hidden h-[800px] flex-none w-[85vw] sm:w-[520px] md:w-[600px] lg:w-[740px] rounded-4xl border-12 border-[#EDF0DE] bg-white pt-6 lg:pt-14 pl-6 lg:pl-14 shadow-sm"
           >
             <div className="pr-14">
               <div className="flex items-center justify-between">

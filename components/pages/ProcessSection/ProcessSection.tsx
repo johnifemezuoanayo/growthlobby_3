@@ -4,6 +4,7 @@ import FeedbackIcon from "../../Icons/FeedbackIcon";
 import HandoverIcon from "../../Icons/HandoverIcon";
 import ProcessIcon from "../../Icons/ProcessIcon";
 import Image from "next/image";
+import { SectionBadge } from "@/components/ui/SectionBadge/SectionBadge";
 
 const steps = [
   {
@@ -31,11 +32,11 @@ const steps = [
 
 export default function ProcessSection() {
   return (
-    <section className="w-full bg-white px-4 py-16 sm:px-8 md:py-24 lg:px-16">
+    <section className="w-full bg-white px-5 py-16  md:py-24 lg:px-0">
       <div className="mx-auto max-w-7xl">
         {/* Header */}
-        <div className="mb-12 md:mb-16">
-          <ProcessIcon />
+        <div className="mb-12 md:mb-12">
+          <SectionBadge>Process</SectionBadge>
 
           <h2 className="mt-6 font-serif text-3xl leading-[1.05] tracking-tight text-neutral-900 sm:text-3xl md:text-4xl lg:text-5xl">
             My Web design project

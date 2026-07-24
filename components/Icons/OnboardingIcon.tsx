@@ -28,14 +28,14 @@ function OnboardingIcon() {
         fill="url(#paint3_radial_159_13504)"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M18.9732 27.3211C20.5322 27.3212 22.0746 27.0012 23.5048 26.3807C24.935 25.7603 26.2225 24.8527 27.2876 23.7142C28.3526 22.5758 29.1724 21.2307 29.6963 19.7623C30.2201 18.294 30.4368 16.7337 30.3329 15.1782H23.5268C22.1178 15.1782 20.7666 15.7379 19.7703 16.7342C18.774 17.7305 18.2143 19.0818 18.2143 20.4907V27.2968C18.4652 27.312 18.7182 27.3201 18.9732 27.3211Z"
         fill="url(#paint4_linear_159_13504)"
       />
       <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
+        fillRule="evenodd"
+        clipRule="evenodd"
         d="M18.9732 27.3211C20.5322 27.3212 22.0746 27.0012 23.5048 26.3807C24.935 25.7603 26.2225 24.8527 27.2876 23.7142C28.3526 22.5758 29.1724 21.2307 29.6963 19.7623C30.2201 18.294 30.4368 16.7337 30.3329 15.1782H23.5268C22.1178 15.1782 20.7666 15.7379 19.7703 16.7342C18.774 17.7305 18.2143 19.0818 18.2143 20.4907V27.2968C18.4652 27.312 18.7182 27.3201 18.9732 27.3211Z"
         fill="url(#paint5_linear_159_13504)"
       />
@@ -75,9 +75,9 @@ function OnboardingIcon() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(9.70338 32.8899) rotate(-78.382) scale(30.8002)"
         >
-          <stop offset="0.222" stop-color="#4E46E2" />
-          <stop offset="0.578" stop-color="#625DF6" />
-          <stop offset="0.955" stop-color="#E37DFF" />
+          <stop offset="0.222" stopColor="#4E46E2" />
+          <stop offset="0.578" stopColor="#625DF6" />
+          <stop offset="0.955" stopColor="#E37DFF" />
         </radialGradient>
         <radialGradient
           id="paint1_radial_159_13504"
@@ -87,8 +87,8 @@ function OnboardingIcon() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(4.5979 21.915) rotate(-17.281) scale(12.4338 16.2757)"
         >
-          <stop offset="0.566" stop-color="#251FBA" />
-          <stop offset="1" stop-color="#5E51E4" stop-opacity="0" />
+          <stop offset="0.566" stopColor="#251FBA" />
+          <stop offset="1" stopColor="#5E51E4" stopOpacity="0" />
         </radialGradient>
         <radialGradient
           id="paint2_radial_159_13504"
@@ -98,8 +98,8 @@ function OnboardingIcon() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(3.74742 13.4727) rotate(8.26) scale(11.4374 11.6913)"
         >
-          <stop offset="0.566" stop-color="#251FBA" />
-          <stop offset="1" stop-color="#5E51E4" stop-opacity="0" />
+          <stop offset="0.566" stopColor="#251FBA" />
+          <stop offset="1" stopColor="#5E51E4" stopOpacity="0" />
         </radialGradient>
         <radialGradient
           id="paint3_radial_159_13504"
@@ -109,11 +109,11 @@ function OnboardingIcon() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(20.929 16.6962) rotate(42.462) scale(25.1255 34.1273)"
         >
-          <stop stop-color="#C354FF" />
-          <stop offset="0.158" stop-color="#B339F0" />
-          <stop offset="0.429" stop-color="#F24A9D" />
-          <stop offset="0.749" stop-color="#FF835C" />
-          <stop offset="1" stop-color="#FFC470" />
+          <stop stopColor="#C354FF" />
+          <stop offset="0.158" stopColor="#B339F0" />
+          <stop offset="0.429" stopColor="#F24A9D" />
+          <stop offset="0.749" stopColor="#FF835C" />
+          <stop offset="1" stopColor="#FFC470" />
         </radialGradient>
         <linearGradient
           id="paint4_linear_159_13504"
@@ -123,8 +123,8 @@ function OnboardingIcon() {
           y2="13.9761"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.195" stop-color="#6D37CD" />
-          <stop offset="0.765" stop-color="#EA71EF" />
+          <stop offset="0.195" stopColor="#6D37CD" />
+          <stop offset="0.765" stopColor="#EA71EF" />
         </linearGradient>
         <linearGradient
           id="paint5_linear_159_13504"
@@ -134,8 +134,8 @@ function OnboardingIcon() {
           y2="10.6914"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.195" stop-color="#7631FF" />
-          <stop offset="0.886" stop-color="#E63080" />
+          <stop offset="0.195" stopColor="#7631FF" />
+          <stop offset="0.886" stopColor="#E63080" />
         </linearGradient>
         <linearGradient
           id="paint6_linear_159_13504"
@@ -145,8 +145,8 @@ function OnboardingIcon() {
           y2="37.8174"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#0FAFFF" />
-          <stop offset="1" stop-color="#2764E7" />
+          <stop stopColor="#0FAFFF" />
+          <stop offset="1" stopColor="#2764E7" />
         </linearGradient>
         <radialGradient
           id="paint7_radial_159_13504"
@@ -156,8 +156,8 @@ function OnboardingIcon() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(7.90601 13.3081) rotate(80.577) scale(24.5047 65.0871)"
         >
-          <stop offset="0.5" stop-color="#DD3CE2" stop-opacity="0" />
-          <stop offset="1" stop-color="#DD3CE2" />
+          <stop offset="0.5" stopColor="#DD3CE2" stopOpacity="0" />
+          <stop offset="1" stopColor="#DD3CE2" />
         </radialGradient>
         <linearGradient
           id="paint8_linear_159_13504"
@@ -167,8 +167,8 @@ function OnboardingIcon() {
           y2="26.1224"
           gradientUnits="userSpaceOnUse"
         >
-          <stop offset="0.307" stop-color="#0D91E1" />
-          <stop offset="0.761" stop-color="#52B471" />
+          <stop offset="0.307" stopColor="#0D91E1" />
+          <stop offset="0.761" stopColor="#52B471" />
         </linearGradient>
         <radialGradient
           id="paint9_radial_159_13504"
@@ -178,8 +178,8 @@ function OnboardingIcon() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(4.97491 14.5) rotate(-67.053) scale(12.5695 25.5436)"
         >
-          <stop offset="0.169" stop-color="#02888D" />
-          <stop offset="0.26" stop-color="#02888D" stop-opacity="0" />
+          <stop offset="0.169" stopColor="#02888D" />
+          <stop offset="0.26" stopColor="#02888D" stopOpacity="0" />
         </radialGradient>
         <radialGradient
           id="paint10_radial_159_13504"
@@ -189,9 +189,9 @@ function OnboardingIcon() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(10.6017 7.74555) rotate(108.186) scale(11.071 12.0273)"
         >
-          <stop stop-color="#FF9532" />
-          <stop offset="0.251" stop-color="#FF835C" />
-          <stop offset="1" stop-color="#F24A9D" />
+          <stop stopColor="#FF9532" />
+          <stop offset="0.251" stopColor="#FF835C" />
+          <stop offset="1" stopColor="#F24A9D" />
         </radialGradient>
       </defs>
     </svg>

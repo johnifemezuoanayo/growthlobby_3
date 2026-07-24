@@ -1,6 +1,5 @@
+import { SectionBadge } from "@/components/ui/SectionBadge/SectionBadge";
 import Image from "next/image";
-import SectionBadge from "../HomePortfolioSection/SectionBadge";
-import ServicesSVG from "../../Icons/ServicesSVG";
 
 const services = [
   { title: "Ai Automation & Integration", image: "/images/ai-automation.png" },
@@ -36,7 +35,7 @@ const ServiceSection = () => {
       <div className="relative">
         {/* Heading block */}
         <div className="mx-auto max-w-7xl px-5 lg:px-0">
-          <ServicesSVG />
+          <SectionBadge>Project</SectionBadge>
           <h2 className="mt-8 max-w-4xl font-serif text-4xl leading-[1.1] text-white sm:text-5xl lg:text-6xl">
             For all the creative &amp; development projects that slow you down.
           </h2>

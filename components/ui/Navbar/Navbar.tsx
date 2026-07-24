@@ -5,14 +5,15 @@ import NavButton from "./NavButton";
 const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/contact-me", label: "Contact me" },
-  // { href: "/motion", label: "Motion" },
+  { href: "/portfolio/development", label: "Dev" },
+  { href: "/portfolio/design", label: "Design" },
+  { href: "/#contact-me", label: "Contact me" },
+  { href: "/blog", label: "Blog" },
 ];
 
 function Navbar() {
   return (
-    <div className="hidden md:flex w-full flex-col gap-3 rounded-lg border border-white/5 bg-white/5 p-2  backdrop-blur sm:w-fit sm:flex-row sm:items-center">
+    <div className="hidden lg:flex w-full flex-col gap-3 rounded-lg border border-white/5 bg-white/5 p-2  backdrop-blur sm:w-fit sm:flex-row sm:items-center">
       <nav
         aria-label="Footer navigation"
         className="grid grid-cols-2 gap-2 text-sm text-zinc-200 sm:flex sm:items-center sm:gap-1"

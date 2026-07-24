@@ -1,5 +1,8 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client"
 
+import { SectionBadge } from "@/components/ui/SectionBadge/SectionBadge";
+import Image from "next/image";
 import React, { useRef, useState, useEffect, ReactNode } from "react";
 
 /* ---------------------------------------------------------------------- */
@@ -131,58 +134,24 @@ const BLOG_POSTS: BlogPost[] = [
     titleSegments: TITLE_SEGMENTS,
     body: "Discover 16 essential web design principles learned over 7 years of experience.",
     image:
-      "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?q=80&w=1200&auto=format&fit=crop",
+      "/images/project-1.png",
   },
   {
     tag: "Web Design",
     titleSegments: TITLE_SEGMENTS,
     body: "Discover 16 essential web design principles learned over 7 years of experience.",
     image:
-      "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?q=80&w=1200&auto=format&fit=crop",
+      "/images/project-2.png",
   },
   {
     tag: "Web Design",
     titleSegments: TITLE_SEGMENTS,
     body: "Discover 16 essential web design principles learned over 7 years of experience.",
     image:
-      "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?q=80&w=1200&auto=format&fit=crop",
+      "/images/project-3.png",
   },
 ];
 
-/* ---------------------------------------------------------------------- */
-/*  Corner marks                                                          */
-/* ---------------------------------------------------------------------- */
-
-function CornerMarks({ color = COLORS.frameMark }: { color?: string }){
-  const markStyle: React.CSSProperties = {
-    position: "absolute",
-    fontSize: 12,
-    lineHeight: "10px",
-    color,
-  };
-  return (
-    <>
-      <span style={{ ...markStyle, top: -6, left: -6 }}>+</span>
-      <span style={{ ...markStyle, top: -6, right: -6 }}>+</span>
-      <span style={{ ...markStyle, bottom: -6, left: -6 }}>+</span>
-      <span style={{ ...markStyle, bottom: -6, right: -6 }}>+</span>
-    </>
-  );
-}
-
-function Badge({ children }: { children: ReactNode }){
-  return (
-    <span className="relative inline-block">
-      <CornerMarks />
-      <span
-        className="inline-block px-5 py-2 text-sm font-medium"
-        style={{ backgroundColor: COLORS.badgeBg, color: COLORS.badgeText }}
-      >
-        {children}
-      </span>
-    </span>
-  );
-}
 
 /* ---------------------------------------------------------------------- */
 /*  Component                                                             */
@@ -194,11 +163,11 @@ export default function BlogSection() {
       className="w-full px-6 py-20 sm:py-28"
       style={{ backgroundColor: COLORS.bg, fontFamily: FONT }}
     >
-      <div className="mx-auto max-w-6xl">
+      <div className="mx-auto max-w-7xl">
         <div className="flex flex-col items-start justify-between gap-8 lg:flex-row lg:items-end">
           <div className="max-w-2xl">
             <Reveal>
-              <Badge>Process</Badge>
+              <SectionBadge>Process</SectionBadge>
             </Reveal>
 
             <Reveal delay={0.1}>
@@ -251,7 +220,9 @@ export default function BlogSection() {
               >
                 <div className="p-3 pb-0">
                   <div className="h-52 w-full overflow-hidden rounded-xl">
-                    <img
+                    <Image
+                      width={500}
+                      height={500}
                       src={post.image}
                       alt=""
                       className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
@@ -260,7 +231,6 @@ export default function BlogSection() {
                 </div>
 
                 <div className="flex flex-1 flex-col gap-4 p-6">
-                  <Badge>{post.tag}</Badge>
 
                   <a href="/blog" className="text-2xl font-medium leading-snug">
                     {post.titleSegments.map((seg, j) => (

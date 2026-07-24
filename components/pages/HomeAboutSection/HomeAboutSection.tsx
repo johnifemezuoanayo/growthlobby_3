@@ -4,6 +4,7 @@ import TwitterIcon from "../../Icons/TwitterIcon";
 import DribbbleIcon from "../../Icons/DribbbleIcon";
 import LinkedinIcon from "../../Icons/LinkedinIcon";
 import Whoami from "../../Icons/Whoami";
+import { SectionBadge } from "@/components/ui/SectionBadge/SectionBadge";
 
 const stats = [
   { value: "100+", label: "Successful Websites" },
@@ -13,7 +14,7 @@ const stats = [
 
 export default function HomeAboutSection() {
   return (
-    <section className="w-full bg-white  px-5 py-16 sm:px-8 lg:px-16 lg:py-24">
+    <section className="w-full bg-white  px-5 py-16 lg:px-0 lg:py-24">
       <div
         className="pointer-events-none absolute inset-0 opacity-90"
         // style={{
@@ -27,7 +28,7 @@ export default function HomeAboutSection() {
         {/* Left content */}
         <div className="flex flex-col">
           <div className="inline-block mb-3">
-            <Whoami />
+            <SectionBadge> Who I am</SectionBadge>
           </div>
 
           <h2 className="mt-6 font-serif text-3xl leading-tight text-[#1a1a1a] sm:text-4xl lg:text-5xl">

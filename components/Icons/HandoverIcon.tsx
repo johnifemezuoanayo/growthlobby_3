@@ -40,9 +40,9 @@ function HandoverIcon() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(32.7271 9.60155) rotate(72.275) scale(30.2328 78.2379)"
         >
-          <stop offset="0.081" stop-color="#F08AF4" />
-          <stop offset="0.341" stop-color="#9C6CFE" />
-          <stop offset="1" stop-color="#4E44DB" />
+          <stop offset="0.081" stopColor="#F08AF4" />
+          <stop offset="0.341" stopColor="#9C6CFE" />
+          <stop offset="1" stopColor="#4E44DB" />
         </radialGradient>
         <linearGradient
           id="paint1_linear_159_13541"
@@ -52,8 +52,8 @@ function HandoverIcon() {
           y2="23.2499"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#312A9A" />
-          <stop offset="1" stop-color="#312A9A" stop-opacity="0" />
+          <stop stopColor="#312A9A" />
+          <stop offset="1" stopColor="#312A9A" stopOpacity="0" />
         </linearGradient>
         <radialGradient
           id="paint2_radial_159_13541"
@@ -63,9 +63,9 @@ function HandoverIcon() {
           gradientUnits="userSpaceOnUse"
           gradientTransform="translate(-1.90911 10.2508) rotate(45.625) scale(44.4195 93.3117)"
         >
-          <stop stop-color="#F08AF4" />
-          <stop offset="0.341" stop-color="#9C6CFE" />
-          <stop offset="1" stop-color="#4E44DB" />
+          <stop stopColor="#F08AF4" />
+          <stop offset="0.341" stopColor="#9C6CFE" />
+          <stop offset="1" stopColor="#4E44DB" />
         </radialGradient>
         <linearGradient
           id="paint3_linear_159_13541"
@@ -75,8 +75,8 @@ function HandoverIcon() {
           y2="36.075"
           gradientUnits="userSpaceOnUse"
         >
-          <stop stop-color="#3B148A" />
-          <stop offset="1" stop-color="#4B20A0" />
+          <stop stopColor="#3B148A" />
+          <stop offset="1" stopColor="#4B20A0" />
         </linearGradient>
       </defs>
     </svg>

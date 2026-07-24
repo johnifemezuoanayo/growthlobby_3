@@ -36,7 +36,7 @@ export default function HomePortfolioSection() {
   };
 
   return (
-    <section className="relative w-full bg-white py-20 px-4 sm:px-8 md:px-16">
+    <section className="relative w-full bg-white py-20 px-5 md:px-5">
       <div className="mx-auto max-w-7xl">
         {/* Video Section */}
         <div className="lg:-mt-[200px] mb-20 md:mb-32">

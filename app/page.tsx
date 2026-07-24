@@ -9,7 +9,6 @@ import ProjectSection from "@/components/pages/HomeProjectSection/HomeProjectSec
 import IntegrationSection from "@/components/pages/IntegrationSection/IntegrationSection";
 import ProcessSection from "@/components/pages/ProcessSection/ProcessSection";
 import ServiceSection from "@/components/pages/ServiceSection/ServiceSection";
-import HomeTestimonialSection from "@/components/pages/TestimonialSection/HomeTestimonialSection";
 import TestimonialSection from "@/components/pages/TestimonialSection/TestimonialSection";
 import WhySection from "@/components/pages/WhyMeSction/WhyMeSection";
 export default function Home() {

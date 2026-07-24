@@ -9,7 +9,7 @@ import NavButton from "../../ui/Navbar/NavButton";
 
 function useInView(threshold: number = 0.15): [React.RefObject<HTMLDivElement | null>, boolean] {
   const ref = useRef<HTMLDivElement>(null);
-  const [inView, setInView] = useState<boolean>(false);
+  const [inView, setInView] = useState<boolean >(false);
 
   useEffect(() => {
     const el = ref.current;

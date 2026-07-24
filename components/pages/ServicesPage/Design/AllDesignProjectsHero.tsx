@@ -1,15 +1,16 @@
-"use client";
+"use client"
 
+import SpinningCircle from '@/components/ui/ContactForm/SpinningCircle';
+import Image from 'next/image';
+import React from 'react'
 import { motion } from "motion/react";
-import Image from "next/image";
-import SpinningCircle from "../../ui/ContactForm/SpinningCircle";
-import NavButton from "../../ui/Navbar/NavButton";
+import NavButton from '@/components/ui/Navbar/NavButton';
 
-export default function AboutHero() {
+function AllDesignProjectsHero() {
   return (
     <div
       id="hero-section"
-      className=" w-full u lg:min-h-[90vh] bg-[#0E1101]  overflow-hidden py-16 sm:py-24 px-4 sm:px-6 lg:px-8"
+      className=" w-full u lg:min-h-[90vh] bg-[#EDEFE7]  overflow-hidden py-16 sm:py-24 px-4 sm:px-6 lg:px-8"
     >
       <Image
         src="/svgs/aboutbg.svg"
@@ -19,7 +20,7 @@ export default function AboutHero() {
         height={1200}
       />
 
-      <div className="relative w-full max-w-7xl mt-32 mx-auto grid lg:flex justify-between items-center">
+      <div className="relative bg-[#17191C] rounded-3xl lg:p-20 border-12 border-zinc-300 w-full max-w-7xl mx-auto grid lg:flex justify-between items-center">
         {/* Left Column: Copy & Call-to-Action */}
         <div className="flex flex-col  items-start space-y-8 z-10">
           <motion.div
@@ -67,6 +68,14 @@ export default function AboutHero() {
             >
               Get in touch
             </NavButton>
+
+            <NavButton
+              href="/contact"
+              size="large"
+              className=" bg-brand-primary text-black hover:bg-brand-primary"
+            >
+              See all Project
+            </NavButton>
           </motion.div>
         </div>
 
@@ -85,7 +94,7 @@ export default function AboutHero() {
             >
               <SpinningCircle />
               <Image
-                src="/svgs/aboutme.svg"
+                src="/images/devhero.png"
                 alt=""
                 className="w-full z-10 "
                 width={2000}
@@ -95,7 +104,27 @@ export default function AboutHero() {
             </div>
           </motion.div>
         </div>
+
+        <div
+          className="pointer-events-none absolute inset-0 opacity-90"
+          style={{
+            backgroundImage:
+              "radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)",
+            backgroundSize: "22px 22px",
+          }}
+        />
       </div>
+
+      <div
+        className="pointer-events-none absolute inset-0 opacity-90"
+        style={{
+          backgroundImage:
+            "radial-gradient(rgba(255,255,255,0.06) 1px, transparent 1px)",
+          backgroundSize: "22px 22px",
+        }}
+      />
     </div>
   );
 }
+
+export default AllDesignProjectsHero;

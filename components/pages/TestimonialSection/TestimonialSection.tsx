@@ -10,7 +10,7 @@ import { testimonials } from "./testimonialData";
 
 export default function TestimonialSection() {
   return (
-    <section className="relative bg-[#14160C] w-full overflow-hidden px-6 py-24 sm:px-10 lg:px-16">
+    <section className="relative bg-[#14160C] w-full overflow-hidden px-5 py-24 sm:px-10 md:px-5 lg:px-0">
       {/* dotted background texture */}
       <div className="ts-dotgrid pointer-events-none absolute inset-0 opacity-70" />
 

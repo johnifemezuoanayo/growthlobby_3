@@ -3,7 +3,7 @@ import React from 'react'
 function SpinningCircle() {
   return (
     <div className="absolute -top-16 left-12 md:-left-16 z-20 pointer-events-auto">
-      <div className="relative w-28 h-28 md:w-32 md:h-32 rounded-full bg-[#ACD506]/30 backdrop-blur border border-white/20 flex items-center justify-center group overflow-hidden">
+      <div className="relative w-28 h-28 md:w-28 md:h-28 rounded-full bg-[#ACD506]/30 backdrop-blur border border-white/20 flex items-center justify-center group overflow-hidden">
         {/* Subtle pulsing background glow in stamp */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(197,242,38,0.15)_0%,transparent_70%)] group-hover:scale-125 transition-transform duration-500" />
 

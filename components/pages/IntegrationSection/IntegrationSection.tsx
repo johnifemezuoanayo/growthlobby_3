@@ -18,6 +18,7 @@ import {
   LucideIcon,
 } from "lucide-react";
 import Image from "next/image";
+import { SectionBadge } from "@/components/ui/SectionBadge/SectionBadge";
 
 /* ---------------------------------------------------------------------- */
 /*  Scroll-reveal primitives                                              */
@@ -163,20 +164,9 @@ export default function IntegrationSection() {
       style={{ backgroundColor: COLORS.bg, fontFamily: FONT }}
     >
       <div className="mx-auto max-w-3xl text-center">
-        <Reveal className="flex justify-center">
-          <span className="relative inline-block">
-            <CornerMarks />
-            <span
-              className="inline-block px-5 py-2 text-sm font-medium"
-              style={{
-                backgroundColor: COLORS.badgeBg,
-                color: COLORS.badgeText,
-              }}
-            >
+        <SectionBadge>
               Integrations
-            </span>
-          </span>
-        </Reveal>
+        </SectionBadge>
 
         <Reveal delay={0.1}>
           <h2

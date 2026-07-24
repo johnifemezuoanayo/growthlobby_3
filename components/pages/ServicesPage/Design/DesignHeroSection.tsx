@@ -6,9 +6,9 @@ import React from "react";
 import { motion } from "motion/react";
 import NavButton from "@/components/ui/Navbar/NavButton";
 
-function DevHero() {
+function DesignHeroSection() {
   return (
-    <section className="relative h-screen overflow-x-hidden bg-[#060606] font-sans text-white selection:bg-brand-primary selection:text-black">
+    <section className="relative  overflow-x-hidden bg-[#060606] font-sans text-white selection:bg-brand-primary selection:text-black">
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden bg-[#060606]">
         <div className="absolute inset-0 bg-black/80 z-10" />
         <Image
@@ -43,13 +43,13 @@ function DevHero() {
                 </div>
                 <span className="h-3 w-px bg-white" />
                 <span className="text-[9px] pr-3 font-medium uppercase tracking-widest text-neutral-300">
-                  Website Developement
+                  Product Design
                 </span>
               </div>
 
               <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
-                Create Premium and <br className="hidden md:inline" />
-                <span>Professional Website</span>
+                Let&lsquo;s Design an Extreme <br className="hidden md:inline" />
+                <span>Design for your statup</span>
               </h1>
 
               <p className="max-w-xl text-sm font-light leading-relaxed text-white/90 sm:text-base">
@@ -67,7 +67,7 @@ function DevHero() {
                   Schedule a call
                 </NavButton>
                 <NavButton
-                  href="/portfolio/development/all-projects"
+                  href="/portfolio/design/all-projects"
                   size="large"
                   className=" bg-white text-black hover:bg-white"
                 >
@@ -107,4 +107,4 @@ function DevHero() {
   );
 }
 
-export default DevHero;
+export default DesignHeroSection;
