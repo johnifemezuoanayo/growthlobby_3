@@ -1,15 +1,9 @@
 import Link from "next/link";
 import React from "react";
 import NavButton from "./NavButton";
+import { navLinks } from "@/components/pages/HomeHeroSection/data";
 
-const navLinks = [
-  { href: "/", label: "Home" },
-  { href: "/about", label: "About" },
-  { href: "/portfolio/development", label: "Dev" },
-  { href: "/portfolio/design", label: "Design" },
-  { href: "/#contact-me", label: "Contact me" },
-  { href: "/blog", label: "Blog" },
-];
+
 
 function Navbar() {
   return (

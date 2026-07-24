@@ -40,7 +40,7 @@ export default function HomePortfolioSection() {
       <div className="mx-auto max-w-7xl">
         {/* Video Section */}
         <div className="lg:-mt-[200px] mb-20 md:mb-32">
-          <div className="relative w-full border-12 overflow-hidden rounded-4xl">
+          <div className="relative w-full border-6 lg:border-12 overflow-hidden rounded-xl lg:rounded-4xl">
             {/* Video Overlay Background */}
             <div className="relative aspect-video w-full">
               <Image

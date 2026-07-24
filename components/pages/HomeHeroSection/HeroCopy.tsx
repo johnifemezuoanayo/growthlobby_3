@@ -3,6 +3,7 @@
 import { Play } from "lucide-react";
 import { motion } from "motion/react";
 import NavButton from "../../ui/Navbar/NavButton";
+import AvatarStack from "../ContactMeSection/AvatarComp";
 
 
 
@@ -43,20 +44,22 @@ export function HeroCopy() {
 
       <div className="flex w-full flex items-stretch gap-4 pt-2 sm:w-auto sm:flex-row sm:items-center">
         <NavButton
-          href="/contact"
+          href="/book-a-call"
           size="large"
           className=" bg-brand-primary text-black hover:bg-white"
         >
           Schedule a call
         </NavButton>
-        <NavButton
-          href="/contact"
+        
+        <AvatarStack />
+        {/* <NavButton
+          href="#contact-section"
           size="large"
           showIcon={false}
           className=" bg-white text-black hover:bg-white"
         >
           Get in touch
-        </NavButton>
+        </NavButton> */}
       </div>
     </motion.div>
   );

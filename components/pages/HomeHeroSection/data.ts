@@ -1,9 +1,10 @@
 export const navLinks = [
   { href: "/", label: "Home" },
   { href: "/about", label: "About" },
-  { href: "/services", label: "Services" },
-  { href: "/portfolio", label: "Portfolio" },
-  { href: "/pricing", label: "Pricing" },
+  { href: "/portfolio/development", label: "Dev" },
+  { href: "/portfolio/design", label: "Design" },
+  { href: "/#contact-me", label: "Contact me" },
+  { href: "/blog", label: "Blog" },
 ];
 
 export const portfolioLinks = [
@@ -25,8 +26,11 @@ export const portfolioLinks = [
 ];
 
 export const serviceOptions = [
-  "Squarespace Redesign",
-  "AI Native Automation",
+  "Website Design",
+  "Product Design(UI/UX Design)",
+  "Branding",
+  "AI  Automation",
+  "Website Redesign",
   "SEO Audit & Boost",
   "Full-Stack Dev Project",
 ];

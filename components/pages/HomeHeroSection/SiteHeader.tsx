@@ -96,12 +96,7 @@ export function SiteHeader({
             </Link>
           </nav>
 
-          <button
-            onClick={onScheduleCall}
-            className="hidden cursor-pointer items-center gap-1.5 rounded-full bg-brand-primary px-5 py-2.5 text-xs font-bold uppercase tracking-wider text-black shadow-[0_4px_20px_rgba(192,237,11,0.25)] transition-all duration-200 hover:scale-105 hover:bg-white active:scale-95 md:flex"
-          >
-            Schedule a call <ArrowUpRight className="size-4" />
-          </button> */}
+         */}
 
           <Navbar />
 

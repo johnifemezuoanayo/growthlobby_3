@@ -50,23 +50,11 @@ export function ContactForm() {
   const [formErrors, setFormErrors] = useState<FormErrors>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
-  const [isScheduleModalOpen, setIsScheduleModalOpen] = useState(false);
-  const [selectedDate, setSelectedDate] = useState<string | null>(null);
-  const [selectedTime, setSelectedTime] = useState<string | null>(null);
-  const [isScheduled, setIsScheduled] = useState(false);
 
   const formRef = useRef<HTMLDivElement>(null);
   const nameInputRef = useRef<HTMLInputElement>(null);
 
-  const daysAhead = useMemo(
-    () =>
-      Array.from({ length: 7 }, (_, index) => {
-        const date = new Date();
-        date.setDate(date.getDate() + index + 1);
-        return date;
-      }),
-    [],
-  );
+
 
   const handleFormChange = (
     event: ChangeEvent<
@@ -125,7 +113,6 @@ export function ContactForm() {
         
         <SpinningCircle />
 
-        <div className="mb-6"></div>
 
         <AnimatePresence mode="wait">
           {!isSubmitted ? (
@@ -135,8 +122,9 @@ export function ContactForm() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               onSubmit={handleFormSubmit}
-              className="flex flex-col gap-6"
+              className="flex flex-col gap-4"
             >
+              <h1 className="text-xl text-black">Send me a Mail</h1>
               <div className="grid gap-6 sm:grid-cols-2">
                 <LabelledInput
                   ref={nameInputRef}
@@ -191,14 +179,14 @@ export function ContactForm() {
 
               <div>
                 <label className="mb-2 block text-sm  text-[#8BA615]">
-                  What We Can Help You
+                  What Can We Help You?
                 </label>
                 <textarea
                   name="message"
                   value={formData.message}
                   onChange={handleFormChange}
-                  placeholder="What We Can Help You"
-                  rows={6}
+                  placeholder="Write your message here"
+                  rows={5}
                   className={`w-full resize-none rounded-sm border border-transparent bg-[#f4f4f4] px-4 py-4 text-sm text-neutral-700 outline-none transition focus:border-neutral-300 focus:bg-white ${
                     formErrors.message ? "border-red-500" : ""
                   }`}
