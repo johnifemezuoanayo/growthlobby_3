@@ -20,14 +20,14 @@ export function NavButton({
   href,
   children,
   showIcon = true,
-  className = "",
+  className = "hover:bg-white",
   size,
   icon,
 }: NavButtonProps) {
   return (
     <Link
       href={href}
-      className={`flex items-center justify-center gap-2 rounded transition hover:bg-white ${size ? sizeClasses[size] : "h-10 px-4 text-sm"} ${className}`.trim()}
+      className={`flex items-center justify-center gap-2 rounded transition  ${size ? sizeClasses[size] : "h-10 px-4 text-sm"} ${className}`.trim()}
     >
       {children}
       {showIcon ? (

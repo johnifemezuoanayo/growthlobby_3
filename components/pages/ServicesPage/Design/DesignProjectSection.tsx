@@ -4,31 +4,50 @@ import { ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import ProjectSvg from "@/components/Icons/ProjectSvg";
 import NavButton from "@/components/ui/Navbar/NavButton";
+import { useRouter } from "next/navigation";
 
-const projects = [
+import { IProject } from "@/base/interface/IProject";
+
+const DEFAULT_PROJECTS = [
   {
+    id: "proj-storyline",
+    slug: "proj-storyline",
     title: "The Hybrid way",
     image: "/images/project-1.png",
     bg: "bg-[#ff6b6b]",
+    projectType: "Services",
   },
   {
+    id: "proj-beyond-court",
+    slug: "proj-beyond-court",
     title: "Tradie Marketing Hub",
     image: "/images/project-2.png",
     bg: "bg-neutral-200",
+    projectType: "Services",
   },
   {
+    id: "proj-aether-ai",
+    slug: "proj-aether-ai",
     title: "Fokus Training",
     image: "/images/project-3.png",
     bg: "bg-[#c6ff3d]",
+    projectType: "Services",
   },
 ];
 
-export default function DesignProjectSection() {
+interface DesignProjectSectionProps {
+  projects?: IProject[];
+}
+
+export default function DesignProjectSection({ projects }: DesignProjectSectionProps = {}) {
+  const router = useRouter();
   const scrollerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false });
   const [isDragging, setIsDragging] = useState(false);
   const drag = useRef({ startX: 0, scrollLeft: 0, moved: false });
+
+  const displayProjects = projects && projects.length > 0 ? projects : DEFAULT_PROJECTS;
 
   useEffect(() => {
     const el = sectionRef.current;
@@ -97,7 +116,7 @@ export default function DesignProjectSection() {
           </div>
           <div className="flex md:justify-end">
             <NavButton
-              href="/contact"
+              href="/portfolio/design/all-projects"
               className="sm:ml-6 bg-brand-primary text-black hover:bg-white"
             >
               View All Work
@@ -117,18 +136,24 @@ export default function DesignProjectSection() {
           isDragging ? "cursor-none" : "cursor-none"
         }`}
       >
-        {projects.map((p, i) => (
+        {displayProjects.map((p, i) => (
           <article
             key={i}
             onClick={(e) => {
-              if (drag.current.moved) e.preventDefault();
+              if (drag.current.moved) {
+                e.preventDefault();
+                return;
+              }
+              if (p.slug) {
+                router.push(`/portfolio/design/${p.slug}`);
+              }
             }}
-            className="group relative overflow-hidden h-[800px] flex-none w-[85vw] sm:w-[520px] md:w-[600px] lg:w-[740px] rounded-4xl border-12 border-[#EDF0DE] bg-white pt-6 lg:pt-14 pl-6 lg:pl-14 shadow-sm"
+            className="group relative overflow-hidden h-[800px] flex-none w-[85vw] sm:w-[520px] md:w-[600px] lg:w-[740px] rounded-4xl border-12 border-[#EDF0DE] bg-white pt-6 lg:pt-14 pl-6 lg:pl-14 shadow-sm cursor-pointer"
           >
             <div className="pr-14">
               <div className="flex items-center justify-between">
                 <span className=" bg-[#F0F1EC] rounded-full px-4 py-2 text-sm font-medium text-neutral-800">
-                  Services
+                  {p.projectType || "Services"}
                 </span>
                 <span className="grid h-11 w-[70px] place-items-center rounded-full bg-[#c6ff3d] text-neutral-900">
                   <ArrowUpRight className="h-5 w-5" />
@@ -138,12 +163,12 @@ export default function DesignProjectSection() {
                 {p.title}
               </h3>
             </div>
-            <div className={`mt-5 overflow-hidden rounded-tl-4xl`}>
+            <div className={`mt-5 overflow-hidden rounded-tl-3xl`}>
               <Image
                 width={700}
                 height={800}
                 priority
-                src={p.image}
+                src={(p as any).introImage?.url || (p as any).image || ""}
                 alt={p.title}
                 draggable={false}
                 className="h-full w-full object-cover mix-blend-multiply pointer-events-none"

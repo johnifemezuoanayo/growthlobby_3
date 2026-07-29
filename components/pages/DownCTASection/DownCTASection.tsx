@@ -1,7 +1,9 @@
+/* eslint-disable react-hooks/set-state-in-effect */
 "use client"
 
 import React, { useRef, useState, useEffect, ReactNode } from "react";
 import NavButton from "../../ui/Navbar/NavButton";
+import Image from "next/image";
 
 /* ---------------------------------------------------------------------- */
 /*  Scroll-reveal primitive                                               */
@@ -103,28 +105,28 @@ interface CornerImage {
 
 const CORNER_IMAGES: CornerImage[] = [
   {
-    src: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&auto=format&fit=crop",
+    src: "/images/startup.png",
     rotate: -8,
     position: "left-[17%] top-[10%] w-[15%]",
     delay: 0.05,
     floatDelay: 0,
   },
   {
-    src: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&auto=format&fit=crop",
+    src: "/images/safenride.png",
     rotate: 8,
     position: "right-[13%] top-[6%] w-[15%]",
     delay: 0.15,
     floatDelay: 0.6,
   },
   {
-    src: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&auto=format&fit=crop",
+    src: "/images/growthlobby_old.png",
     rotate: -6,
     position: "left-[16%] bottom-[4%] w-[15%]",
     delay: 0.25,
     floatDelay: 1.2,
   },
   {
-    src: "https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?q=80&w=800&auto=format&fit=crop",
+    src: "/images/rendlr.png",
     rotate: 8,
     position: "right-[14%] bottom-[4%] w-[16%]",
     delay: 0.35,
@@ -138,20 +140,24 @@ function CornerShot({ item }: { item: CornerImage }){
   return (
     <div
       ref={ref}
-      className={`pointer-events-none absolute hidden  rounded-sm   lg:block ${item.position}`}
+      className={`pointer-events-none absolute hidden p-3 bg-[#ECEBE2] rounded-sm   lg:block ${item.position}`}
       style={{
         opacity: inView ? 1 : 0,
         transform: inView
           ? `rotate(${item.rotate}deg) translateY(0px)`
           : `rotate(${item.rotate}deg) translateY(30px)`,
         transition: `opacity 0.8s cubic-bezier(.22,.61,.36,1) ${item.delay}s, transform 0.8s cubic-bezier(.22,.61,.36,1) ${item.delay}s`,
-        animation: inView ? `ctaFloat 7s ease-in-out ${item.floatDelay}s infinite` : "none",
+        animation: inView
+          ? `ctaFloat 7s ease-in-out ${item.floatDelay}s infinite`
+          : "none",
       }}
     >
-      <img
+      <Image
+        width={500}
+        height={500}
         src={item.src}
-        alt=""
-        className=" w-[300px] object-cover"
+        alt="growthlobby designs"
+        className=" w-[300px] h-[200px] object-cover"
       />
     </div>
   );
@@ -207,7 +213,7 @@ export default function DownCTASection(){
         </Reveal>
 
         <Reveal delay={0.15} className="mt-10 flex justify-center">
-          <NavButton size="large" href="#contact" className="bg-brand-primary text-black">
+          <NavButton size="large" href="#contact" className="bg-brand-primary hover:bg-brand-primary/80 text-black">
             Book A Call
           </NavButton>
         </Reveal>

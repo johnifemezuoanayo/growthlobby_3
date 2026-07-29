@@ -1,4 +1,11 @@
 import Link from "next/link";
+import { createPageMetadata } from "@/lib/site-metadata";
+
+export const metadata = createPageMetadata({
+  title: "Portfolio",
+  description:
+    "Explore project work by discipline, from visual design systems to production-ready web development.",
+});
 
 const portfolioAreas = [
   {

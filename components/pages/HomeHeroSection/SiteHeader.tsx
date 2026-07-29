@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { BrandLogo } from "../../BrandLogo";
@@ -21,6 +22,7 @@ export function SiteHeader({
   onToggleMobileMenu,
   onCloseMobileMenu,
 }: SiteHeaderProps) {
+  const pathname = usePathname();
 
  
   return (
@@ -118,20 +120,27 @@ export function SiteHeader({
             exit={{ opacity: 0, y: -20 }}
             className="fixed left-0 right-0 top-0 w-full z-40 flex flex-col gap-4 pt-44 border-b border-neutral-800 h-screen bg-[#0e100e] p-6 text-center  backdrop-blur-xl lg:hidden"
           >
-            {navLinks.map((link, index) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={onCloseMobileMenu}
-                className={
-                  index === 0
-                    ? "py-2 font-bold uppercase tracking-wider text-brand-primary"
-                    : "py-2 font-medium uppercase tracking-wider text-neutral-300 hover:text-white"
-                }
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) => {
+              const isActive =
+                link.href === "/"
+                  ? pathname === "/"
+                  : pathname.startsWith(link.href);
+
+              return (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={onCloseMobileMenu}
+                  className={
+                    isActive
+                      ? "py-2 font-bold uppercase tracking-wider text-brand-primary"
+                      : "py-2 font-medium uppercase tracking-wider text-neutral-300 hover:text-white"
+                  }
+                >
+                  {link.label}
+                </Link>
+              );
+            })}
             <NavButton
               href="/book-a-call"
               className="sm:ml-6 w-full  bg-brand-primary text-black hover:bg-white"

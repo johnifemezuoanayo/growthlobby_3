@@ -5,8 +5,8 @@ import Image from "next/image";
 import { section } from "motion/react-m";
 import NavButton from "../../ui/Navbar/NavButton";
 import PlayIcon from "../../Icons/PlayIcon";
-import SectionBadge from "./SectionBadge";
 import PartnershipSvg from "../../Icons/PartnershipSvg";
+import { SectionBadge } from "@/components/ui/SectionBadge/SectionBadge";
 
 const YOUTUBE_VIDEOS = [
   "jNQXAC9IVRw", // Do They Know It's Christmas
@@ -117,26 +117,26 @@ export default function HomePortfolioSection() {
         {/* Partnerships Section */}
         <div className="mx-auto max-w-7xl text-center">
           <div className="inline-block mb-3">
-            <PartnershipSvg />
+            <SectionBadge>Clients I have worked with</SectionBadge>
           </div>
-          <h2 className="mb-12 text-2xl md:text-3xl lg:text-4xl font-bold text-black">
-            Amazing Clients That Trusted Me
+          <h2 className="mb-12 text-2xl md:text-3xl max-w-3xl mx-auto lg:text-4xl font-bold text-black">
+            Trusted by ambitious businesses building the future.
           </h2>
 
           {/* Scrolling Container */}
           <div className="relative w-full overflow-hidden">
-            <div className="flex animate-scroll gap-8 md:gap-12 lg:gap-16">
+            <div className="flex w-max animate-marquee gap-8 md:gap-12 lg:gap-16">
               {/* Original set */}
               {BRANDS.map((brand) => (
                 <div
                   key={`${brand.id}-1`}
-                  className="relative h-16 md:h-20 lg:h-24 w-32 md:w-40 lg:w-48 flex-shrink-0"
+                  className="relative h-16 md:h-20 lg:h-12 w-32 md:w-40 lg:w-34 flex-shrink-0"
                 >
                   <Image
                     src={brand.path}
                     alt={brand.name}
                     fill
-                    className="object-contain object-center opacity-70 hover:opacity-100 transition-opacity duration-300"
+                    className="object-contain  object-center opacity-70 hover:opacity-100 transition-opacity duration-300"
                   />
                 </div>
               ))}
@@ -145,7 +145,7 @@ export default function HomePortfolioSection() {
               {BRANDS.map((brand) => (
                 <div
                   key={`${brand.id}-2`}
-                  className="relative h-16 md:h-20 lg:h-24 w-32 md:w-40 lg:w-48 flex-shrink-0"
+                  className="relative h-16 md:h-20 lg:h-12 w-32 md:w-40 lg:w-34 flex-shrink-0"
                 >
                   <Image
                     src={brand.path}

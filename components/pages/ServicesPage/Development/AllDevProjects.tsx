@@ -1,10 +1,11 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight, Inbox } from "lucide-react";
 import Image from "next/image";
 import NavButton from "@/components/ui/Navbar/NavButton";
+import { IProjectWeb } from "@/base/interface/IProject";
 
 interface Project {
   id: string;
@@ -16,47 +17,14 @@ interface Project {
   link?: string;
 }
 
-export default function AllDevProjects() {
+interface AllDevProjectsProps {
+  projects?: IProjectWeb[];
+}
+
+export default function AllDevProjects({ projects }: AllDevProjectsProps = {}) {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const categories = [
-    "All",
-    "Agency",
-    "AI",
-    "Automotive",
-    "Church",
-    "Consulting",
-    "Education",
-    "Energy",
-    "Enterprise",
-    "Entertainment",
-    "Events",
-    "Finance",
-    "Fitness",
-    "Hospitality",
-    "Industrial",
-    "Insurance",
-    "Law",
-    "Manufacturing",
-    "Marketing",
-    "Media",
-    "Medical",
-    "Nonprofit",
-    "Real Estate",
-    "Recruitment",
-    "Retail",
-    "SaaS",
-    "Security",
-    "Sport",
-    "Tech",
-    "Travel",
-    "Vacation Rentals",
-    "Venture Capital",
-    "Video Production",
-    "Web3",
-  ];
-
-  const projects: Project[] = [
+  const mockProjects = [
     {
       id: "proj-beyond-court",
       title: "Beyond The Court",
@@ -89,8 +57,28 @@ export default function AllDevProjects() {
     },
   ];
 
+  const displayProjects: Project[] = useMemo(() => {
+    const list = projects && projects.length > 0 ? projects : mockProjects;
+    return list.map((p) => ({
+      id: p.id || "",
+      title: p.title,
+      description: p.description || "",
+      longDescription: (p as any).ourApproach || (p as any).longDescription || "",
+      image: (p as any).coverImage?.url || (p as any).image || "",
+      tags: (p as any).sector ? [(p as any).sector] : ((p as any).tags || []),
+      link: (p as any).liveSite || (p as any).link || "",
+    }));
+  }, [projects]);
+
+  // Extract unique categories dynamically based on project tags
+  const categories = useMemo(() => {
+    const postCategories = displayProjects.flatMap((p) => p.tags).filter(Boolean);
+    const uniqueCategories = Array.from(new Set(postCategories));
+    return ["All", ...uniqueCategories];
+  }, [displayProjects]);
+
   // Filter projects based on selectedCategory
-  const filteredProjects = projects.filter((project) => {
+  const filteredProjects = displayProjects.filter((project) => {
     if (selectedCategory === "All") return true;
     return project.tags.includes(selectedCategory);
   });
@@ -190,23 +178,18 @@ export default function AllDevProjects() {
                           <h3 className="text-2xl sm:text-3xl font-bold text-zinc-900 tracking-tight font-sans">
                             {project.title}
                           </h3>
-                          <p className="text-sm sm:text-base text-zinc-600 leading-relaxed font-normal">
+                          <p className="text-sm text-zinc-500 leading-relaxed font-normal line-clamp-2">
                             {project.description}
                           </p>
-                          {project.longDescription && (
-                            <p className="text-sm sm:text-base text-zinc-500 leading-relaxed font-normal">
-                              {project.longDescription}
-                            </p>
-                          )}
                         </div>
                       </div>
 
                       {/* Read More button */}
                       <div className="pt-2">
                         <NavButton
-                          href="/contact"
+                          href={project.link || "/contact"}
                           size="large"
-                          className="w-[170px] bg-brand-primary text-black hover:bg-white border border-zinc-100"
+                          className="w-[170px] bg-brand-primary text-black hover:bg-white border border-zinc-100 rounded-full"
                         >
                           Learn More
                         </NavButton>

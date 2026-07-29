@@ -1,24 +1,38 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
-import { featuredSlides } from "./BlogData";
-import { ArrowLeft, ArrowRight, ArrowUpRight } from "lucide-react";
+import { blogPosts, BlogPost } from "./BlogData";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import Image from "next/image";
-import NavButton from "@/components/ui/Navbar/NavButton";
+import TopRightIcon from "@/components/Icons/TopRightIcon";
 
-function BlogPageHero() {
-  const [activeSlide, setActiveSlide] = useState(2); // Default to Slide 3 (0-indexed, so 2)
+interface BlogPageHeroProps {
+  posts?: BlogPost[];
+  onSelectPost: (post: BlogPost) => void;
+}
+
+function BlogPageHero({ posts, onSelectPost }: BlogPageHeroProps) {
+  const slides = useMemo(() => {
+    const list = posts && posts.length > 0 ? posts : blogPosts;
+    return list.slice(0, 3); // limit to 3 featured posts for indicators consistency
+  }, [posts]);
+
+  const [activeSlide, setActiveSlide] = useState(0);
 
   const nextSlide = () => {
-    setActiveSlide((prev) => (prev + 1) % featuredSlides.length);
+    setActiveSlide((prev) => (prev + 1) % slides.length);
   };
 
   const prevSlide = () => {
     setActiveSlide(
-      (prev) => (prev - 1 + featuredSlides.length) % featuredSlides.length,
+      (prev) => (prev - 1 + slides.length) % slides.length,
     );
   };
+
+  // Clamp the active index to make sure it's valid
+  const currentIdx = activeSlide < slides.length ? activeSlide : 0;
+  const currentSlide = slides[currentIdx];
 
   return (
     <section
@@ -62,7 +76,7 @@ function BlogPageHero() {
           {/* Carousel background image with fade effect */}
           <AnimatePresence mode="wait">
             <motion.div
-              key={activeSlide}
+              key={currentIdx}
               initial={{ opacity: 0, scale: 1.03 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
@@ -72,8 +86,8 @@ function BlogPageHero() {
               <Image
                 width={1200}
                 height={800}
-                src={featuredSlides[activeSlide].image}
-                alt={featuredSlides[activeSlide].title}
+                src={currentSlide.image}
+                alt={currentSlide.title}
                 referrerPolicy="no-referrer"
                 className="w-full h-full object-cover brightness-[0.4]"
               />
@@ -87,8 +101,8 @@ function BlogPageHero() {
           <div className="relative z-10 p-6 sm:p-10 md:p-12 flex-1 flex flex-col justify-between">
             {/* Category tag */}
             <div className="flex items-start">
-              <span className="bg-white/10 backdrop-blur border border-white/20 text-white text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full">
-                {featuredSlides[activeSlide].tag}
+              <span className="bg-white/10 backdrop-blur border border-white/20 text-white text-[11px] font-bold uppercase tracking-wider px-3.5 py-1.5 rounded-full capitalize">
+                {currentSlide.tag}
               </span>
             </div>
 
@@ -96,7 +110,7 @@ function BlogPageHero() {
             <div className="max-w-3xl space-y-4 my-auto pt-6 pb-4">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={activeSlide}
+                  key={currentIdx}
                   initial={{ opacity: 0, y: 15 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -15 }}
@@ -104,22 +118,26 @@ function BlogPageHero() {
                   className="space-y-3"
                 >
                   <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-black text-white tracking-tight leading-tight">
-                    {featuredSlides[activeSlide].title}
+                    {currentSlide.title}
                   </h2>
                   <p className="text-zinc-300 text-xs sm:text-sm md:text-base leading-relaxed max-w-2xl font-normal opacity-90 line-clamp-2 sm:line-clamp-none">
-                    {featuredSlides[activeSlide].excerpt}
+                    {currentSlide.excerpt}
                   </p>
                 </motion.div>
               </AnimatePresence>
 
               {/* Read more button */}
               <div className="pt-2">
-                <NavButton
-                  href="/book-a-call"
-                  className=" bg-brand-primary max-w-[150px] text-black hover:bg-white"
+                <button
+                  type="button"
+                  onClick={() => onSelectPost(currentSlide)}
+                  className="flex items-center justify-center gap-2 rounded transition h-10 px-4 text-sm bg-brand-primary max-w-[150px] text-black hover:bg-white cursor-pointer font-bold"
                 >
-                  Read More
-                </NavButton>
+                  <span>Read More</span>
+                  <span aria-hidden="true">
+                    <TopRightIcon />
+                  </span>
+                </button>
               </div>
             </div>
 
@@ -127,7 +145,7 @@ function BlogPageHero() {
             <div className="flex flex-col md:flex-row items-stretch md:items-end justify-between border-t border-white/15 pt-6 gap-6">
               {/* 3 mini slide pagination indicators */}
               <div className="grid grid-cols-3 gap-3 md:gap-6 flex-1 max-w-3xl">
-                {featuredSlides.map((slide, idx) => (
+                {slides.map((slide, idx) => (
                   <button
                     key={slide.id}
                     onClick={() => setActiveSlide(idx)}
@@ -137,7 +155,7 @@ function BlogPageHero() {
                     <div className="h-0.5 w-full bg-white/20 mb-2.5 overflow-hidden rounded-full">
                       <div
                         className={`h-full bg-white transition-all duration-500 rounded-full ${
-                          activeSlide === idx
+                          currentIdx === idx
                             ? "w-full"
                             : "w-0 group-hover/indicator:w-1/3"
                         }`}
@@ -146,13 +164,15 @@ function BlogPageHero() {
 
                     {/* Text */}
                     <span
-                      className={`font-mono text-[10px] md:text-xs mb-1 font-bold ${activeSlide === idx ? "text-white" : "text-white/40"}`}
+                      className={`font-mono text-[10px] md:text-xs mb-1 font-bold ${
+                        currentIdx === idx ? "text-white" : "text-white/40"
+                      }`}
                     >
                       {idx === 0 ? "01" : idx === 1 ? "02" : "03"}
                     </span>
                     <span
                       className={`text-[9px] md:text-xs font-semibold leading-snug line-clamp-1 sm:line-clamp-2 transition-opacity duration-300 ${
-                        activeSlide === idx
+                        currentIdx === idx
                           ? "text-white font-bold opacity-100"
                           : "text-white/40 opacity-70 group-hover/indicator:opacity-90"
                       }`}

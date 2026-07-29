@@ -1,17 +1,72 @@
 "use client";
 
-import { motion } from "motion/react";
+import { motion, useInView } from "motion/react";
 import { ArrowUp, ArrowUpRight } from "lucide-react";
 import Image from "next/image";
 import MyRecord from "../../Icons/MyRecord";
 import NavButton from "../../ui/Navbar/NavButton";
+import { useRef, useEffect, useState } from "react";
+
+interface AnimatedCounterProps {
+  value: string;
+}
+
+function AnimatedCounter({ value }: AnimatedCounterProps) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [displayValue, setDisplayValue] = useState(value);
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    const match = value.match(/(\d+)(.*)/);
+    
+    if (!match) {
+      setDisplayValue(value);
+      return;
+    }
+
+    const targetNumber = parseInt(match[1], 10);
+    const suffix = match[2] || "";
+    
+    const duration = 1500; // 1.5 seconds count animation
+    const startTime = performance.now();
+
+    let animationFrameId: number;
+
+    const animate = (time: number) => {
+      const elapsed = time - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      const easeOutQuad = (t: number) => t * (2 - t);
+      const easedProgress = easeOutQuad(progress);
+
+      const currentNumber = Math.floor(easedProgress * targetNumber);
+      setDisplayValue(`${currentNumber}${suffix}`);
+
+      if (progress < 1) {
+        animationFrameId = requestAnimationFrame(animate);
+      } else {
+        setDisplayValue(value);
+      }
+    };
+
+    animationFrameId = requestAnimationFrame(animate);
+
+    return () => {
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, [isInView, value]);
+
+  return <span ref={ref}>{displayValue}</span>;
+}
 
 export default function RecordSection() {
   const stats = [
     {
       id: "stat-1",
       label: "Years of Experience",
-      value: "10+",
+      value: "7+",
       description:
         "Helping clients stay ahead with modern, responsive, and engaging digital experiences.",
     },
@@ -95,7 +150,7 @@ export default function RecordSection() {
 
                 {/* Stat Big Number */}
                 <span className="text-4xl sm:text-5xl font-black text-zinc-900 font-sans tracking-tight leading-none">
-                  {stat.value}
+                  <AnimatedCounter value={stat.value} />
                 </span>
               </div>
 

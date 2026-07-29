@@ -1,21 +1,9 @@
 /* eslint-disable @next/next/no-img-element */
 import React from "react";
 
-/* ---------------------------------------------------------------------- */
-/*  Types                                                                 */
-/* ---------------------------------------------------------------------- */
-
 interface Avatar {
   src: string;
   alt: string;
-}
-
-interface AvatarStackProps {
-  avatars: Avatar[];
-  size?: number; // diameter in px
-  overlap?: number; // px each avatar overlaps the previous one
-  ringColor?: string;
-  className?: string;
 }
 
 /* ---------------------------------------------------------------------- */
@@ -24,16 +12,16 @@ interface AvatarStackProps {
 
 const DEFAULT_AVATARS: Avatar[] = [
   {
-    src: "/images/stanley.png",
-    alt: "Client headshot",
+    src: "/images/shoam.jpg",
+    alt: "Shoam Client",
   },
   {
     src: "/images/stanley.png",
-    alt: "Client headshot",
+    alt: "Stanley Okechukwu",
   },
   {
-    src: "https://images.unsplash.com/photo-1611432579699-484f7990b127?q=80&w=300&auto=format&fit=crop",
-    alt: "Client headshot",
+    src: "/images/vee.jpeg",
+    alt: "Client Victoria",
   },
 ];
 
@@ -41,9 +29,9 @@ const DEFAULT_AVATARS: Avatar[] = [
 /*  Component                                                             */
 /* ---------------------------------------------------------------------- */
 
-export default function AvatarStack(){
+export default function AvatarStack() {
   return (
-    <div className={`flex items-center md:ml-3`} style={{ paddingLeft: 22 }}>
+    <div className={`flex items-center md:ml-3`} style={{ paddingLeft: 20 }}>
       <div className="flex items-center">
         {DEFAULT_AVATARS.map((avatar: Avatar, i: number) => (
           <div
@@ -52,7 +40,7 @@ export default function AvatarStack(){
             style={{
               width: 40,
               height: 40,
-              marginLeft: -22,
+              marginLeft: -19,
               border: `3px solid white`,
               boxSizing: "content-box",
               zIndex: DEFAULT_AVATARS.length - i,

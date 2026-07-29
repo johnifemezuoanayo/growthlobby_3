@@ -2,8 +2,6 @@
 import OnboardingIcon from "../../Icons/OnboardingIcon";
 import FeedbackIcon from "../../Icons/FeedbackIcon";
 import HandoverIcon from "../../Icons/HandoverIcon";
-import ProcessIcon from "../../Icons/ProcessIcon";
-import Image from "next/image";
 import { SectionBadge } from "@/components/ui/SectionBadge/SectionBadge";
 
 const steps = [
@@ -18,15 +16,15 @@ const steps = [
     number: "02",
     icon: <FeedbackIcon />,
     title: "Development And Feedback",
-    body: "Once we agree on the scope and you accept the proposal, the website build begins. Using markup.io, you can provide feedback easily, ensuring a seamless and collaborative process from start to finish.",
-    image: "/images/feedbackimg.png",
+    body: "Once we agree on the scope and you accept the proposal, the website build begins. Using Figma, you can provide feedback easily, ensuring a seamless and collaborative process from start to finish.",
+    image: "/images/df.png",
   },
   {
     number: "03",
     icon: <HandoverIcon />,
     title: "Handover Training",
     body: "Upon your approval of the finished website, you'll receive bespoke handover training via a recorded Loom link. Plus, enjoy 30 days of free email support to help you transition smoothly.",
-    image: "/images/handover.png",
+    image: "/images/rec.png",
   },
 ];
 
@@ -36,11 +34,11 @@ export default function ProcessSection() {
       <div className="mx-auto max-w-7xl">
         {/* Header */}
         <div className="mb-12 md:mb-12">
-          <SectionBadge>Process</SectionBadge>
+          <SectionBadge>Smooth & efficient process</SectionBadge>
 
           <h2 className="mt-6 font-serif text-3xl leading-[1.05] tracking-tight text-neutral-900 sm:text-3xl md:text-4xl lg:text-5xl">
-            My Web design project
-            <br className="hidden sm:block" /> Process
+            Our smooth & efficient process
+            <br className="hidden sm:block" /> for your web design project
           </h2>
         </div>
 

@@ -1,9 +1,9 @@
 "use client";
 
-import { Play } from "lucide-react";
 import { motion } from "motion/react";
 import NavButton from "../../ui/Navbar/NavButton";
 import AvatarStack from "../ContactMeSection/AvatarComp";
+import { HeroData } from "./HeroData";
 
 
 
@@ -26,23 +26,20 @@ export function HeroCopy() {
           </span>
         </div>
         <span className="h-3 w-px bg-white" />
-        <span className="text-[9px] pr-3 font-medium uppercase tracking-widest text-neutral-300">
-          Get in touch now
+        <span className="text-[11px] pr-3 font-medium uppercase tracking-widest text-neutral-300">
+          {HeroData.Headline}
         </span>
       </div>
 
       <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
-        The #1 Award-Winning <br className="hidden md:inline" />
-        <span>Squarespace Experts</span>
+        {HeroData.title}
       </h1>
 
-      <p className="max-w-xl text-sm font-light leading-relaxed text-white/90 sm:text-base">
-        Meet Your New AI-Native Production Partner. Take On 3x More Clients
-        Without Hiring A Single Full-Time Designer Or Developer. Fully Managed
-        By Your Dedicated PM.
+      <p className="max-w-xl text-sm font-light leading-relaxed text-white/90 md:text-lg">
+        {HeroData.description}
       </p>
 
-      <div className="flex w-full flex items-stretch gap-4 pt-2 sm:w-auto sm:flex-row sm:items-center">
+      <div className="block space-y-6 lg:space-y-0 w-full lg:flex items-stretch gap-4 pt-2 sm:w-auto sm:flex-row sm:items-center">
         <NavButton
           href="/book-a-call"
           size="large"
@@ -50,7 +47,7 @@ export function HeroCopy() {
         >
           Schedule a call
         </NavButton>
-        
+
         <AvatarStack />
         {/* <NavButton
           href="#contact-section"

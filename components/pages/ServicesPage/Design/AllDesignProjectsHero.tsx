@@ -62,7 +62,7 @@ function AllDesignProjectsHero() {
             className="flex flex-wrap gap-4 pt-2"
           >
             <NavButton
-              href="/contact"
+              href="#contact-section"
               size="large"
               className=" bg-white text-black hover:bg-white"
             >

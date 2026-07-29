@@ -61,7 +61,7 @@ export default function AboutHero() {
             className="flex flex-wrap gap-4 pt-2"
           >
             <NavButton
-              href="/contact"
+              href="/#contact"
               size="large"
               className=" bg-white text-black hover:bg-white"
             >

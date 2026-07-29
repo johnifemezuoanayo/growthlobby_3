@@ -1,7 +1,5 @@
 "use client";
 
-import React from "react";
-import ProjectSvg from "../../Icons/ProjectSvg";
 import Image from "next/image";
 import TestimonialSvg from "../../Icons/TestimonialSvg";
 import { testimonials } from "./testimonialData";
@@ -35,7 +33,7 @@ export default function TestimonialSection() {
                 height={400}
                 src={t.img}
                 alt={t.name}
-                className="ts-card h-32 w-24 flex-shrink-0 rounded-sm object-cover sm:h-20 sm:w-20"
+                className="ts-card h-32 w-24 rounded-full flex-shrink-0 D  object-cover sm:h-20 sm:w-20"
                 style={{ animationDelay: `${i * 0.5}s` }}
               />
               <div className="pt-1">

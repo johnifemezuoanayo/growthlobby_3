@@ -1,11 +1,12 @@
-import BlogPageHero from "@/components/pages/BlogPageSection/BlogPageHero";
-import BlogPageSection from "@/components/pages/BlogPageSection/BlogPageSection";
+import BlogClient from "./BlogClient";
+import { createPageMetadata } from "@/lib/site-metadata";
 
-export default function Home() {
-  return (
-    <>
-      <BlogPageHero />
-      <BlogPageSection />
-    </>
-  );
+export const metadata = createPageMetadata({
+  title: "Blog",
+  description:
+    "Insights on web design, development, branding, and digital growth for founders and growing businesses.",
+});
+
+export default function BlogPage() {
+  return <BlogClient />;
 }

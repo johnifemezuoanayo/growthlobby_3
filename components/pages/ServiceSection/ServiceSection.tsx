@@ -2,14 +2,14 @@ import { SectionBadge } from "@/components/ui/SectionBadge/SectionBadge";
 import Image from "next/image";
 
 const services = [
-  { title: "Ai Automation & Integration", image: "/images/ai-automation.png" },
-  { title: "AI Design", image: "/images/ai-design.png" },
-  { title: "Brand & Identity", image: "/images/brand-identity.png" },
   { title: "Mobile Design", image: "/images/mobile-design.png" },
   {
     title: "Website Design And Development",
-    image: "/images/website design and development.png",
+    image: "/images/website-design-dev.png",
   },
+  { title: "Brand & Identity", image: "/images/brand-identity.png" },
+  { title: "Ai Automation & Integration", image: "/images/ai-automation.png" },
+  { title: "AI Design", image: "/images/ai-design.png" },
   {
     title: "Presentation Design",
     image: "/images/presentation-design.png",
@@ -37,8 +37,12 @@ const ServiceSection = () => {
         <div className="mx-auto max-w-7xl px-5 lg:px-0">
           <SectionBadge>Project</SectionBadge>
           <h2 className="mt-8 max-w-4xl font-serif text-4xl leading-[1.1] text-white sm:text-5xl lg:text-6xl">
-            For all the creative &amp; development projects that slow you down.
+            Everything You Need To Build A Powerful Online Presence{" "}
           </h2>
+          <p className="text-white/60 mt-4 text-lg">
+            Beautiful, conversion-focused websites designed specifically for
+            your business goals—not generic templates.
+          </p>
         </div>
 
         {/* Auto scrolling cards */}

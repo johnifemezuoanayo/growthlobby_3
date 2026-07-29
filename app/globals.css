@@ -1,4 +1,6 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
 
 :root {
   --background: #ffffff;
@@ -147,5 +149,57 @@ body {
   .ts-row:nth-child(4) {
     margin-left: 24rem;
     margin-top: 2.5rem;
+  }
+}
+
+
+
+@layer components {
+  .pageStyle {
+    @apply font-normal prose prose-h5:font-bold  prose-zinc  
+    prose-a:underline prose-base prose-h3:font-bold prose-h3:border-b prose-h1:font-bold 
+    prose-h1:text-4xl lg:prose-lg prose-p:text-lg prose-a:font-bold prose-a:text-brand-primary 
+    prose-a:text-base prose-p:leading-8 prose-img:w-full max-w-none prose-img:h-auto  
+    lg:prose-img:rounded-[20px] prose-img:rounded-[20px] prose-p:text-zinc-700  
+    prose-img:object-cover prose-img:object-center  prose-blockquote:border-2 
+    prose-blockquote:pl-4 prose-blockquote:border-zinc-400;
+  }
+
+  .card-hover-effect {
+    @apply transition-all duration-300 hover:scale-[1.02] hover:shadow-[0_0_20px_rgba(255,51,102,0.3)];
+  }
+
+  .scroll-container {
+    scrollbar-width: thin;
+  }
+
+  .scroll-container::-webkit-scrollbar {
+    height: 5px;
+  }
+
+  /* .scroll-container::-webkit-scrollbar-track {
+    @apply bg-portfolio-darker rounded-full;
+  } */
+
+  /* .scroll-container::-webkit-scrollbar-thumb {
+    @apply bg-portfolio-accent/40 rounded-full;
+  }
+
+  .scroll-container::-webkit-scrollbar-thumb:hover {
+    @apply bg-portfolio-accent/60;
+  }
+   */
+
+  @variants responsive {
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+    }
   }
 }

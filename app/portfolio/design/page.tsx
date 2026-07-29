@@ -1,23 +1,12 @@
-import ContactMeSection from "@/components/pages/ContactMeSection/ContactMeSection";
-import DesignAboutMeSection from "@/components/pages/ServicesPage/Design/DesignAboutMeSection";
-import DesignFAQSection from "@/components/pages/ServicesPage/Design/DesignFAQSection";
-import DesignHeroSection from "@/components/pages/ServicesPage/Design/DesignHeroSection";
-import DesignPricingSection from "@/components/pages/ServicesPage/Design/DesignPricingSection";
-import DesignProjectSection from "@/components/pages/ServicesPage/Design/DesignProjectSection";
-import DesignServiceSection from "@/components/pages/ServicesPage/Design/DesignServiceSection";
-import DesignStepSection from "@/components/pages/ServicesPage/Design/DesignStepSection";
+import DesignClient from "./DesignClient";
+import { createPageMetadata } from "@/lib/site-metadata";
+
+export const metadata = createPageMetadata({
+  title: "Design Services",
+  description:
+    "Brand systems, web interfaces, presentation design, and polished visual direction for modern businesses.",
+});
 
 export default function DesignServicePage() {
-  return (
-    <>
-      <DesignHeroSection />
-      <DesignServiceSection />
-      <DesignStepSection />
-      <DesignProjectSection />
-      <DesignPricingSection />
-      <DesignAboutMeSection />
-      <DesignFAQSection />
-      <ContactMeSection />
-    </>
-  );
+  return <DesignClient />;
 }

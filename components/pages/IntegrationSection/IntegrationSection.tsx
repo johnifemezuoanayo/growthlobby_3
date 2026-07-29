@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 /* eslint-disable react-hooks/set-state-in-effect */
 import React, { useRef, useState, useEffect, ReactNode } from "react";
@@ -136,7 +136,6 @@ interface Node {
   bendX?: number;
 }
 
-
 function CornerMarks() {
   const markStyle: React.CSSProperties = {
     position: "absolute",
@@ -154,19 +153,14 @@ function CornerMarks() {
   );
 }
 
-
-
 export default function IntegrationSection() {
-
   return (
     <section
       className="w-full px-6 py-20 sm:py-28"
       style={{ backgroundColor: COLORS.bg, fontFamily: FONT }}
     >
       <div className="mx-auto max-w-3xl text-center">
-        <SectionBadge>
-              Integrations
-        </SectionBadge>
+        <SectionBadge>Integrations</SectionBadge>
 
         <Reveal delay={0.1}>
           <h2
@@ -182,12 +176,19 @@ export default function IntegrationSection() {
             className="mx-auto mt-5 max-w-xl text-sm sm:text-base"
             style={{ color: COLORS.body }}
           >
-            From intricate challenges to seamless execution, we&lsquo;ll integrate all
-            your marketing tools and automations with your website.
+            From intricate challenges to seamless execution, we&lsquo;ll
+            integrate all your marketing tools and automations with your
+            website.
           </p>
         </Reveal>
-        <div className="pt-10">
-          <Image src="/images/integration.png" alt="john ifemezuo integration justify-center" width={2600} height={1000} className="mx-auto justify-center"/>
+        <div className="pt-10 max-w-7xl mx-auto">
+          <Image
+            src="/images/integration.png"
+            alt="john ifemezuo integration justify-center"
+            width={2600}
+            height={1000}
+            className="mx-auto justify-center "
+          />
         </div>
       </div>
 

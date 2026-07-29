@@ -8,7 +8,9 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 /*  Scroll-reveal primitive                                               */
 /* ---------------------------------------------------------------------- */
 
-function useInView(threshold: number = 0.15): [React.RefObject<HTMLDivElement | null>, boolean] {
+function useInView(
+  threshold: number = 0.15,
+): [React.RefObject<HTMLDivElement | null>, boolean] {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState<boolean>(false);
 
@@ -33,7 +35,7 @@ function useInView(threshold: number = 0.15): [React.RefObject<HTMLDivElement | 
           obs.unobserve(el);
         }
       },
-      { threshold }
+      { threshold },
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -120,24 +122,31 @@ interface Slide {
 
 const SLIDES: Slide[] = [
   {
-    image:
-      "https://images.unsplash.com/photo-1593642702821-c8da6771f0c6?q=80&w=1200&auto=format&fit=crop",
-    stat1: { value: "100+", label: "Clients Worldwide" },
-    stat2: { value: "250+", label: "Successful Website" },
-    titleLine1: "Mobile-Friendly And",
-    titleLine2Muted: "Responsive",
-    titleLine2White: "Designs",
-    body: "Our Services Can Be Purchased Individually Or Bundled Together For A Comprehensive Solution. This Flexibility Allows You To Get Exactly What You Need, Without Paying For Features You Don't.",
+    image: "/images/why1.png",
+    stat1: { value: "130+", label: "Clients Worldwide" },
+    stat2: { value: "100+", label: "Successful Website" },
+    titleLine1: "Ai Powered.",
+    titleLine2Muted: "Human",
+    titleLine2White: "Centered.",
+    body: "Anyone can generate a website with AI. Building a digital experience that earns trust, engages users, and grows your business is another story. We combine strategic thinking, user experience design, modern development, and AI-powered workflows to create websites and digital products that are fast, scalable, and built around your customers—not templates. Every project is designed to perform across every device, communicate your brand clearly, and help your business stay ahead in an increasingly AI-driven world.",
   },
   {
-    image:
-      "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1200&auto=format&fit=crop",
-    stat1: { value: "40+", label: "Team Members" },
-    stat2: { value: "10", label: "Years Experience" },
-    titleLine1: "SEO-Ready From",
-    titleLine2Muted: "The Ground",
-    titleLine2White: "Up",
-    body: "Every Build Ships With Clean Structure, Fast Load Times, And Metadata In Place, So Your Site Is Ready To Be Found The Moment It Goes Live.",
+    image: "/images/why3.png",
+    stat1: { value: "5+", label: "Team Members" },
+    stat2: { value: "7+", label: "Years Experience" },
+    titleLine1: "Built For Today's Users.",
+    titleLine2Muted: "Ready For",
+    titleLine2White: "Tomorrow.",
+    body: "Technology changes fast. Customer expectations change even faster. We help ambitious businesses create websites and digital products that combine modern design, accessibility, performance, and intelligent user experiences. By blending human creativity with AI-powered workflows, we deliver solutions that are efficient to build, easy to scale, and designed for long-term success. Whether you're launching a startup, refreshing your brand, or building your next product, we create experiences that help you stay ahead of the competition.",
+  },
+  {
+    image: "/images/why2.png",
+    stat1: { value: "Ai Ready", label: "Design Process" },
+    stat2: { value: "50+", label: "Businesses Partnered With" },
+    titleLine1: "Modern Websites.",
+    titleLine2Muted: "Smarter Digital",
+    titleLine2White: "Products.",
+    body: "Your website is often the first impression people have of your business—and in today's AI-driven world, first impressions matter more than ever. We partner with founders, startups, and growing businesses to design and build websites and digital products that combine strategy, creativity, and technology. From high-converting marketing sites to complex web applications, every experience is crafted to inspire confidence, simplify user journeys, and drive measurable business results. The tools may have changed. Great digital experiences still begin with understanding people.",
   },
 ];
 
@@ -145,7 +154,7 @@ const SLIDES: Slide[] = [
 /*  Corner marks                                                          */
 /* ---------------------------------------------------------------------- */
 
-function CornerMarks({ color = COLORS.frameMark }: { color?: string }){
+function CornerMarks({ color = COLORS.frameMark }: { color?: string }) {
   const markStyle: React.CSSProperties = {
     position: "absolute",
     fontSize: 12,
@@ -166,14 +175,17 @@ function CornerMarks({ color = COLORS.frameMark }: { color?: string }){
 /*  Component                                                             */
 /* ---------------------------------------------------------------------- */
 
-export default function WhySection(){
+export default function WhySection() {
   const [index, setIndex] = useState<number>(0);
   const max = SLIDES.length - 1;
 
   return (
     <section className="bg-white" style={{ fontFamily: FONT }}>
       {/* top — sage panel with heading + copy + nav */}
-      <div className="w-full px-6 pb-44 pt-20 sm:pt-28" style={{ backgroundColor: COLORS.sage }}>
+      <div
+        className="w-full px-6 pb-44 pt-20 sm:pt-28"
+        style={{ backgroundColor: COLORS.sage }}
+      >
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-8 sm:flex-row sm:items-end">
           <div>
             <Reveal className="flex">
@@ -181,7 +193,10 @@ export default function WhySection(){
                 <CornerMarks />
                 <span
                   className="inline-block px-5 py-2 text-sm font-medium"
-                  style={{ backgroundColor: COLORS.badgeBg, color: COLORS.badgeText }}
+                  style={{
+                    backgroundColor: COLORS.badgeBg,
+                    color: COLORS.badgeText,
+                  }}
                 >
                   Integrations
                 </span>
@@ -202,9 +217,9 @@ export default function WhySection(){
                 className="mt-5 max-w-2xl text-sm leading-relaxed sm:text-base"
                 style={{ color: COLORS.body }}
               >
-                You need more than just a Squarespace web designer; you need
-                a partner who creates websites that convert, transforming
-                your site into your most valuable sales asset.
+                You need more than just a Squarespace web designer; you need a
+                partner who creates websites that convert, transforming your
+                site into your most valuable sales asset.
               </p>
             </Reveal>
           </div>
@@ -233,15 +248,21 @@ export default function WhySection(){
       </div>
 
       {/* bottom — white panel holding the carousel, card overlaps both panels */}
-      <div className="w-full px-6 -mt-36 pt-29 overflow-hidden pb-24" >
+      <div className="w-full px-5 md:px-6 lg:px-0 -mt-36 pt-16 lg:pt-29 overflow-hidden pb-24">
         <div className="mx-auto max-w-7xl">
-          <Reveal delay={0.15} className="-mt-16 overflow-hidden lg:overflow-visible sm:-mt-24">
+          <Reveal
+            delay={0.15}
+            className="-mt-16 overflow-hidden lg:overflow-visible sm:-mt-24"
+          >
             <div
               className="flex gap-6 transition-transform duration-700 ease-out"
               style={{ transform: `translateX(-${index * 100}%)` }}
             >
               {SLIDES.map((slide, i) => (
-                <div key={i} className="w-[92%] h-[660px] flex-shrink-0 sm:w-[95%]">
+                <div
+                  key={i}
+                  className="w-[95%] h-auto lg:h-[660px] flex-shrink-0 sm:w-[95%]"
+                >
                   <div
                     className="relative flex flex-col overflow-hidden rounded-2xl md:flex-row"
                     style={{ backgroundColor: COLORS.dark, minHeight: 560 }}
@@ -292,22 +313,20 @@ export default function WhySection(){
                     {/* copy half */}
                     <div className="flex w-full flex-col justify-center gap-5 p-8 md:w-[58%] md:p-14">
                       <h3 className="text-2xl font-medium leading-tight sm:text-4xl">
-                        <span className="block text-white">{slide.titleLine1}</span>
+                        <span className="block text-white">
+                          {slide.titleLine1}
+                        </span>
                         <span className="block">
                           <span style={{ color: COLORS.cardMuted }}>
                             {slide.titleLine2Muted}{" "}
                           </span>
-                          <span className="text-white">{slide.titleLine2White}</span>
+                          <span className="text-white">
+                            {slide.titleLine2White}
+                          </span>
                         </span>
                       </h3>
                       <p
-                        className="max-w-md text-sm leading-relaxed sm:text-base"
-                        style={{ color: COLORS.cardBodyText }}
-                      >
-                        {slide.body}
-                      </p>
-                      <p
-                        className="max-w-md text-sm leading-relaxed sm:text-base"
+                        className="max-w-lg text-sm leading-relaxed sm:text-base"
                         style={{ color: COLORS.cardBodyText }}
                       >
                         {slide.body}

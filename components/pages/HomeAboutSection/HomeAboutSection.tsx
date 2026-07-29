@@ -3,13 +3,12 @@ import BehanceIcon from "../../Icons/BehanceIcon";
 import TwitterIcon from "../../Icons/TwitterIcon";
 import DribbbleIcon from "../../Icons/DribbbleIcon";
 import LinkedinIcon from "../../Icons/LinkedinIcon";
-import Whoami from "../../Icons/Whoami";
 import { SectionBadge } from "@/components/ui/SectionBadge/SectionBadge";
 
 const stats = [
   { value: "100+", label: "Successful Websites" },
-  { value: "08", label: "Years Experience" },
-  { value: "100%", label: "Client Satisfaction" },
+  { value: "7+", label: "Years Of Experience" },
+  { value: "98%", label: "Client Satisfaction" },
 ];
 
 export default function HomeAboutSection() {
@@ -32,29 +31,35 @@ export default function HomeAboutSection() {
           </div>
 
           <h2 className="mt-6 font-serif text-3xl leading-tight text-[#1a1a1a] sm:text-4xl lg:text-5xl">
-            John Ifemezuo – Your Dedicated Squarespace Web Designer
+            Meet John Ifemezuo – Your Web Designer expert
           </h2>
 
           <div className="mt-6 space-y-4 text-sm leading-relaxed text-[#4a4a4a] sm:text-base">
             <p>
-              Looking to create a high-converting Squarespace website without
-              the hassle of constant maintenance? Collaborate with me, Sam
-              Crawford, your go-to Squarespace website designer. With a deep
-              understanding of Squarespace&apos;s capabilities—from intuitive
-              drag-and-drop interfaces to advanced custom CSS—I deliver top-tier
-              designs tailored to your needs.
+              Looking to create a high-performing website or digital product
+              that does more than just look great? Partner with Growthlobby—a
+              design and development studio helping ambitious businesses build
+              experiences that stand out in an AI-first world.
             </p>
             <p>
-              As a recognized Squarespace Circle Member, Expert, Partner, and
-              Community Leader, I bring unparalleled skill and experience to
-              every project. With over 700 successful websites under my belt, I
-              don&apos;t just design—I create online experiences that resonate
-              and convert.
+              As AI transforms how websites are created, the real advantage
+              comes from thoughtful strategy, exceptional user experience, and
+              products designed around real customer needs. We combine human
+              creativity with modern technology to design websites and digital
+              products that build trust, increase conversions, and support
+              long-term business growth.
             </p>
             <p>
-              Ready to unlock the full potential of your online presence?
-              Let&apos;s work together to craft a modern, impactful Squarespace
-              website for your brand. Contact me today!
+              From high-converting marketing websites and SaaS platforms to
+              e-commerce experiences and custom web applications, every project
+              is crafted with performance, accessibility, scalability, and
+              measurable business outcomes in mind.
+            </p>
+            <p>
+              We&lsquo;re not here to simply build another website—we&lsquo;re here to help
+              you create a digital experience that stays relevant, competitive,
+              and impactful in a world where AI is raising the standard every
+              day.
             </p>
           </div>
 

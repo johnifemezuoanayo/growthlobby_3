@@ -109,7 +109,7 @@ export function ContactForm() {
       className="lg:col-span-5"
     >
       <div className="relative bg-white/20 rounded-md p-3">
-      <div className="relative rounded-sm bg-white  p-8 shadow-lg sm:p-6 lg:p-8">
+      <div className="relative rounded-sm bg-white  p-5 shadow-lg sm:p-6 lg:p-8">
         
         <SpinningCircle />
 
@@ -125,7 +125,7 @@ export function ContactForm() {
               className="flex flex-col gap-4"
             >
               <h1 className="text-xl text-black">Send me a Mail</h1>
-              <div className="grid gap-6 sm:grid-cols-2">
+              <div className="grid gap-4 lg:gap-6 sm:grid-cols-2">
                 <LabelledInput
                   ref={nameInputRef}
                   icon={<User className="size-4 text-neutral-400" />}
@@ -201,12 +201,12 @@ export function ContactForm() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="mt-4 flex w-full items-center justify-center rounded-sm bg-[#cfef00] px-6 py-5 text-sm font-semibold uppercase tracking-widest text-neutral-900 transition hover:brightness-95 disabled:cursor-wait"
+                className="mt-4 flex w-full items-center cursor-pointer justify-center rounded-sm bg-[#cfef00] px-6 py-4 text-sm font-semibold uppercase tracking-widest text-neutral-900 transition hover:brightness-95 disabled:cursor-wait"
               >
                 {isSubmitting ? (
                   <span className="animate-spin rounded-full border-2 border-black border-t-transparent px-3 py-2" />
                 ) : (
-                  "SUBMIT ENQUIRY"
+                  "Send A Message"
                 )}
               </button>
             </motion.form>
@@ -226,7 +226,7 @@ export function ContactForm() {
                 onClick={handleResetForm}
                 className="mt-6 inline-flex items-center rounded-sm bg-neutral-900 px-5 py-3 text-xs font-bold uppercase tracking-widest text-white hover:bg-neutral-800"
               >
-                Submit another enquiry
+                Send Message
               </button>
             </div>
           )}

@@ -89,7 +89,7 @@ const COLORS: ColorTokens = {
   badgeBg: "#DDE5EC",
   badgeText: "#4B5768",
   badgeDot: "#4B7BAA",
-  divider: "#E7EAEE",
+  divider: "#a6a9acff",
   toggleBg: "#C0ED0B",
   toggleIcon: "#0e0d0d",
 };

@@ -10,7 +10,7 @@ function CornerMarks(){
     position: "absolute",
     fontSize: 12,
     lineHeight: "10px",
-    color: "#8C9080",
+    color: "#b6bba9",
   };
   return (
     <>

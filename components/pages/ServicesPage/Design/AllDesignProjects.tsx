@@ -1,10 +1,12 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight, Inbox } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import NavButton from "@/components/ui/Navbar/NavButton";
+import { IProject } from "@/base/interface/IProject";
 
 interface Project {
   id: string;
@@ -14,51 +16,21 @@ interface Project {
   image: string;
   tags: string[];
   link?: string;
+  slug?: string;
+  projectType?: string;
 }
 
-export default function AllDesignProjects() {
+interface AllDesignProjectsProps {
+  projects?: IProject[];
+}
+
+export default function AllDesignProjects({ projects }: AllDesignProjectsProps = {}) {
   const [selectedCategory, setSelectedCategory] = useState("All");
 
-  const categories = [
-    "All",
-    "Agency",
-    "AI",
-    "Automotive",
-    "Church",
-    "Consulting",
-    "Education",
-    "Energy",
-    "Enterprise",
-    "Entertainment",
-    "Events",
-    "Finance",
-    "Fitness",
-    "Hospitality",
-    "Industrial",
-    "Insurance",
-    "Law",
-    "Manufacturing",
-    "Marketing",
-    "Media",
-    "Medical",
-    "Nonprofit",
-    "Real Estate",
-    "Recruitment",
-    "Retail",
-    "SaaS",
-    "Security",
-    "Sport",
-    "Tech",
-    "Travel",
-    "Vacation Rentals",
-    "Venture Capital",
-    "Video Production",
-    "Web3",
-  ];
-
-  const projects: Project[] = [
+  const mockProjects = [
     {
       id: "proj-beyond-court",
+      slug: "proj-beyond-court",
       title: "Beyond The Court",
       description:
         "Beyond The Court is the platform of former professional basketball player Zeke Marshall, built on the belief that the game is bigger than basketball.",
@@ -66,9 +38,11 @@ export default function AllDesignProjects() {
         "They use sport as a vehicle for personal growth, identity and community, and needed a website that could carry both sides of that story: the athletic credibility and the deeper mission behind it.",
       image: "/images/project-1.png",
       tags: ["Sport", "Consulting"],
+      projectType: "Brand Design",
     },
     {
       id: "proj-aether-ai",
+      slug: "proj-aether-ai",
       title: "Aether AI Analytics",
       description:
         "Aether AI is an enterprise SaaS platform delivering powerful predictive intelligence and visual charts to operations leaders.",
@@ -76,9 +50,11 @@ export default function AllDesignProjects() {
         "We built a modern, ultra-responsive dashboard interface with clean data visuals, custom charts, and a highly professional UI to convert visitors and serve active accounts.",
       image: "/images/project-2.png",
       tags: ["AI", "SaaS", "Tech", "Enterprise"],
+      projectType: "SaaS Dashboard",
     },
     {
       id: "proj-oasis-retreats",
+      slug: "proj-oasis-retreats",
       title: "Oasis Retreats",
       description:
         "A high-end luxury vacation rental and real estate portfolio showcasing pristine villas and boutique hospitality experiences.",
@@ -86,11 +62,41 @@ export default function AllDesignProjects() {
         "Featuring seamless booking integration, immersive high-resolution photography layout, sophisticated serif typography, and natural earth-tone color palettes.",
       image: "/images/project-3.png",
       tags: ["Vacation Rentals", "Real Estate", "Hospitality"],
+      projectType: "Web Design",
     },
   ];
 
+  const displayProjects: Project[] = useMemo(() => {
+    const list = projects && projects.length > 0 ? projects : mockProjects;
+    const filteredList = list.filter((p) => {
+      const type = ((p as any).projectType || "").toLowerCase();
+      return type !== "development";
+    });
+    return filteredList.map((p) => {
+      const type = (p as any).projectType || "Design";
+      return {
+        id: p.id || p.slug || "",
+        title: p.title,
+        description: p.description || "",
+        longDescription: (p as any).longDescription || "",
+        image: (p as any).introImage?.url || (p as any).image || "",
+        tags: [type],
+        link: (p as any).livesite || (p as any).link || "",
+        slug: p.slug || "",
+        projectType: type,
+      };
+    });
+  }, [projects]);
+
+  // Extract unique categories dynamically based on project types
+  const categories = useMemo(() => {
+    const types = displayProjects.map((p) => p.projectType).filter(Boolean);
+    const uniqueTypes = Array.from(new Set(types)) as string[];
+    return ["All", ...uniqueTypes];
+  }, [displayProjects]);
+
   // Filter projects based on selectedCategory
-  const filteredProjects = projects.filter((project) => {
+  const filteredProjects = displayProjects.filter((project) => {
     if (selectedCategory === "All") return true;
     return project.tags.includes(selectedCategory);
   });
@@ -116,7 +122,7 @@ export default function AllDesignProjects() {
             <span className="text-xs font-bold text-[#4A6070] uppercase tracking-widest bg-zinc-100 px-3 py-1 rounded-full border border-zinc-200/50">
               Our Portfolio
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 tracking-tight">
+            <h2 className="text-3xl mt-5 sm:text-4xl font-extrabold text-zinc-900 tracking-tight">
               Crafted Projects Across Industries
             </h2>
           </div>
@@ -130,7 +136,7 @@ export default function AllDesignProjects() {
                   key={cat}
                   id={`cat-filter-${cat.toLowerCase().replace(/\s+/g, "-")}`}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-full cursor-pointer text-xs font-semibold border  transition-all duration-300 ${
+                  className={`px-4 capitalize py-2 rounded-full cursor-pointer text-xs font-semibold border  transition-all duration-300 ${
                     isSelected
                       ? "bg-brand-primary border-zinc-50 text-black shadow-md"
                       : "bg-white border-zinc-200 text-zinc-700 hover:border-zinc-300 hover:bg-zinc-50"
@@ -144,10 +150,10 @@ export default function AllDesignProjects() {
         </div>
 
         {/* Dynamic Project Display */}
-        <div className="space-y-8 sm:space-y-12 max-w-7xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <AnimatePresence mode="wait">
             {filteredProjects.length > 0 ? (
-              <div className="space-y-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 {filteredProjects.map((project, idx) => (
                   <motion.div
                     key={project.id}
@@ -156,61 +162,49 @@ export default function AllDesignProjects() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="group bg-white rounded-3xl border border-6 border-zinc-200/60 p-5 sm:p-6 lg:p-4 flex flex-col md:flex-row gap-6 sm:gap-8 items-stretch hover:shadow-xl hover:shadow-zinc-200/30 transition-all duration-300"
+                    className="group flex flex-col justify-between bg-white rounded-3xl border-6 border-zinc-200/60 overflow-hidden hover:shadow-2xl hover:shadow-zinc-200/40 hover:-translate-y-1 transition-all duration-500"
                   >
-                    {/* Left: Image mockups container */}
-                    <div className="relative w-full md:w-[35%] overflow-hidden rounded-2xl bg-zinc-100 border border-zinc-100 flex items-center justify-center h-[350px] ">
-                      <Image
-                        width={600}
-                        height={600}
-                        src={project.image}
-                        alt={project.title}
-                        referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover group-hover:scale-[1.02] transition-transform duration-500 rounded-2xl"
-                      />
-                    </div>
-
-                    {/* Right: Project text details */}
-                    <div className="flex flex-col justify-between py-2 md:w-[52%] space-y-6">
-                      <div className="space-y-5">
+                    {/* Top: Project text details */}
+                    <div className="p-6 sm:p-8 flex items-start justify-between gap-4">
+                      {/* Left: Tags & Title */}
+                      <div className="space-y-3">
                         {/* Dynamic category sub-tags */}
                         <div className="flex flex-wrap gap-2">
                           {project.tags.map((tag) => (
                             <span
                               key={tag}
-                              className="px-3 py-1  bg-brand-primary/10 border border-zinc-200/40 text-xs font-semibold text-zinc-600"
+                              className="px-3 py-1 bg-brand-primary/10 border border-zinc-200/40 text-[10px] font-bold uppercase tracking-wider text-zinc-600 rounded-md"
                             >
                               {tag}
                             </span>
                           ))}
                         </div>
 
-                        {/* Title & Description */}
-                        <div className="space-y-3">
-                          <h3 className="text-2xl sm:text-3xl font-bold text-zinc-900 tracking-tight font-sans">
-                            {project.title}
-                          </h3>
-                          <p className="text-sm sm:text-base text-zinc-600 leading-relaxed font-normal">
-                            {project.description}
-                          </p>
-                          {project.longDescription && (
-                            <p className="text-sm sm:text-base text-zinc-500 leading-relaxed font-normal">
-                              {project.longDescription}
-                            </p>
-                          )}
-                        </div>
+                        {/* Title */}
+                        <h3 className="text-xl sm:text-2xl font-bold text-zinc-900 tracking-tight font-sans group-hover:text-zinc-800 transition-colors">
+                          {project.title}
+                        </h3>
                       </div>
 
-                      {/* Read More button */}
-                      <div className="pt-2">
-                        <NavButton
-                          href="/contact"
-                          size="large"
-                          className="w-[170px] bg-brand-primary text-black hover:bg-white border border-zinc-100"
-                        >
-                          Learn More
-                        </NavButton>
-                      </div>
+                      {/* Right: Round Arrow Button */}
+                      <Link
+                        href={`/portfolio/design/${project.slug || project.id}`}
+                        className="flex-none w-12 h-12 rounded-full bg-[#B4E615] hover:bg-zinc-900 hover:text-white border border-zinc-200/50 flex items-center justify-center transition-all duration-300 shadow-md group-hover:shadow-lg active:scale-95 cursor-pointer text-zinc-950"
+                      >
+                        <ArrowUpRight className="h-5 w-5" />
+                      </Link>
+                    </div>
+
+                    {/* Bottom: Image mockup banner */}
+                    <div className="relative w-full aspect-[4/3] pl-6 sm:pl-8 bg-zinc-50 overflow-hidden">
+                      <Image
+                        width={800}
+                        height={600}
+                        src={project.image}
+                        alt={project.title}
+                        referrerPolicy="no-referrer"
+                        className="w-full h-full object-cover rounded-tl-[50px] group-hover:scale-[1.03] transition-transform duration-700"
+                      />
                     </div>
                   </motion.div>
                 ))}

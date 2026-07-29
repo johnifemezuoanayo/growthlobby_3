@@ -5,26 +5,38 @@ import ProjectSvg from "../../Icons/ProjectSvg";
 import Image from "next/image";
 import NavButton from "../../ui/Navbar/NavButton";
 import { SectionBadge } from "@/components/ui/SectionBadge/SectionBadge";
+import { useRouter } from "next/navigation";
 
-const projects = [
+import { IProjectWeb } from "@/base/interface/IProject";
+
+const DEFAULT_PROJECTS = [
   {
+    id: "proj-storyline",
     title: "The Hybrid way",
     image: "/images/project-1.png",
     bg: "bg-[#ff6b6b]",
   },
   {
+    id: "proj-beyond-court",
     title: "Tradie Marketing Hub",
     image: "/images/project-2.png",
     bg: "bg-neutral-200",
   },
   {
+    id: "proj-aether-ai",
     title: "Fokus Training",
     image: "/images/project-3.png",
     bg: "bg-[#c6ff3d]",
   },
 ];
 
-export default function ProjectSection() {
+interface ProjectSectionProps {
+  projects?: IProjectWeb[];
+}
+
+export default function ProjectSection({ projects }: ProjectSectionProps = {}) {
+  const router = useRouter();
+  const displayProjects = projects && projects.length > 0 ? projects.slice(0, 4) : DEFAULT_PROJECTS;
   const scrollerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
   const [cursor, setCursor] = useState({ x: 0, y: 0, visible: false });
@@ -84,12 +96,10 @@ export default function ProjectSection() {
           <div>
             <SectionBadge>Projects</SectionBadge>
             <h2 className="mt-6 font-serif text-4xl leading-[1.05] tracking-tight text-neutral-900 sm:text-5xl md:text-6xl">
-              Building Websites That
-              <br />
-              Drive Results
+              Building Websites That <br /> Drive Results
             </h2>
             <p className="mt-6 max-w-2xl text-sm leading-relaxed text-neutral-600 md:text-base">
-              Want a Squarespace website that converts visitors into loyal
+              Want a professional website that converts visitors into loyal
               customers? Explore my portfolio to see how I&apos;ve turned
               visions into vibrant realities. From sleek e-commerce sites to
               engaging portfolios, my designs are crafted to meet your thriving
@@ -118,18 +128,24 @@ export default function ProjectSection() {
           isDragging ? "cursor-none" : "cursor-none"
         }`}
       >
-        {projects.map((p, i) => (
+        {displayProjects.map((p, i) => (
           <article
             key={i}
             onClick={(e) => {
-              if (drag.current.moved) e.preventDefault();
+              if (drag.current.moved) {
+                e.preventDefault();
+                return;
+              }
+              if (p.id) {
+                router.push(`/portfolio/development/${p.id}`);
+              }
             }}
-            className="group relative overflow-hidden h-[800px] flex-none w-[85vw] sm:w-[520px] md:w-[600px] h-auto lg:w-[740px] rounded-2xl lg:rounded-4xl border-6 lg:border-12 border-[#EDF0DE] bg-white pt-6 lg:pt-14 pl-6 lg:pl-14 shadow-sm"
+            className={`group relative overflow-hidden h-[800px] flex-none w-[85vw] sm:w-[520px] md:w-[600px] h-auto lg:w-[740px] rounded-2xl lg:rounded-4xl border-6 lg:border-12 border-[#EDF0DE] pt-6 lg:pt-14 pl-6 lg:pl-14 shadow-sm cursor-pointer ${(p as any).bg || "bg-white"}`}
           >
             <div className="pr-14">
               <div className="flex items-center justify-between">
                 <span className=" bg-[#F0F1EC] rounded-full px-4 py-2 text-sm font-medium text-neutral-800">
-                  Services
+                  {(p as any).sector || "Services"}
                 </span>
                 <span className="grid h-11 w-[70px] place-items-center rounded-full bg-[#c6ff3d] text-neutral-900">
                   <ArrowUpRight className="h-5 w-5" />
@@ -144,7 +160,7 @@ export default function ProjectSection() {
                 width={700}
                 height={800}
                 priority
-                src={p.image}
+                src={(p as any).coverImage?.url || (p as any).image || ""}
                 alt={p.title}
                 draggable={false}
                 className="h-full w-full object-cover mix-blend-multiply pointer-events-none"

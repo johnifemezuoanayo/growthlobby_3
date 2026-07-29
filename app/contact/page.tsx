@@ -1,3 +1,11 @@
+import { createPageMetadata } from "@/lib/site-metadata";
+
+export const metadata = createPageMetadata({
+  title: "Contact",
+  description:
+    "Reach out to start a conversation about design, development, or a full digital growth build.",
+});
+
 export default function ContactPage() {
   return (
     <main className="min-h-screen bg-zinc-50 px-6 py-24 text-zinc-950 dark:bg-black dark:text-zinc-50">

@@ -1,15 +1,22 @@
 /* eslint-disable react-hooks/set-state-in-effect */
-"use client"
+"use client";
 
 import { SectionBadge } from "@/components/ui/SectionBadge/SectionBadge";
-import Image from "next/image";
 import React, { useRef, useState, useEffect, ReactNode } from "react";
+import { useRouter } from "next/navigation";
+import { blogPosts, BlogPost } from "../BlogPageSection/BlogData";
+import BlogCard from "../BlogPageSection/BlogCard";
+import { IBlog } from "@/base/interface/IBlog";
+import { AnimatePresence } from "motion/react";
+import BlogPostOverlay from "../BlogPageSection/BlogPostOverlay";
 
 /* ---------------------------------------------------------------------- */
 /*  Scroll-reveal primitive                                               */
 /* ---------------------------------------------------------------------- */
 
-function useInView(threshold: number = 0.15): [React.RefObject<HTMLDivElement | null>, boolean] {
+function useInView(
+  threshold: number = 0.15,
+): [React.RefObject<HTMLDivElement | null>, boolean] {
   const ref = useRef<HTMLDivElement>(null);
   const [inView, setInView] = useState<boolean>(false);
 
@@ -34,7 +41,7 @@ function useInView(threshold: number = 0.15): [React.RefObject<HTMLDivElement | 
           obs.unobserve(el);
         }
       },
-      { threshold }
+      { threshold },
     );
     obs.observe(el);
     return () => obs.disconnect();
@@ -50,7 +57,12 @@ interface RevealProps {
   className?: string;
 }
 
-function Reveal({ children, delay = 0, y = 24, className = "" }: RevealProps) {
+function Reveal({
+  children,
+  delay = 0,
+  y = 24,
+  className = "",
+}: RevealProps) {
   const [ref, inView] = useInView();
   return (
     <div
@@ -80,10 +92,6 @@ interface ColorTokens {
   badgeText: string;
   frameMark: string;
   lime: string;
-  cardBg: string;
-  cardDot: string;
-  titleDark: string;
-  titleOlive: string;
 }
 
 const COLORS: ColorTokens = {
@@ -94,70 +102,48 @@ const COLORS: ColorTokens = {
   badgeText: "#2B2E20",
   frameMark: "#8C9080",
   lime: "#CFEA46",
-  cardBg: "#EEEEE3",
-  cardDot: "#E1E1D3",
-  titleDark: "#181C10",
-  titleOlive: "#78832E",
 };
 
 const FONT: string =
   "'Plus Jakarta Sans', 'DM Sans', ui-sans-serif, system-ui, sans-serif";
 
 /* ---------------------------------------------------------------------- */
-/*  Data                                                                  */
-/* ---------------------------------------------------------------------- */
-
-interface TitleSegment {
-  text: string;
-  olive?: boolean;
-}
-
-interface BlogPost {
-  tag: string;
-  titleSegments: TitleSegment[];
-  body: string;
-  image: string;
-}
-
-const TITLE_SEGMENTS: TitleSegment[] = [
-  { text: "Web Design " },
-  { text: "Advice After 7 ", olive: true },
-  { text: "Years: Principles " },
-  { text: "That Build ", olive: true },
-  { text: "High-Converting " },
-  { text: "Websites", olive: true },
-];
-
-const BLOG_POSTS: BlogPost[] = [
-  {
-    tag: "Web Design",
-    titleSegments: TITLE_SEGMENTS,
-    body: "Discover 16 essential web design principles learned over 7 years of experience.",
-    image:
-      "/images/project-1.png",
-  },
-  {
-    tag: "Web Design",
-    titleSegments: TITLE_SEGMENTS,
-    body: "Discover 16 essential web design principles learned over 7 years of experience.",
-    image:
-      "/images/project-2.png",
-  },
-  {
-    tag: "Web Design",
-    titleSegments: TITLE_SEGMENTS,
-    body: "Discover 16 essential web design principles learned over 7 years of experience.",
-    image:
-      "/images/project-3.png",
-  },
-];
-
-
-/* ---------------------------------------------------------------------- */
 /*  Component                                                             */
 /* ---------------------------------------------------------------------- */
 
-export default function BlogSection() {
+interface BlogSectionProps {
+  posts?: IBlog[];
+}
+
+export default function BlogSection({ posts }: BlogSectionProps = {}) {
+  const router = useRouter();
+  const [selectedPost, setSelectedPost] = useState<BlogPost | null>(null);
+
+  const displayPosts: BlogPost[] = posts && posts.length > 0
+    ? posts.map((post) => ({
+        id: post.id || post.slug,
+        title: post.title,
+        excerpt: post.excerpt || "",
+        content: post.content || { html: "" },
+        image: post.image?.url || "",
+        category: post.category || "General",
+        date: post.publishedAt
+          ? new Date(post.publishedAt).toLocaleDateString("en-US", {
+              month: "long",
+              day: "numeric",
+              year: "numeric",
+            })
+          : "",
+        readTime: post.readTime || "5 min read",
+        author: {
+          name: post.author?.name || "John Design",
+          avatar: post.author?.profilePic?.url || "/images/me.png",
+          role: "",
+        },
+        tag: post.category || "General",
+      }))
+    : blogPosts;
+
   return (
     <section
       className="w-full px-6 py-20 sm:py-28"
@@ -199,6 +185,7 @@ export default function BlogSection() {
 
           <Reveal delay={0.3} className="flex-shrink-0">
             <button
+              onClick={() => router.push("/blog")}
               className="rounded-full px-7 py-3.5 text-sm font-medium transition-transform duration-300 hover:-translate-y-0.5"
               style={{ backgroundColor: COLORS.lime, color: COLORS.heading }}
             >
@@ -208,62 +195,29 @@ export default function BlogSection() {
         </div>
 
         <div className="mt-14 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {BLOG_POSTS.map((post, i) => (
-            <Reveal key={i} delay={0.1 * i} y={30}>
-              <article
-                className="flex h-full flex-col overflow-hidden rounded-2xl"
-                style={{
-                  backgroundColor: COLORS.cardBg,
-                  backgroundImage: `radial-gradient(${COLORS.cardDot} 1.5px, transparent 1.5px)`,
-                  backgroundSize: "16px 16px",
-                }}
-              >
-                <div className="p-3 pb-0">
-                  <div className="h-52 w-full overflow-hidden rounded-xl">
-                    <Image
-                      width={500}
-                      height={500}
-                      src={post.image}
-                      alt=""
-                      className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"
-                    />
-                  </div>
-                </div>
-
-                <div className="flex flex-1 flex-col gap-4 p-6">
-
-                  <a href="/blog" className="text-2xl font-medium leading-snug">
-                    {post.titleSegments.map((seg, j) => (
-                      <span
-                        key={j}
-                        className={
-                          seg.olive
-                            ? "bg-linear-to-r/srgb from-[#539107] to-[#232B02]/20 bg-clip-text text-transparent"
-                            : ""
-                        }
-                        style={
-                          seg.olive
-                            ? undefined
-                            : { color: COLORS.titleDark }
-                        }
-                      >
-                        {seg.text}
-                      </span>
-                    ))}
-                  </a>
-
-                  <p
-                    className="text-sm leading-relaxed"
-                    style={{ color: COLORS.body }}
-                  >
-                    {post.body}
-                  </p>
-                </div>
-              </article>
+          {displayPosts.slice(0, 3).map((post, i) => (
+            <Reveal key={post.id} delay={0.1 * i} y={30}>
+              <BlogCard
+                post={post}
+                idx={i}
+                animate={false}
+                onClick={() => setSelectedPost(post)}
+              />
             </Reveal>
           ))}
         </div>
       </div>
+
+      <AnimatePresence>
+        {selectedPost && (
+          <BlogPostOverlay
+            post={selectedPost}
+            posts={displayPosts}
+            onClose={() => setSelectedPost(null)}
+            onSelectPost={(p) => setSelectedPost(p)}
+          />
+        )}
+      </AnimatePresence>
     </section>
   );
 }

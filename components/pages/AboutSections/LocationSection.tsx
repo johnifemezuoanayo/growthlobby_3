@@ -27,7 +27,7 @@ export default function LocationSection() {
     city: "Liverpool",
     address:
       "No.24 East Exchange, Lagos, Nigeria",
-    email: "ifemezuojohn@gmail.com",
+    email: "growthlobbyagency@gmail.com",
     phone: "+234 706 0696 371",
     // Embed URL for OpenStreetMap focused on Exchange Street East, Liverpool
     mapEmbedUrl:
