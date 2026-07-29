@@ -33,6 +33,8 @@ export default function DesignProjectDetails({
     }
   );
 
+  console.log(data);
+
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [projectId]);
@@ -41,17 +43,18 @@ export default function DesignProjectDetails({
 
   const displayProject = useMemo(() => {
     return {
-      id: apiProject?.id || localProject.id,
-      title: apiProject?.title || localProject.title,
-      sector: apiProject?.industry || localProject.sector,
-      visitLink: apiProject?.livesite || localProject.visitLink,
-      heroImage: apiProject?.introImage?.url || localProject.heroImage,
-      intro: apiProject?.description || localProject.intro,
-      client: apiProject?.title || localProject.client,
-      duration: apiProject?.timeline || localProject.duration,
-      contentHtml: apiProject?.content?.html || "",
+      id: apiProject?.id ,
+      title: apiProject?.title ,
+      description: apiProject?.description,
+      sector: apiProject?.industry ,
+      visitLink: apiProject?.livesite,
+      heroImage: apiProject?.introImage?.url,
+      projectOverview: apiProject?.description,
+      client: apiProject?.title,
+      duration: apiProject?.timeline,
+      contentHtml: apiProject?.content?.html,
     };
-  }, [apiProject, localProject]);
+  }, [apiProject]);
 
   if (loading) {
     return (
@@ -184,7 +187,7 @@ export default function DesignProjectDetails({
           {/* Right Column: Intro text and Client Info Row */}
           <div className="lg:col-span-7 space-y-8">
             <p className="text-lg sm:text-xl text-zinc-600 font-normal leading-relaxed">
-              {displayProject.intro}
+              {displayProject.description}
             </p>
 
             {/* Metrics & Client Table */}

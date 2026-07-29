@@ -144,14 +144,14 @@ export default function ProjectSection({ projects }: ProjectSectionProps = {}) {
           >
             <div className="pr-14">
               <div className="flex items-center justify-between">
-                <span className=" bg-[#F0F1EC] rounded-full px-4 py-2 text-sm font-medium text-neutral-800">
+                <span className=" bg-[#F0F1EC] font-mono capitalize rounded-full px-4 py-2 text-sm font-medium text-neutral-800">
                   {(p as any).sector || "Services"}
                 </span>
                 <span className="grid h-11 w-[70px] place-items-center rounded-full bg-[#c6ff3d] text-neutral-900">
                   <ArrowUpRight className="h-5 w-5" />
                 </span>
               </div>
-              <h3 className="mt-6 font-serif text-2xl text-neutral-900 md:text-3xl">
+              <h3 className="mt-6 font-manrope font-semibold text-2xl text-neutral-900 md:text-3xl">
                 {p.title}
               </h3>
             </div>
@@ -163,7 +163,7 @@ export default function ProjectSection({ projects }: ProjectSectionProps = {}) {
                 src={(p as any).coverImage?.url || (p as any).image || ""}
                 alt={p.title}
                 draggable={false}
-                className="h-full w-full object-cover mix-blend-multiply pointer-events-none"
+                className="h-full w-full min-h-[700px] object-cover mix-blend-multiply pointer-events-none"
               />
             </div>
           </article>

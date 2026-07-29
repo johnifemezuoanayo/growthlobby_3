@@ -1,10 +1,11 @@
 "use client";
 
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import { useRouter } from "next/navigation";
 import { useQuery } from "@apollo/client/react";
 import {
   ArrowLeft,
+  ArrowRight,
   ArrowUpRight,
   ExternalLink,
 } from "lucide-react";
@@ -14,13 +15,14 @@ import Image from "next/image";
 import { projectsDetailsData } from "../Design/DesignData";
 import { WEB_PROJECT_DETAIL_QUERY } from "@/base/queries/project";
 import { IProjectWeb } from "@/base/interface/IProject";
+import AvatarStack from "../../ContactMeSection/AvatarComp";
 
 interface ProjectDetailProps {
   projectId: string;
   onScheduleClick: (type: string) => void;
 }
 
-export default function WebProjectDetails({
+export default function WebDevProjectDetails({
   projectId,
   onScheduleClick,
 }: ProjectDetailProps) {
@@ -45,6 +47,8 @@ export default function WebProjectDetails({
   const apiProject = data?.webProjects?.[0];
 
   const displayProject = useMemo(() => {
+    const leftImage = apiProject?.projectImage?.[0]?.url || localProject.detailLeftImage;
+    const rightImage = apiProject?.projectImage?.[1]?.url || apiProject?.projectImage?.[0]?.url || localProject.detailRightImage;
     return {
       id: apiProject?.id || localProject.id,
       title: apiProject?.title || localProject.title,
@@ -54,12 +58,39 @@ export default function WebProjectDetails({
       intro: apiProject?.description || localProject.intro,
       client: apiProject?.title || localProject.client,
       duration: (apiProject as any)?.duration || localProject.duration,
-      projectOverview: apiProject?.description || localProject.projectOverview,
-      detailLeftImage: apiProject?.projectImage?.url || localProject.detailLeftImage,
-      detailRightImage: apiProject?.projectImage?.url || localProject.detailRightImage,
+      projectOverview: apiProject?.projectOverview,
+      detailLeftImage: leftImage,
+      detailRightImage: rightImage,
+      scrollImage: apiProject?.scrollImage?.url || localProject.heroImage,
       ourApproach: apiProject?.ourApproach || localProject.ourApproach,
     };
   }, [apiProject, localProject]);
+
+  const detailImages = useMemo(() => {
+    if (apiProject?.projectImage && apiProject.projectImage.length > 0) {
+      return apiProject.projectImage.map((img) => img.url);
+    }
+    return [
+      localProject.detailLeftImage,
+      localProject.detailRightImage
+    ].filter(Boolean);
+  }, [apiProject, localProject]);
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  const scroll = (direction: "left" | "right") => {
+    if (scrollRef.current) {
+      const { scrollLeft, clientWidth } = scrollRef.current;
+      const scrollAmount = clientWidth * 0.75;
+      scrollRef.current.scrollTo({
+        left:
+          direction === "left"
+            ? scrollLeft - scrollAmount
+            : scrollLeft + scrollAmount,
+        behavior: "smooth",
+      });
+    }
+  };
 
   if (loading) {
     return (
@@ -73,7 +104,7 @@ export default function WebProjectDetails({
   return (
     <div
       id="project-detail-view"
-      className="min-h-screen bg-white text-zinc-900 pb-24 font-sans selection:bg-zinc-900 selection:text-white"
+      className="min-h-screen pt-[64px] lg:pt-[120px] bg-white text-zinc-900 pb-24 font-sans selection:bg-zinc-900 selection:text-white"
     >
       {/* Top Header Navigation */}
       <div className="border-b border-zinc-100 py-6 px-4 sm:px-6 lg:px-8">
@@ -124,7 +155,7 @@ export default function WebProjectDetails({
       {/* Main Container */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 space-y-16 sm:space-y-24">
         {/* Large Featured Mockup Banner Container */}
-        <div className="relative group rounded-3xl overflow-hidden shadow-2xl shadow-zinc-200/50 border border-zinc-200/40 bg-zinc-50 aspect-[16/9] flex flex-col justify-between">
+        <div className="relative group rounded-xl overflow-hidden shadow-2xl shadow-zinc-200/50 border border-zinc-200/40 bg-zinc-50  flex flex-col justify-between">
           {/* Device Browser Header Bar */}
           <div className="bg-zinc-100/80 backdrop-blur-md px-4 py-3 border-b border-zinc-200/50 flex items-center justify-between">
             <div className="flex gap-1.5">
@@ -177,7 +208,7 @@ export default function WebProjectDetails({
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-2">
               <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-zinc-100 border border-zinc-200/40 text-xs font-semibold text-zinc-600">
-                <span className="w-1.5 h-1.5 rounded-full bg-zinc-400"></span>
+                <span className="w-1.5 h-1.5 rounded-full font-mono  bg-zinc-400"></span>
                 {displayProject.sector}
               </span>
             </div>
@@ -191,7 +222,7 @@ export default function WebProjectDetails({
 
           {/* Right Column: Intro text and Client Info Row */}
           <div className="lg:col-span-7 space-y-8">
-            <p className="text-lg sm:text-xl text-zinc-600 font-normal leading-relaxed">
+            <p className="text-sm sm:text-base text-zinc-600 font-normal leading-relaxed">
               {displayProject.intro}
             </p>
 
@@ -226,7 +257,7 @@ export default function WebProjectDetails({
         </div>
 
         {/* Project Overview Paragraph */}
-        <div className="space-y-6 pt-10 border-t border-zinc-100 max-w-4xl">
+        <div className="space-y-6 pt-10 border-t border-zinc-100 max-w-full">
           <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
             Project Overview
           </h2>
@@ -235,40 +266,71 @@ export default function WebProjectDetails({
           </p>
         </div>
 
-        {/* Side-by-Side Double Mockup Screens */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-stretch pt-6">
-          {/* Left Mockup Card (Slightly slanted or flat clean responsive view) */}
-          <div className="group bg-[#f7f8f9] rounded-3xl p-6 sm:p-10 border border-zinc-200/40 flex items-center justify-center overflow-hidden hover:shadow-xl hover:shadow-zinc-100 transition-all duration-300 min-h-[300px]">
-            <div className="relative w-full rounded-2xl overflow-hidden shadow-lg border border-zinc-200 bg-white aspect-[4/3]">
-              {displayProject.detailLeftImage && (
-                <Image
-                  width={1000}
-                  height={1000}
-                  src={displayProject.detailLeftImage}
-                  alt={`${displayProject.title} values section`}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"
-                />
-              )}
+        {/* Project Showcase Gallery */}
+        {detailImages.length > 0 && (
+          <div className="space-y-6 pt-10">
+            <div className="flex items-center justify-between">
+              <h2 className="text-2xl font-bold text-zinc-900 tracking-tight">
+                Project Gallery
+              </h2>
+              <div className="flex gap-2">
+                <button
+                  id="gallery-scroll-left"
+                  onClick={() => scroll("left")}
+                  className="p-3 rounded-full border border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50 hover:text-zinc-900 transition-all duration-300 shadow-sm active:scale-95 cursor-pointer"
+                  aria-label="Previous image"
+                >
+                  <ArrowLeft className="h-5 w-5" />
+                </button>
+                <button
+                  id="gallery-scroll-right"
+                  onClick={() => scroll("right")}
+                  className="p-3 rounded-full border border-zinc-200 bg-white text-zinc-700 hover:bg-zinc-50 hover:text-zinc-900 transition-all duration-300 shadow-sm active:scale-95 cursor-pointer"
+                  aria-label="Next image"
+                >
+                  <ArrowRight className="h-5 w-5" />
+                </button>
+              </div>
             </div>
-          </div>
 
-          {/* Right Mockup Card (Narrower/Tablet aspect) */}
-          <div className="group bg-[#f7f8f9] rounded-3xl p-6 sm:p-10 border border-zinc-200/40 flex items-center justify-center overflow-hidden hover:shadow-xl hover:shadow-zinc-100 transition-all duration-300 min-h-[300px]">
-            <div className="relative w-[80%] rounded-2xl overflow-hidden shadow-lg border border-zinc-200 bg-white aspect-[3/4]">
-              {displayProject.detailRightImage && (
-                <Image
-                  width={1000}
-                  height={1000}
-                  src={displayProject.detailRightImage}
-                  alt={`${displayProject.title} interactive calendar`}
-                  referrerPolicy="no-referrer"
-                  className="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 ease-out"
-                />
-              )}
+            <div
+              ref={scrollRef}
+              className="flex gap-6 overflow-x-auto snap-x snap-mandatory scroll-smooth pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden"
+            >
+              {detailImages.map((imageUrl, idx) => (
+                <div
+                  key={idx}
+                  className="flex-none snap-start w-[85vw] sm:w-[550px] md:w-[650px] lg:w-[750px] group bg-[#f7f8f9] rounded-3xl p-4 sm:p-8 border border-zinc-200/40 flex flex-col justify-between overflow-hidden hover:shadow-xl hover:shadow-zinc-100/50 transition-all duration-300"
+                >
+                  {/* Browser Address Bar Mockup */}
+                  <div className="bg-zinc-200/40 px-4 py-2 rounded-t-xl border-b border-zinc-200/40 flex items-center justify-between gap-4 mb-4">
+                    <div className="flex gap-1.5">
+                      <span className="w-2.5 h-2.5 rounded-full bg-red-400"></span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-yellow-400"></span>
+                      <span className="w-2.5 h-2.5 rounded-full bg-green-400"></span>
+                    </div>
+                    <div className="flex-1 max-w-md bg-white rounded-md text-[10px] text-zinc-400 text-center py-0.5 border border-zinc-100 select-none truncate font-mono">
+                      {displayProject.visitLink || "https://growthlobby.com"}
+                    </div>
+                    <div className="w-10"></div>
+                  </div>
+
+                  {/* Screenshot Container */}
+                  <div className="relative w-full flex-1 rounded-xl overflow-hidden shadow-lg border border-zinc-200 bg-white aspect-[16/10]">
+                    <Image
+                      width={1000}
+                      height={800}
+                      src={imageUrl}
+                      alt={`${displayProject.title} screen ${idx + 1}`}
+                      referrerPolicy="no-referrer"
+                      className="w-full h-full object-cover object-top group-hover:scale-[1.02] transition-transform duration-500 ease-out"
+                    />
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
+        )}
 
         {/* Our Approach Section */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-16 pt-10 border-t border-zinc-100 items-start">
@@ -293,33 +355,7 @@ export default function WebProjectDetails({
                 <ArrowUpRight className="h-4 w-4" />
               </button>
 
-              {/* Client Social Proof Group */}
-              <div className="flex items-center gap-3">
-                <div className="flex -space-x-2">
-                  <Image
-                    width={1000}
-                    height={800}
-                    src="/images/me.png"
-                    alt="John Portrait"
-                    referrerPolicy="no-referrer"
-                    className="w-10 h-10 rounded-full border-2 border-white object-cover shadow-sm"
-                  />
-                  <div className="w-10 h-10 rounded-full bg-zinc-800 text-white flex items-center justify-center text-[10px] font-bold border-2 border-white shadow-sm font-mono">
-                    JD
-                  </div>
-                  <div className="w-10 h-10 rounded-full bg-[#B4E615] text-zinc-950 flex items-center justify-center text-[10px] font-bold border-2 border-white shadow-sm font-mono">
-                    SC
-                  </div>
-                </div>
-                <div className="text-xs">
-                  <span className="font-bold text-zinc-900 block leading-tight">
-                    100+ Loved working with John
-                  </span>
-                  <span className="text-zinc-500">
-                    Real client feedback verified
-                  </span>
-                </div>
-              </div>
+              <AvatarStack onWhiteBg={true} />
             </div>
           </div>
         </div>
@@ -353,79 +389,18 @@ export default function WebProjectDetails({
 
             {/* Inner scrollable area representing the complete website */}
             <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-300 hover:scrollbar-thumb-zinc-400 bg-zinc-50">
-              {/* Fake web structure representing the website inside */}
-              <div className="w-full">
-                {/* Hero block of the inside website */}
-                <div className="relative">
-                  {displayProject.heroImage && (
-                    <Image
-                      width={1000}
-                      height={1000}
-                      src={displayProject.heroImage}
-                      alt="Homepage hero scroll preview"
-                      referrerPolicy="no-referrer"
-                      className="w-full object-cover"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                    <span className="px-4 py-2 rounded-full bg-zinc-950/80 text-white text-xs font-mono tracking-wider uppercase">
-                      Hero Section
-                    </span>
-                  </div>
+              {displayProject.scrollImage && (
+                <div className="w-full">
+                  <Image
+                    width={1200}
+                    height={3000}
+                    src={displayProject.scrollImage}
+                    alt={`${displayProject.title} scroll preview`}
+                    referrerPolicy="no-referrer"
+                    className="w-full h-auto object-cover object-top"
+                  />
                 </div>
-
-                {/* Values block of the inside website */}
-                <div className="relative">
-                  {displayProject.detailLeftImage && (
-                    <Image
-                      width={1000}
-                      height={1000}
-                      src={displayProject.detailLeftImage}
-                      alt="Homepage content section 1 scroll preview"
-                      referrerPolicy="no-referrer"
-                      className="w-full object-cover border-t border-zinc-100"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                    <span className="px-4 py-2 rounded-full bg-zinc-950/80 text-white text-xs font-mono tracking-wider uppercase">
-                      Overview &amp; Values Section
-                    </span>
-                  </div>
-                </div>
-
-                {/* Calendar / Involved block of the inside website */}
-                <div className="relative">
-                  {displayProject.detailRightImage && (
-                    <Image
-                      width={1000}
-                      height={1000}
-                      src={displayProject.detailRightImage}
-                      alt="Homepage content section 2 scroll preview"
-                      referrerPolicy="no-referrer"
-                      className="w-full object-cover border-t border-zinc-100"
-                    />
-                  )}
-                  <div className="absolute inset-0 bg-black/5 flex items-center justify-center opacity-0 hover:opacity-100 transition-opacity">
-                    <span className="px-4 py-2 rounded-full bg-zinc-950/80 text-white text-xs font-mono tracking-wider uppercase">
-                      Events &amp; Integration Section
-                    </span>
-                  </div>
-                </div>
-
-                {/* Simulated Footer of the inside website */}
-                <div className="bg-zinc-900 text-zinc-400 py-12 px-8 text-center space-y-4">
-                  <div className="text-white font-mono font-bold text-xs tracking-wider">
-                    {displayProject.title.toUpperCase()}
-                  </div>
-                  <p className="text-[10px] max-w-md mx-auto">
-                    Designed and built with extreme digital execution standards
-                    by JOHN.DESIGN engineering consulting.
-                  </p>
-                  <div className="text-[9px] text-zinc-600">
-                    &copy; 2026 {displayProject.client}. All rights reserved.
-                  </div>
-                </div>
-              </div>
+              )}
             </div>
           </div>
         </div>

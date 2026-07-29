@@ -91,6 +91,9 @@ query {
       projectImage {
         url
       }
+      scrollImage {
+        url
+      }
        ourApproach
     }
   }
@@ -102,6 +105,7 @@ export const WEB_PROJECT_DETAIL_QUERY = gql`
       id
       title
       description
+      projectOverview
       coverImage {
         url
       }
@@ -109,6 +113,9 @@ export const WEB_PROJECT_DETAIL_QUERY = gql`
       liveSite
       publishedAt
       projectImage {
+        url
+      }
+      scrollImage {
         url
       }
       ourApproach

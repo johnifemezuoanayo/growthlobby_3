@@ -28,10 +28,13 @@ export interface IProjectWeb {
     coverImage: {url : string}
     title: string;
     description: string;
+    projectOverview: string;
     sector: string;
     liveSite?: string;
-    projectImage: {url : string}
-    ourApproach: string
+    projectImage: {url : string}[]
+    ourApproach: string;
+    publishedAt?: string;
+    scrollImage?: { url: string };
 }
 
 export interface IProjectWebData {

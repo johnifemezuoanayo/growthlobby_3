@@ -1,6 +1,6 @@
 "use client";
 
-import WebProjectDetails from "@/components/pages/ServicesPage/Development/WebDev";
+import WebProjectDetails from "@/components/pages/ServicesPage/Development/WebDevProjectDetails";
 
 type WebProjectDetailPageClientProps = {
   projectId: string;

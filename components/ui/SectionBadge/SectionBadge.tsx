@@ -26,7 +26,7 @@ export function SectionBadge({ children }: { children: ReactNode }){
   return (
     <span className="relative inline-block">
       <CornerMarks />
-      <span className="inline-block px-5 py-2 text-sm font-medium bg-[#D4D9B7] text-[#2B2E20]">
+      <span className="font-mono capitalize inline-block px-5 py-2 text-sm font-medium bg-[#D4D9B7] text-[#2B2E20]">
         {children}
       </span>
     </span>
