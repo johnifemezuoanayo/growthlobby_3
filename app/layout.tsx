@@ -5,10 +5,10 @@ import "./globals.css";
 import NavbarLayout from "@/components/NavbarLayout";
 import { FloatingCallButton } from "@/components/pages/HomeHeroSection/FloatingCallButton";
 import { ScrollToTopButton } from "@/components/ui/ScrollToTopButton";
-import { Footer } from "@/components/Footer";
 import { DEFAULT_DESCRIPTION, SITE_NAME } from "@/lib/site-metadata";
 import { ApolloWrapper } from "@/base/lib/apollo-client";
 import { Wix_Madefor_Display } from "next/font/google";
+import { Footer } from "@/components/Footer";
 
 const sfPro = localFont({
   src: [
