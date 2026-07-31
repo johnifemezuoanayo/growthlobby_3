@@ -20,7 +20,6 @@ export default function DevelopmentClient() {
   return (
     <>
       <DevHero />
-      <WhatWeOfferSection />
       <WhyChooseUsSection />
       {loading ? (
         <div className="py-20 text-center font-sans text-sm text-zinc-500 font-semibold bg-[#eef0e6]">
@@ -30,8 +29,8 @@ export default function DevelopmentClient() {
       ) : (
         <ProjectSection projects={projects} />
       )}
+      <WhatWeOfferSection />
       <DevPricingSection />
-      <WhoAmISection />
       <DevFAQSection />
       <ContactMeSection />
     </>

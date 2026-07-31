@@ -120,9 +120,10 @@ interface Reason {
 }
 
 const REASONS: Reason[] = [
-  { text: "Award-winning expertise in web design & optimization" },
-  { text: "Deep understanding of what makes a website convert" },
-  { text: "Proven track record of elevating brands globally" },
+  { text: "7 years in the design and development industry" },
+  { text: "Over 100 successful websites built" },
+  { text: "Industry expertise and former lead Product designer at Togetherway" },
+  { text: "Proven ability to elevate brands globally" },
   { text: "Honest, no-pressure advice—just value-packed insights" },
 ];
 
@@ -132,8 +133,8 @@ const REASONS: Reason[] = [
 /* ---------------------------------------------------------------------- */
 const stats = [
   { value: "100+", label: "Successful Websites" },
-  { value: "08", label: "Years Experience" },
-  { value: "100%", label: "Client Satisfaction" },
+  { value: "07", label: "Years Experience" },
+  { value: "98%", label: "Client Satisfaction" },
 ];
 
 export default function ExpertSection(){
@@ -187,7 +188,7 @@ export default function ExpertSection(){
               className="mt-6 text-4xl font-medium leading-tight sm:text-5xl"
               style={{ color: COLORS.heading }}
             >
-              Hi. I&lsquo;m Sam Crawford
+              Hi. I&lsquo;m John Ifemezuo
             </h2>
           </Reveal>
 
@@ -196,8 +197,7 @@ export default function ExpertSection(){
               className="mt-5 max-w-xl text-base leading-relaxed"
               style={{ color: COLORS.body }}
             >
-              With over five years of experience and a portfolio of 700+ custom
-              Squarespace websites, I specialize in helping businesses create
+              With over 7 years of experience in the design and development building for multiple businesses and industries, I specialize in helping businesses create
               high-performing, visually stunning websites that drive real
               results.
             </p>

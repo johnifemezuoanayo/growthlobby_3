@@ -44,7 +44,7 @@ export default function BlogCard({
           </div>
 
           {/* Main Post Title */}
-          <h3 className="text-lg text-linear-to-r/srgb from-[#539107] to-[#232B02]/20 sm:text-xl font-extrabold text-zinc-950 tracking-tight leading-snug group-hover:text-zinc-800 line-clamp-3">
+          <h3 className="text-lg text-linear-to-r/srgb from-[#539107] to-[#232B02]/20 sm:text-xl font-semibold text-zinc-950 tracking-tight leading-snug group-hover:text-zinc-800 line-clamp-3">
             {post.title}
           </h3>
 

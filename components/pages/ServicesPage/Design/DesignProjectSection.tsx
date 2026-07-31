@@ -94,14 +94,14 @@ export default function DesignProjectSection({ projects }: DesignProjectSectionP
   return (
     <section
       ref={sectionRef}
-      className="relative bg-[#eef0e6] py-t md:pt-24 overflow-hidden [background-image:radial-gradient(circle,rgba(0,0,0,0.08)_1px,transparent_1px)] [background-size:14px_14px]"
+      className="relative bg-[#fdfdfd] py-12 md:pt-24 overflow-hidden [background-image:radial-gradient(circle,rgba(0,0,0,0.08)_1px,transparent_1px)] [background-size:14px_14px]"
     >
       {/* Header */}
       <div className="mx-auto max-w-7xl px-6 md:px-0">
         <div className="grid gap-8 md:grid-cols-[minmax(0,1fr)_auto] md:items-end">
           <div>
             <ProjectSvg />
-            <h2 className="mt-6 font-serif text-4xl leading-[1.05] tracking-tight text-neutral-900 sm:text-5xl md:text-6xl">
+            <h2 className="mt-6 font-manrope text-4xl leading-[1.05] tracking-tight text-neutral-900 sm:text-5xl md:text-6xl">
               Building Websites That
               <br />
               Drive Results
@@ -148,22 +148,22 @@ export default function DesignProjectSection({ projects }: DesignProjectSectionP
                 router.push(`/portfolio/design/${p.slug}`);
               }
             }}
-            className="group relative overflow-hidden h-[800px] flex-none w-[85vw] sm:w-[520px] md:w-[600px] lg:w-[740px] rounded-4xl border-12 border-[#EDF0DE] bg-white pt-6 lg:pt-14 pl-6 lg:pl-14 shadow-sm cursor-pointer"
+            className="group relative overflow-hidden h-[500px] lg:h-[800px] flex-none w-[85vw] sm:w-[520px] md:w-[600px] lg:w-[740px] rounded-4xl border-8 border-[#EDF0DE] bg-white pt-6 lg:pt-14 pl-6 lg:pl-14 shadow-sm cursor-pointer"
           >
-            <div className="pr-14">
+            <div className="pr-5 lg:pr-14">
               <div className="flex items-center justify-between">
-                <span className=" bg-[#F0F1EC] rounded-full px-4 py-2 text-sm font-medium text-neutral-800">
+                <span className=" bg-[#F0F1EC] rou px-4 py-2 text-sm font-medium text-neutral-800">
                   {p.projectType || "Services"}
                 </span>
                 <span className="grid h-11 w-[70px] place-items-center rounded-full bg-[#c6ff3d] text-neutral-900">
                   <ArrowUpRight className="h-5 w-5" />
                 </span>
               </div>
-              <h3 className="mt-6 font-serif text-2xl text-neutral-900 md:text-3xl">
+              <h3 className="mt-6 max-w-md font-manrope font-medium text-xl text-neutral-900 md:text-3xl">
                 {p.title}
               </h3>
             </div>
-            <div className={`mt-5 overflow-hidden rounded-tl-3xl`}>
+            <div className={`mt-5 h-full overflow-hidden rounded-tl-3xl`}>
               <Image
                 width={700}
                 height={800}

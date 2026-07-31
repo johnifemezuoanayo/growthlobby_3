@@ -14,16 +14,17 @@ export default function DesignPricingSection() {
     {
       id: "pkg-essentials",
       badge: "Essentials",
-      price: "$4,500",
+      price: "$600",
       isPrice: true,
       description:
-        "Perfect for lean builds and fast turnarounds. Built directly in Squarespace—no code, no fuss. A sleek, functional design that reflects your brand's ambitions.",
+        "Ideal for lean startups and small businesses needing a polished online presence without the complexity. This package delivers a professional, fully functional website tailored to your brand's core message.",
       features: [
-        "Up to 4 pages",
-        "No-code build",
+        "Branding",
+        "Up to 15 Design screen (Website Design)",
+        "Up to 20 Design screen (mobile design)",
         "1 round of revisions",
         "2-week timeline cap",
-        "Direct-to-Squarespace design",
+        "Figma design tool",
       ],
       buttonText: "Schedule a call",
       isHighlight: false,
@@ -31,16 +32,17 @@ export default function DesignPricingSection() {
     {
       id: "pkg-premium",
       badge: "Premium",
-      price: "$9,500",
+      price: "$2,000",
       isPrice: true,
       description:
-        "For businesses that need more flexibility and finesse. A hybrid approach for extra polish and performance that helps your organisation scale quickly.",
+        "Elevate your business with this comprehensive package. Perfect for companies that need a complete, top-tier design solution without the enterprise commitment.",
       features: [
-        "Up to 7 pages",
-        "Custom styling (CSS)",
-        "2 rounds of revisions",
+        "Advanced branding",
+        "Up to 50 Design screen (Website Design)",
+        "Up to 60 Design screen (mobile design)",
+        "2 round of revisions",
         "5-week timeline cap",
-        "Hybrid build",
+        "Figma design tool",
       ],
       buttonText: "Schedule a call",
       isHighlight: false,
@@ -73,7 +75,7 @@ export default function DesignPricingSection() {
         {/* Header Block */}
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-900 font-sans">
-            Flexible Squarespace Web Design Packages
+            Flexible Product Design Packages
           </h2>
           <p className="text-zinc-500 text-sm sm:text-base font-medium">
             Find the Perfect Plan for Your Business

@@ -373,7 +373,7 @@ export default function WebDevProjectDetails({
           </div>
 
           {/* Browser Window mockup container */}
-          <div className="bg-white rounded-2xl border border-zinc-200 shadow-2xl overflow-hidden aspect-[16/10] flex flex-col">
+          <div className="bg-white rounded-2xl border h-[500px] md:h-auto border-zinc-200 shadow-2xl overflow-hidden lg:aspect-[16/10] flex flex-col">
             {/* Browser frame header */}
             <div className="bg-zinc-100 border-b border-zinc-200/80 px-4 py-3 flex items-center justify-between">
               <div className="flex gap-1.5">
@@ -388,7 +388,7 @@ export default function WebDevProjectDetails({
             </div>
 
             {/* Inner scrollable area representing the complete website */}
-            <div className="flex-1 overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-300 hover:scrollbar-thumb-zinc-400 bg-zinc-50">
+            <div className="flex-1  overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-300 hover:scrollbar-thumb-zinc-400 bg-zinc-50">
               {displayProject.scrollImage && (
                 <div className="w-full">
                   <Image

@@ -26,7 +26,7 @@ export default function AboutPage() {
       <AboutFAQSection />
       <ProcessSection />
       <HomeTestimonialSection />
-      <LocationSection /> 
+      {/* <LocationSection />  */}
       <ContactMeSection />
     </>
   );

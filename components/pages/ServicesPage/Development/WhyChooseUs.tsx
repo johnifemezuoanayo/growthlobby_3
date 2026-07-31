@@ -9,9 +9,9 @@ export default function WhyChooseUsSection() {
   const points = [
     {
       id: "why-1",
-      title: "Certified Squarespace Expertise",
+      title: "Certified Design Expert",
       description:
-        "As experienced Squarespace experts, we know the platform inside and out, allowing us to push its capabilities to deliver a truly unique website.",
+        "As experienced Code and No-code experts and Designer, We know the inside and out, allowing us to push its capabilities to deliver a truly unique website.",
       icon: <Award className="h-6 w-6 text-brand-primary" />,
     },
     {
@@ -25,7 +25,7 @@ export default function WhyChooseUsSection() {
       id: "why-3",
       title: "Proven Results",
       description:
-        "With 700+ successful projects completed, We've helped businesses like yours achieve their online goals with style and ease.",
+        "With 100+ successful projects completed, We've helped businesses like yours achieve their online goals with style and ease.",
       icon: <BarChart3 className="h-6 w-6 text-brand-primary" />,
     },
   ];
@@ -52,7 +52,7 @@ export default function WhyChooseUsSection() {
 
           <div className="flex lg:justify-end shrink-0">
              <NavButton
-                          href="/contact"
+                          href="/portfolio/development/all-projects"
                           size="large"
                           className=" bg-brand-primary text-black hover:bg-brand-primary"
                         >

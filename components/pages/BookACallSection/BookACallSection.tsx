@@ -13,7 +13,7 @@ function BookACallSection() {
   }, []);
 
   return (
-    <section className="relative isolate min-h-screen overflow-x-hidden bg-[#060606] font-sans text-white selection:bg-brand-primary selection:text-black">
+    <section className="relative pt-24 md:pt-30 isolate min-h-screen overflow-x-hidden bg-[#060606] font-sans text-white selection:bg-brand-primary selection:text-black">
       <HeroBackground />
       <div className="relative z-20 max-w-7xl mx-auto py-12 lg:py-18 px-4 sm:px-8 lg:px-16">
         {/* Header */}
@@ -34,12 +34,12 @@ function BookACallSection() {
             </span>
           </div>
 
-          <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
+          <h1 className="text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
             Book Your Free <br className="hidden md:inline" />
             <span>Kickoff Call Today</span>
           </h1>
 
-          <p className="mx-auto mt-3 text-white/70 max-w-3xl text-center text-lg leading-relaxed text-neutral-300 ">
+          <p className="mx-auto mt-3 text-white/70 max-w-3xl text-center text-base leading-relaxed text-neutral-300 ">
             I&apos;m here to transform your vision into a high-performing
             digital experience. Let&apos;s schedule a strategy session and
             discuss how we can take your business to the next level.

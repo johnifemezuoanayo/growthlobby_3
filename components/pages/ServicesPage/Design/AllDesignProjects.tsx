@@ -119,7 +119,7 @@ export default function AllDesignProjects({ projects }: AllDesignProjectsProps =
         {/* Category Pills Header Section */}
         <div className="space-y-8">
           <div className="text-center max-w-3xl mx-auto space-y-3">
-            <span className="text-xs font-bold text-[#4A6070] uppercase tracking-widest bg-zinc-100 px-3 py-1 rounded-full border border-zinc-200/50">
+            <span className="text-xs font-medium text-[#4A6070] uppercase tracking-widest bg-zinc-100 px-3 py-1 rounded- border border-zinc-200/50">
               Our Portfolio
             </span>
             <h2 className="text-3xl mt-5 sm:text-4xl font-extrabold text-zinc-900 tracking-tight">
@@ -189,7 +189,7 @@ export default function AllDesignProjects({ projects }: AllDesignProjectsProps =
                       {/* Right: Round Arrow Button */}
                       <Link
                         href={`/portfolio/design/${project.slug || project.id}`}
-                        className="flex-none w-12 h-12 rounded-full bg-[#B4E615] hover:bg-zinc-900 hover:text-white border border-zinc-200/50 flex items-center justify-center transition-all duration-300 shadow-md group-hover:shadow-lg active:scale-95 cursor-pointer text-zinc-950"
+                        className="flex-none w-[60px] h-[40px] rounded-full bg-[#B4E615] hover:bg-zinc-900 hover:text-white  border-zinc-200/50 flex items-center justify-center transition-all duration-300 group-hover:shadow-lg active:scale-95 cursor-pointer text-zinc-950"
                       >
                         <ArrowUpRight className="h-5 w-5" />
                       </Link>
@@ -203,7 +203,7 @@ export default function AllDesignProjects({ projects }: AllDesignProjectsProps =
                         src={project.image}
                         alt={project.title}
                         referrerPolicy="no-referrer"
-                        className="w-full h-full object-cover rounded-tl-[50px] group-hover:scale-[1.03] transition-transform duration-700"
+                        className="w-full h-full object-cover rounded-tl-3xl lg:rounded-tl-[50px] group-hover:scale-[1.03] transition-transform duration-700"
                       />
                     </div>
                   </motion.div>

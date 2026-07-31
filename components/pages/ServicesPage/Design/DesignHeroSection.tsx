@@ -8,7 +8,7 @@ import NavButton from "@/components/ui/Navbar/NavButton";
 
 function DesignHeroSection() {
   return (
-    <section className="relative  overflow-x-hidden bg-[#060606] font-sans text-white selection:bg-brand-primary selection:text-black">
+    <section className="relative  overflow-x-hidden bg-[#060606] font-sans pt-62 lg:pt-30 text-white selection:bg-brand-primary selection:text-black">
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden bg-[#060606]">
         <div className="absolute inset-0 bg-black/80 z-10" />
         <Image
@@ -22,7 +22,7 @@ function DesignHeroSection() {
         />
       </div>
 
-      <div className="relative z-20 lg:pt-44 flex min-h-screen flex-col">
+      <div className="relative z-20 lg:pt-53 lg:pb-12 flex  flex-col">
         <main className="relative flex flex-grow items-center justify-center px-4 py-12 sm:px-8 md:py-20 -mt-44 lg:px-16">
           <div className="grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
             <motion.div
@@ -43,22 +43,18 @@ function DesignHeroSection() {
                 </div>
                 <span className="h-3 w-px bg-white" />
                 <span className="text-[9px] pr-3 font-medium uppercase tracking-widest text-neutral-300">
-                  Product Design
+                  Product Design | BRANDING
                 </span>
               </div>
 
-              <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
-                Let&lsquo;s Design an Extreme <br className="hidden md:inline" />
-                <span>Design for your statup</span>
+              <h1 className="text-4xl font-bold font-mono leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
+                Design That Drives Growth.
               </h1>
 
               <p className="max-w-xl text-sm font-light leading-relaxed text-white/90 sm:text-base">
-                Meet Your New AI-Native Production Partner. Take On 3x More
-                Clients Without Hiring A Single Full-Time Designer Or Developer.
-                Fully Managed By Your Dedicated PM.
-              </p>
+                We design digital experiences that go beyond websites—combining responsive mobile design, bold branding, and custom logos to help businesses stand out.              </p>
 
-              <div className="flex w-full flex items-stretch gap-4 pt-2 sm:w-auto sm:flex-row sm:items-center">
+              <div className="flex w-full items-stretch gap-4 pt-2 sm:w-auto sm:flex-row sm:items-center">
                 <NavButton
                   href="/book-a-call"
                   size="large"
@@ -79,11 +75,11 @@ function DesignHeroSection() {
             {/* Portrait Card */}
             <div
               id="portrait-image-card"
-              className="relative w-[500px] h-full "
+              className="relative lg:w-[500px] h-full "
             >
               <SpinningCircle />
               <Image
-                src="/images/devhero.png"
+                src="/images/design-hero.png"
                 alt=""
                 className="w-full z-10 "
                 width={2000}

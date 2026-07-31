@@ -22,7 +22,6 @@ export default function DesignClient() {
     <>
       <DesignHeroSection />
       <DesignServiceSection />
-      <DesignStepSection />
       {loading ? (
         <div className="py-20 text-center font-sans text-sm text-zinc-500 font-semibold bg-[#eef0e6]">
           <div className="inline-block h-6 w-6 animate-spin rounded-full border-2 border-solid border-zinc-950 border-r-transparent align-[-0.125em] motion-reduce:animate-[spin_1.5s_linear_infinite]" />
@@ -32,7 +31,6 @@ export default function DesignClient() {
         <DesignProjectSection projects={projects} />
       )}
       <DesignPricingSection />
-      <DesignAboutMeSection />
       <DesignFAQSection />
       <ContactMeSection />
     </>

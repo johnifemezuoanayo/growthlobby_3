@@ -10,7 +10,7 @@ function AllDesignProjectsHero() {
   return (
     <div
       id="hero-section"
-      className=" w-full u lg:min-h-[90vh] bg-[#EDEFE7]  overflow-hidden py-16 sm:py-24 px-4 sm:px-6 lg:px-8"
+      className=" w-full u lg:min-h-[90vh] bg-[#EDEFE7]  overflow-hidden pt-30 sm:pt-20 py-16 sm:py-24 px-4 sm:px-6 lg:px-8"
     >
       <Image
         src="/svgs/aboutbg.svg"
@@ -20,7 +20,7 @@ function AllDesignProjectsHero() {
         height={1200}
       />
 
-      <div className="relative bg-[#17191C] rounded-3xl lg:p-20 border-12 border-zinc-300 w-full max-w-7xl mx-auto grid lg:flex justify-between items-center">
+      <div className="relative bg-[#17191C] rounded-3xl lg:p-20 border-8 px-6 py-12 px border-zinc-300 w-full max-w-7xl mx-auto grid lg:flex justify-between items-center">
         {/* Left Column: Copy & Call-to-Action */}
         <div className="flex flex-col  items-start space-y-8 z-10">
           <motion.div
@@ -62,19 +62,11 @@ function AllDesignProjectsHero() {
             className="flex flex-wrap gap-4 pt-2"
           >
             <NavButton
-              href="#contact-section"
-              size="large"
-              className=" bg-white text-black hover:bg-white"
-            >
-              Get in touch
-            </NavButton>
-
-            <NavButton
-              href="/contact"
+              href="/book-a-call"
               size="large"
               className=" bg-brand-primary text-black hover:bg-brand-primary"
             >
-              See all Project
+              Book a Call
             </NavButton>
           </motion.div>
         </div>

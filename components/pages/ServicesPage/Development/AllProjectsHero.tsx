@@ -10,7 +10,7 @@ function AllProjectsHero() {
   return (
     <div
       id="hero-section"
-      className=" w-full u lg:min-h-[90vh] bg-[#EDEFE7]  overflow-hidden py-16 sm:py-24 px-4 sm:px-6 lg:px-8"
+      className="  w-full u lg:min-h-[90vh] bg-[#EDEFE7]  overflow-hidden pt-30 pb-12 lg:pt-44   px-4 sm:px-6 lg:px-8"
     >
       <Image
         src="/svgs/aboutbg.svg"
@@ -20,7 +20,7 @@ function AllProjectsHero() {
         height={1200}
       />
 
-      <div className="relative bg-[#17191C] rounded-3xl lg:p-20 border-12 border-zinc-300 w-full max-w-7xl mx-auto grid lg:flex justify-between items-center">
+      <div className="relative  bg-[#17191C] rounded-3xl lg:p-20 border-12 px-6 py-12 border-zinc-300 w-full max-w-7xl mx-auto grid lg:flex justify-between items-center">
         {/* Left Column: Copy & Call-to-Action */}
         <div className="flex flex-col  items-start space-y-8 z-10">
           <motion.div
@@ -30,13 +30,7 @@ function AllProjectsHero() {
             className="space-y-4"
           >
             <h1 className="text-4xl sm:text-5xl lg:text-6xl  tracking-tight text-white leading-[1.1] font-sans">
-              Hi, I&#39;m John.
-              <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-100 to-zinc-400">
-                A Design Engineer
-                <br />
-                Expert.
-              </span>
+              Web Design <br/> Portfolio
             </h1>
           </motion.div>
 
@@ -46,13 +40,7 @@ function AllProjectsHero() {
             transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
             className="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-xl font-normal"
           >
-            I&#39;m Your Go-To Guy For Crafting Captivating Digital Experiences
-            On Squarespace And Teaching Others How To Do The Same. As An
-            Official Squarespace Expert, Partner, And Community Leader, I Bring
-            Unparalleled Expertise To The Table. With A Track Record Of
-            Delivering Over 700 Websites, I&#39;m Not Just A Designer—I&lsquo;m
-            A Strategist, Educator, And Mentor To A Thriving Community Of 200+
-            Squarespace Designers Worldwide.
+            Growthlobby is a Web Design Agency that specializes in creating stunning, high-performance websites for businesses of all sizes. We combine creativity, strategy, and cutting-edge technology to deliver exceptional digital experiences that drive real results.
           </motion.p>
 
           <motion.div
@@ -61,20 +49,13 @@ function AllProjectsHero() {
             transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             className="flex flex-wrap gap-4 pt-2"
           >
-            <NavButton
-              href="/contact"
-              size="large"
-              className=" bg-white text-black hover:bg-white"
-            >
-              Get in touch
-            </NavButton>
 
             <NavButton
-              href="/contact"
+              href="/book-a-call"
               size="large"
               className=" bg-brand-primary text-black hover:bg-brand-primary"
             >
-              See all Project
+              Book a call Now
             </NavButton>
           </motion.div>
         </div>
@@ -94,7 +75,7 @@ function AllProjectsHero() {
             >
               <SpinningCircle />
               <Image
-                src="/images/devhero.png"
+                src="/images/dev-hero.png"
                 alt=""
                 className="w-full z-10 "
                 width={2000}

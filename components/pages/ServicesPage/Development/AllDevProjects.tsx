@@ -101,10 +101,10 @@ export default function AllDevProjects({ projects }: AllDevProjectsProps = {}) {
         {/* Category Pills Header Section */}
         <div className="space-y-8">
           <div className="text-center max-w-3xl mx-auto space-y-3">
-            <span className="text-xs font-bold text-[#4A6070] uppercase tracking-widest bg-zinc-100 px-3 py-1 rounded-full border border-zinc-200/50">
+            <span className="text-xs font-bold text-[#4A6070] uppercase tracking-widest bg-zinc-100 px-3 py-1 mb-3 border border-zinc-200/50">
               Our Portfolio
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-900 tracking-tight">
+            <h2 className="text-3xl sm:text-4xl pt-4 font-extrabold text-zinc-900 tracking-tight">
               Crafted Projects Across Industries
             </h2>
           </div>
@@ -120,7 +120,7 @@ export default function AllDevProjects({ projects }: AllDevProjectsProps = {}) {
                   onClick={() => setSelectedCategory(cat)}
                   className={`px-4 py-2 rounded-full cursor-pointer text-xs font-semibold border  transition-all duration-300 ${
                     isSelected
-                      ? "bg-brand-primary border-zinc-50 text-black shadow-md"
+                      ? "bg-brand-primary border-zinc-50 text-black shadow-"
                       : "bg-white border-zinc-200 text-zinc-700 hover:border-zinc-300 hover:bg-zinc-50"
                   }`}
                 >

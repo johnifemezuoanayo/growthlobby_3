@@ -36,7 +36,7 @@ export default function ProcessSection() {
         <div className="mb-12 md:mb-12">
           <SectionBadge>Smooth & efficient process</SectionBadge>
 
-          <h2 className="mt-6 font-serif text-3xl leading-[1.05] tracking-tight text-neutral-900 sm:text-3xl md:text-4xl lg:text-5xl">
+          <h2 className="mt-6 font-manrope text-3xl leading-[1.05] tracking-tight text-neutral-900 sm:text-3xl md:text-4xl lg:text-5xl">
             Our smooth & efficient process
             <br className="hidden sm:block" /> for your web design project
           </h2>
@@ -64,7 +64,7 @@ export default function ProcessSection() {
               <div className="relative mb-8">{step.icon}</div>
 
               {/* Title */}
-              <h3 className="relative lg:h-[80px] font-serif text-2xl leading-tight text-neutral-900 sm:text-3xl md:text-[28px] lg:text-4xl">
+              <h3 className="relative lg:h-[80px] font-manrope text-2xl leading-tight text-neutral-900 sm:text-3xl md:text-[28px] font-semibold lg:text-3xl">
                 {step.title}
               </h3>
 

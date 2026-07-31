@@ -24,9 +24,9 @@ export default function LocationSection() {
 
   // Office details matching the screenshot perfectly
   const officeDetails = {
-    city: "Liverpool",
+    city: "Awka, Nigeria",
     address:
-      "No.24 East Exchange, Lagos, Nigeria",
+      "No.24 East Exchange, Awka, Nigeria",
     email: "growthlobbyagency@gmail.com",
     phone: "+234 706 0696 371",
     // Embed URL for OpenStreetMap focused on Exchange Street East, Liverpool

@@ -22,9 +22,9 @@ export default function WhatWeOfferSection() {
   const items: ServiceItem[] = [
     {
       id: "srv-1",
-      title: "Squarespace, Mastered",
+      title: "No-code Tools, Mastered",
       description:
-        "We've built hundreds of Squarespace websites. We know how to push the platform without breaking it—and when to add custom code to elevate function.",
+        "We've built hundreds of websites using No-code tools. We know how to push the platform without breaking it—and when to add custom code to elevate function.",
       icon: (
         <Compass className="h-6 w-6 text-zinc-300 group-hover:text-brand-primary transition-colors duration-300" />
       ),

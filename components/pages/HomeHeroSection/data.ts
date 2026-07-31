@@ -3,7 +3,7 @@ export const navLinks = [
   { href: "/about", label: "About" },
   { href: "/portfolio/development", label: "Dev" },
   { href: "/portfolio/design", label: "Design" },
-  { href: "/#contact-me", label: "Contact me" },
+  // { href: "/#contact-me", label: "Contact me" },
   { href: "/blog", label: "Blog" },
 ];
 

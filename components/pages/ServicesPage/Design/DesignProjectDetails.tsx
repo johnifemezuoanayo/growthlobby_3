@@ -68,7 +68,7 @@ export default function DesignProjectDetails({
   return (
     <div
       id="project-detail-view"
-      className="min-h-screen pt-[150px] bg-white text-zinc-900 pb-24 font-sans selection:bg-zinc-900 selection:text-white"
+      className="min-h-screen pt-[90px] lg:pt-[150px] bg-white text-zinc-900 pb-24 font-sans selection:bg-zinc-900 selection:text-white"
     >
       {/* Top Header Navigation */}
       <div className="border-b border-zinc-100 py-6 px-4 sm:px-6 lg:px-8">
@@ -117,9 +117,9 @@ export default function DesignProjectDetails({
       </div>
 
       {/* Main Container */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-10 space-y-16 sm:space-y-24">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6  lg:px-8 mt-10 space-y-16 sm:space-y-24">
         {/* Large Featured Mockup Banner Container */}
-        <div className="relative group rounded-3xl overflow-hidden shadow-2xl shadow-zinc-200/50 border border-zinc-200/40 bg-zinc-50 aspect-[16/9] flex flex-col justify-between">
+        <div className="relative h-[400px] lg:h-full  group rounded-3xl overflow-hidden shadow-2xl shadow-zinc-200/50 border border-zinc-200/40 bg-zinc-50  flex flex-col justify-between">
           {/* Device Browser Header Bar */}
           <div className="bg-zinc-100/80 backdrop-blur-md px-4 py-3 border-b border-zinc-200/50 flex items-center justify-between">
             <div className="flex gap-1.5">
@@ -142,7 +142,7 @@ export default function DesignProjectDetails({
                 src={displayProject.heroImage}
                 alt={`${displayProject.title} website design`}
                 referrerPolicy="no-referrer"
-                className="w-full h-full object-cover group-hover:scale-[1.015] transition-transform duration-700 ease-out"
+                className="w-full h-full  object-cover group-hover:scale-[1.015] transition-transform duration-700 ease-out"
               />
             )}
           </div>

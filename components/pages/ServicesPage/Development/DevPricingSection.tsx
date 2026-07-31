@@ -14,12 +14,12 @@ export default function DevPricingSection() {
     {
       id: "pkg-essentials",
       badge: "Essentials",
-      price: "$4,500",
+      price: "$1,500",
       isPrice: true,
       description:
-        "Perfect for lean builds and fast turnarounds. Built directly in Squarespace—no code, no fuss. A sleek, functional design that reflects your brand's ambitions.",
+        "Perfect for lean builds and fast turnarounds. Built with no code tools like squarespace, framer or webflow, no fuss. A sleek, functional design that reflects your brand's ambitions.",
       features: [
-        "Up to 4 pages",
+        "Up to 6 pages",
         "No-code build",
         "1 round of revisions",
         "2-week timeline cap",
@@ -31,13 +31,13 @@ export default function DevPricingSection() {
     {
       id: "pkg-premium",
       badge: "Premium",
-      price: "$9,500",
+      price: "$3,500",
       isPrice: true,
       description:
         "For businesses that need more flexibility and finesse. A hybrid approach for extra polish and performance that helps your organisation scale quickly.",
       features: [
-        "Up to 7 pages",
-        "Custom styling (CSS)",
+        "Up to 12 pages",
+        "Custom styling (CSS/HTML)",
         "2 rounds of revisions",
         "5-week timeline cap",
         "Hybrid build",
@@ -73,7 +73,7 @@ export default function DevPricingSection() {
         {/* Header Block */}
         <div className="text-center space-y-4 max-w-3xl mx-auto">
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-zinc-900 font-sans">
-            Flexible Squarespace Web Design Packages
+            Flexible Web Design Packages
           </h2>
           <p className="text-zinc-500 text-sm sm:text-base font-medium">
             Find the Perfect Plan for Your Business

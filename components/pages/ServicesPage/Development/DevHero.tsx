@@ -8,7 +8,7 @@ import NavButton from "@/components/ui/Navbar/NavButton";
 
 function DevHero() {
   return (
-    <section className="relative h-screen overflow-x-hidden bg-[#060606] font-sans text-white selection:bg-brand-primary selection:text-black">
+    <section className="relative h-screen overflow-x-hidden pt-30 bg-[#060606] font-sans text-white selection:bg-brand-primary selection:text-black">
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden bg-[#060606]">
         <div className="absolute inset-0 bg-black/80 z-10" />
         <Image
@@ -53,9 +53,7 @@ function DevHero() {
               </h1>
 
               <p className="max-w-xl text-sm font-light leading-relaxed text-white/90 sm:text-base">
-                Meet Your New AI-Native Production Partner. Take On 3x More
-                Clients Without Hiring A Single Full-Time Designer Or Developer.
-                Fully Managed By Your Dedicated PM.
+                Take your business to the next level with our top-tier website development services.
               </p>
 
               <div className="flex w-full flex items-stretch gap-4 pt-2 sm:w-auto sm:flex-row sm:items-center">
@@ -79,11 +77,11 @@ function DevHero() {
             {/* Portrait Card */}
             <div
               id="portrait-image-card"
-              className="relative w-[500px] h-full "
+              className="relative lg:w-[500px] h-full "
             >
               <SpinningCircle />
               <Image
-                src="/images/devhero.png"
+                src="/images/dev-hero.png"
                 alt=""
                 className="w-full z-10 "
                 width={2000}

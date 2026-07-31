@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import NavbarLayout from "@/components/NavbarLayout";
 import { FloatingCallButton } from "@/components/pages/HomeHeroSection/FloatingCallButton";
@@ -8,6 +9,32 @@ import { Footer } from "@/components/Footer";
 import { DEFAULT_DESCRIPTION, SITE_NAME } from "@/lib/site-metadata";
 import { ApolloWrapper } from "@/base/lib/apollo-client";
 import { Wix_Madefor_Display } from "next/font/google";
+
+const sfPro = localFont({
+  src: [
+    {
+      path: "../public/fonts/SF-Pro-Display-Regular.otf",
+      weight: "400",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/SF-Pro-Display-Medium.otf",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/SF-Pro-Display-Semibold.otf",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "../public/fonts/SF-Pro-Display-Bold.otf",
+      weight: "700",
+      style: "normal",
+    },
+  ],
+  variable: "--font-sf-pro",
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -42,9 +69,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${wixMadefor.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${wixMadefor.variable} ${sfPro.variable} h-full antialiased`}
     >
-      <body className="flex min-h-full flex-col">
+      <body className="flex min-h-full flex-col"> 
         <ApolloWrapper>
           <NavbarLayout>
             <div className="flex-1">{children}</div>

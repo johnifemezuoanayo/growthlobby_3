@@ -33,7 +33,7 @@ export default function AboutHero() {
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-zinc-100 to-zinc-400">
                 A Design Engineer
-                <br />
+                <br className="font-mono" />
                 Expert.
               </span>
             </h1>
@@ -43,15 +43,13 @@ export default function AboutHero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.15, ease: "easeOut" }}
-            className="text-zinc-400 text-sm sm:text-base leading-relaxed max-w-xl font-normal"
+            className="text-zinc-400 text-sm sm:text-lg leading-relaxed max-w-xl font-normal"
           >
-            I&#39;m Your Go-To Guy For Crafting Captivating Digital Experiences
-            On Squarespace And Teaching Others How To Do The Same. As An
-            Official Squarespace Expert, Partner, And Community Leader, I Bring
-            Unparalleled Expertise To The Table. With A Track Record Of
-            Delivering Over 700 Websites, I&#39;m Not Just A Designer—I&lsquo;m
-            A Strategist, Educator, And Mentor To A Thriving Community Of 200+
-            Squarespace Designers Worldwide.
+            I help ambitious businesses transform their online presence through strategy‑driven design,
+            AI‑powered automation, and Squarespace expertise. With a background in engineering
+            and over 100 websites delivered, I blend analytical precision with creative vision
+            to craft digital experiences that scale. As a mentor to 20+ designers,
+            I don’t just build websites—I empower communities and brands to grow with confidence.
           </motion.p>
 
           <motion.div
