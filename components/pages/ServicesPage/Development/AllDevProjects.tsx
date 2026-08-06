@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight, Inbox } from "lucide-react";
 import Image from "next/image";
@@ -22,6 +23,7 @@ interface AllDevProjectsProps {
 }
 
 export default function AllDevProjects({ projects }: AllDevProjectsProps = {}) {
+  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const mockProjects = [
@@ -118,7 +120,7 @@ export default function AllDevProjects({ projects }: AllDevProjectsProps = {}) {
                   key={cat}
                   id={`cat-filter-${cat.toLowerCase().replace(/\s+/g, "-")}`}
                   onClick={() => setSelectedCategory(cat)}
-                  className={`px-4 py-2 rounded-full cursor-pointer text-xs font-semibold border  transition-all duration-300 ${
+                  className={`px-4 py-2 rounded-full capitalize cursor-pointer text-sm font-medium border  transition-all duration-300 ${
                     isSelected
                       ? "bg-brand-primary border-zinc-50 text-black shadow-"
                       : "bg-white border-zinc-200 text-zinc-700 hover:border-zinc-300 hover:bg-zinc-50"
@@ -144,7 +146,8 @@ export default function AllDevProjects({ projects }: AllDevProjectsProps = {}) {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="group bg-white rounded-3xl border border-6 border-zinc-200/60 p-5 sm:p-6 lg:p-4 flex flex-col md:flex-row gap-6 sm:gap-8 items-stretch hover:shadow-xl hover:shadow-zinc-200/30 transition-all duration-300"
+                    onClick={() => router.push(`/portfolio/development/${project.id}`)}
+                    className="group bg-white rounded-3xl border border-6 border-zinc-200/60 p-5 sm:p-6 lg:p-4 flex flex-col md:flex-row gap-6 sm:gap-8 items-stretch hover:shadow-xl hover:shadow-zinc-200/30 transition-all duration-300 cursor-pointer"
                   >
                     {/* Left: Image mockups container */}
                     <div className="relative w-full md:w-[35%] overflow-hidden rounded-2xl bg-zinc-100 border border-zinc-100 flex items-center justify-center h-[350px] ">
@@ -185,9 +188,9 @@ export default function AllDevProjects({ projects }: AllDevProjectsProps = {}) {
                       </div>
 
                       {/* Read More button */}
-                      <div className="pt-2">
+                      <div className="pt-2" onClick={(e) => e.stopPropagation()}>
                         <NavButton
-                          href={project.link || "/contact"}
+                          href={`/portfolio/development/${project.id}`}
                           size="large"
                           className="w-[170px] bg-brand-primary text-black hover:bg-white border border-zinc-100 rounded-full"
                         >

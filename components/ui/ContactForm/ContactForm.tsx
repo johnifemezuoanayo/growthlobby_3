@@ -88,10 +88,30 @@ export function ContactForm() {
     }
 
     setIsSubmitting(true);
-    window.setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSubmitted(true);
-    }, 1200);
+    fetch("/api/contact", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(formData),
+    })
+      .then(async (res) => {
+        if (!res.ok) {
+          const errorData = await res.json();
+          throw new Error(errorData.error || "Failed to send message. Please check SMTP configuration.");
+        }
+        setIsSubmitted(true);
+      })
+      .catch((err) => {
+        console.error("Contact Form Error:", err);
+        setFormErrors((current) => ({
+          ...current,
+          message: err.message || "Failed to send message. Please try again.",
+        }));
+      })
+      .finally(() => {
+        setIsSubmitting(false);
+      });
   };
 
   const handleResetForm = () => {

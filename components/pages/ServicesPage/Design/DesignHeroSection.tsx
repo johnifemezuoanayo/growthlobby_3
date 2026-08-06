@@ -47,7 +47,7 @@ function DesignHeroSection() {
                 </span>
               </div>
 
-              <h1 className="text-4xl font-bold font-mono leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
+              <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
                 Design That Drives Growth.
               </h1>
 

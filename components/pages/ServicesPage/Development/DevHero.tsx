@@ -8,7 +8,7 @@ import NavButton from "@/components/ui/Navbar/NavButton";
 
 function DevHero() {
   return (
-    <section className="relative h-screen overflow-x-hidden pt-30 bg-[#060606] font-sans text-white selection:bg-brand-primary selection:text-black">
+    <section className="relative h-auto overflow-x-hidden lg:pt-44 lg:pb-20 pt-30 bg-[#060606] font-sans text-white selection:bg-brand-primary selection:text-black">
       <div className="pointer-events-none absolute inset-0 z-0 overflow-hidden bg-[#060606]">
         <div className="absolute inset-0 bg-black/80 z-10" />
         <Image
@@ -22,9 +22,9 @@ function DevHero() {
         />
       </div>
 
-      <div className="relative z-20 lg:pt-44 flex min-h-screen flex-col">
+      <div className="relative z-20 pt-40 lg:pt-44 flex  flex-col">
         <main className="relative flex flex-grow items-center justify-center px-4 py-12 sm:px-8 md:py-20 -mt-44 lg:px-16">
-          <div className="grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
+          <div className="grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:flex lg:gap-16">
             <motion.div
               initial={{ opacity: 0, x: -30 }}
               animate={{ opacity: 1, x: 0 }}
@@ -47,9 +47,9 @@ function DevHero() {
                 </span>
               </div>
 
-              <h1 className="text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
-                Create Premium and <br className="hidden md:inline" />
-                <span>Professional Website</span>
+              <h1 className="text-4xl  font-bold leading-[1.1] tracking-tight text-white sm:text-5xl md:text-6xl">
+               Get a Professional Website<br className="hidden md:inline" />
+                <span>For your Business</span>
               </h1>
 
               <p className="max-w-xl text-sm font-light leading-relaxed text-white/90 sm:text-base">
@@ -77,7 +77,7 @@ function DevHero() {
             {/* Portrait Card */}
             <div
               id="portrait-image-card"
-              className="relative lg:w-[500px] h-full "
+              className="relative lg:w-[600px] h-full "
             >
               <SpinningCircle />
               <Image

@@ -53,7 +53,7 @@ export default function WebDevProjectDetails({
       id: apiProject?.id || localProject.id,
       title: apiProject?.title || localProject.title,
       sector: apiProject?.sector || localProject.sector,
-      visitLink: apiProject?.liveSite || localProject.visitLink,
+      visitLink: apiProject?.liveSite,
       heroImage: apiProject?.coverImage?.url || localProject.heroImage,
       intro: apiProject?.description || localProject.intro,
       client: apiProject?.title || localProject.client,
@@ -139,16 +139,18 @@ export default function WebDevProjectDetails({
           </div>
 
           {/* Visit site link */}
-          <a
-            id="header-visit-site-link"
-            href={displayProject.visitLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-1.5 text-zinc-500 hover:text-zinc-900 text-xs font-semibold tracking-wider font-mono transition-colors"
-          >
-            <span>Launch Web App</span>
-            <ExternalLink className="h-3 w-3" />
-          </a>
+          {displayProject.visitLink && (
+            <a
+              id="header-visit-site-link"
+              href={displayProject.visitLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center gap-1.5 text-zinc-500 hover:text-zinc-900 text-xs font-semibold tracking-wider font-mono transition-colors"
+            >
+              <span>Launch Web App</span>
+              <ExternalLink className="h-3 w-3" />
+            </a>
+          )}
         </div>
       </div>
 
@@ -184,22 +186,24 @@ export default function WebDevProjectDetails({
           </div>
 
           {/* Bottom Floating Visit Button */}
-          <div className="absolute bottom-6 right-6 z-10">
-            <a
-              id="live-visit-button"
-              href={displayProject.visitLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-xs tracking-wider uppercase text-zinc-950 transition-all duration-300 shadow-xl ${
-                displayProject.id === "proj-storyline"
-                  ? "bg-[#B4E615] hover:bg-[#c2f716]"
-                  : "bg-white hover:bg-zinc-100"
-              }`}
-            >
-              <span>Visit Site</span>
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </div>
+          {displayProject.visitLink && (
+            <div className="absolute bottom-6 right-6 z-10">
+              <a
+                id="live-visit-button"
+                href={displayProject.visitLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-xs tracking-wider uppercase text-zinc-950 transition-all duration-300 shadow-xl ${
+                  displayProject.id === "proj-storyline"
+                    ? "bg-[#B4E615] hover:bg-[#c2f716]"
+                    : "bg-white hover:bg-zinc-100"
+                }`}
+              >
+                <span>Visit Site</span>
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </div>
+          )}
         </div>
 
         {/* Introduction & Details Grid */}
