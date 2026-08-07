@@ -20,7 +20,7 @@ export interface IProject {
 }
 
 export interface IProjectData {
-    growthlobbyCaseStudies: IProject[]
+    projects: IProject[]
 }
 
 export interface IProjectWeb {

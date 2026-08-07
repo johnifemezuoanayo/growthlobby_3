@@ -8,7 +8,7 @@ import AllDesignProjectsHero from "@/components/pages/ServicesPage/Design/AllDes
 
 export default function AllProjectsClient() {
   const { data, loading } = useQuery<IProjectData>(PROJECT_QUERY);
-  const projects = data?.growthlobbyCaseStudies || [];
+  const projects = data?.projects || [];
 
   return (
     <>

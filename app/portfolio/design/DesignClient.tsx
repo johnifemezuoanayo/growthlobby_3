@@ -14,7 +14,7 @@ import DesignStepSection from "@/components/pages/ServicesPage/Design/DesignStep
 
 export default function DesignClient() {
   const { data, loading } = useQuery<IProjectData>(PROJECT_QUERY);
-  const projects = (data?.growthlobbyCaseStudies || [])
+  const projects = (data?.projects || [])
     .filter((p) => (p.projectType || "").toLowerCase() !== "development")
     .slice(0, 4);
 

@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const PROJECT_QUERY = gql`
   query {
-    growthlobbyCaseStudies(first: 100) {
+    projects(first: 100) {
       id
       title
       description
@@ -18,7 +18,7 @@ export const PROJECT_QUERY = gql`
 `;
 export const PROJECT_DETAIL_QUERY = gql`
     query getProject($slug: String) {
-    growthlobbyCaseStudies(where: { slug: $slug }) {
+    projects(where: { slug: $slug }) {
     id
     title
     description

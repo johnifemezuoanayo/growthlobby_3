@@ -26,7 +26,7 @@ export default function DesignProjectDetails({
   const localProject =
     projectsDetailsData[projectId] || projectsDetailsData["proj-storyline"];
 
-  const { data, loading } = useQuery<{ growthlobbyCaseStudies: IProject[] }>(
+  const { data, loading } = useQuery<{ projects: IProject[] }>(
     PROJECT_DETAIL_QUERY,
     {
       variables: { slug: projectId },
@@ -39,7 +39,7 @@ export default function DesignProjectDetails({
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [projectId]);
 
-  const apiProject = data?.growthlobbyCaseStudies?.[0];
+  const apiProject = data?.projects?.[0];
 
   const displayProject = useMemo(() => {
     return {

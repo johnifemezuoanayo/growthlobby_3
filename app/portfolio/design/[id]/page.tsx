@@ -27,11 +27,11 @@ export async function generateMetadata({
   } else {
     try {
       const client = getClient();
-      const { data } = await client.query<{ growthlobbyCaseStudies: IProject[] }>({
+      const { data } = await client.query<{ projects: IProject[] }>({
         query: PROJECT_DETAIL_QUERY,
         variables: { slug: id },
       });
-      const project = data?.growthlobbyCaseStudies?.[0];
+      const project = data?.projects?.[0];
       if (project) {
         title = project.title;
         description = project.description || "The requested design project details.";
