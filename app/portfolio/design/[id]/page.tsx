@@ -1,11 +1,10 @@
 import { projectsDetailsData } from "@/components/pages/ServicesPage/Design/DesignData";
 import { createPageMetadata } from "@/lib/site-metadata";
 import { getClient } from "@/base/lib/client";
-import { PROJECT_WEB_QUERY } from "@/base/queries/project";
-import { IProjectWeb } from "@/base/interface/IProject";
-import { slugify } from "@/lib/utils";
+import { PROJECT_DETAIL_QUERY } from "@/base/queries/project";
+import { IProject } from "@/base/interface/IProject";
 import type { Metadata } from "next";
-import WebProjectDetailPageClient from "./WebProjectDetailPageClient";
+import ProjectDetailPageClient from "./ProjectDetailPageClient";
 
 type ProjectPageProps = {
   params: Promise<{ id: string }>;
@@ -16,8 +15,8 @@ export async function generateMetadata({
 }: ProjectPageProps): Promise<Metadata> {
   const { id } = await params;
 
-  let title = "Web Projects";
-  let description = "The requested development project details.";
+  let title = "Design Projects";
+  let description = "The requested design project details.";
 
   if (id.startsWith("proj-")) {
     const project = projectsDetailsData[id];
@@ -28,13 +27,14 @@ export async function generateMetadata({
   } else {
     try {
       const client = getClient();
-      const { data } = await client.query<{ webProjects: IProjectWeb[] }>({
-        query: PROJECT_WEB_QUERY,
+      const { data } = await client.query<{ growthlobbyCaseStudies: IProject[] }>({
+        query: PROJECT_DETAIL_QUERY,
+        variables: { slug: id },
       });
-      const project = data?.webProjects?.find((p) => slugify(p.title) === id);
+      const project = data?.growthlobbyCaseStudies?.[0];
       if (project) {
         title = project.title;
-        description = project.description;
+        description = project.description || "The requested design project details.";
       }
     } catch (error) {
       console.error("Error fetching project metadata from API:", error);
@@ -47,8 +47,9 @@ export async function generateMetadata({
   });
 }
 
-export default async function WebProjectPage({ params }: ProjectPageProps) {
+export default async function DesignProjectPage({ params }: ProjectPageProps) {
   const { id } = await params;
 
-  return <WebProjectDetailPageClient projectId={id} />;
+  return <ProjectDetailPageClient projectId={id} />;
 }
+

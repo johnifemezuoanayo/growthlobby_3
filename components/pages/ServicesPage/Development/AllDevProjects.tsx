@@ -7,6 +7,7 @@ import { ArrowUpRight, Inbox } from "lucide-react";
 import Image from "next/image";
 import NavButton from "@/components/ui/Navbar/NavButton";
 import { IProjectWeb } from "@/base/interface/IProject";
+import { slugify } from "@/lib/utils";
 
 interface Project {
   id: string;
@@ -16,6 +17,7 @@ interface Project {
   image: string;
   tags: string[];
   link?: string;
+  slug: string;
 }
 
 interface AllDevProjectsProps {
@@ -61,15 +63,19 @@ export default function AllDevProjects({ projects }: AllDevProjectsProps = {}) {
 
   const displayProjects: Project[] = useMemo(() => {
     const list = projects && projects.length > 0 ? projects : mockProjects;
-    return list.map((p) => ({
-      id: p.id || "",
-      title: p.title,
-      description: p.description || "",
-      longDescription: (p as any).ourApproach || (p as any).longDescription || "",
-      image: (p as any).coverImage?.url || (p as any).image || "",
-      tags: (p as any).sector ? [(p as any).sector] : ((p as any).tags || []),
-      link: (p as any).liveSite || (p as any).link || "",
-    }));
+    return list.map((p) => {
+      const slug = p.id?.startsWith("proj-") ? p.id : slugify(p.title);
+      return {
+        id: p.id || "",
+        title: p.title,
+        description: p.description || "",
+        longDescription: (p as any).ourApproach || (p as any).longDescription || "",
+        image: (p as any).coverImage?.url || (p as any).image || "",
+        tags: (p as any).sector ? [(p as any).sector] : ((p as any).tags || []),
+        link: (p as any).liveSite || (p as any).link || "",
+        slug,
+      };
+    });
   }, [projects]);
 
   // Extract unique categories dynamically based on project tags
@@ -146,7 +152,7 @@ export default function AllDevProjects({ projects }: AllDevProjectsProps = {}) {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
-                    onClick={() => router.push(`/portfolio/development/${project.id}`)}
+                    onClick={() => router.push(`/portfolio/development/${project.slug}`)}
                     className="group bg-white rounded-3xl border border-6 border-zinc-200/60 p-5 sm:p-6 lg:p-4 flex flex-col md:flex-row gap-6 sm:gap-8 items-stretch hover:shadow-xl hover:shadow-zinc-200/30 transition-all duration-300 cursor-pointer"
                   >
                     {/* Left: Image mockups container */}
@@ -190,7 +196,7 @@ export default function AllDevProjects({ projects }: AllDevProjectsProps = {}) {
                       {/* Read More button */}
                       <div className="pt-2" onClick={(e) => e.stopPropagation()}>
                         <NavButton
-                          href={`/portfolio/development/${project.id}`}
+                          href={`/portfolio/development/${project.slug}`}
                           size="large"
                           className="w-[170px] bg-brand-primary text-black hover:bg-white border border-zinc-100 rounded-full"
                         >

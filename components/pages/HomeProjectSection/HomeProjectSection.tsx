@@ -8,6 +8,7 @@ import { SectionBadge } from "@/components/ui/SectionBadge/SectionBadge";
 import { useRouter } from "next/navigation";
 
 import { IProjectWeb } from "@/base/interface/IProject";
+import { slugify } from "@/lib/utils";
 
 const DEFAULT_PROJECTS = [
   {
@@ -108,7 +109,7 @@ export default function aProjectSection({ projects }: ProjectSectionProps = {}) 
           </div>
           <div className="flex md:justify-end">
             <NavButton
-              href="/portfolio/dev/all-projects"
+              href="/portfolio/development/all-projects"
               className="sm:ml-6 bg-brand-primary text-black hover:bg-white"
             >
               View All Work
@@ -137,7 +138,11 @@ export default function aProjectSection({ projects }: ProjectSectionProps = {}) 
                 return;
               }
               if (p.id) {
-                router.push(`/portfolio/development/${p.id}`);
+                if (p.id.startsWith("proj-")) {
+                  router.push(`/portfolio/development/${p.id}`);
+                } else {
+                  router.push(`/portfolio/development/${slugify(p.title)}`);
+                }
               }
             }}
             className={`group relative overflow-hidden h-[470px] lg:h-[725px] flex-none w-[85vw]  md:w-[600px] rounded-2xl lg:rounded-4xl border-6 lg:border-12 border-[#EDF0DE] pt-6 lg:pt-14 pl-6 lg:pl-14 shadow-sm cursor-pointer ${(p as any).bg || "bg-white"}`}

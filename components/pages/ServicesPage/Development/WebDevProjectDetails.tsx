@@ -13,8 +13,9 @@ import {
 import Image from "next/image";
 
 import { projectsDetailsData } from "../Design/DesignData";
-import { WEB_PROJECT_DETAIL_QUERY } from "@/base/queries/project";
+import { PROJECT_WEB_QUERY } from "@/base/queries/project";
 import { IProjectWeb } from "@/base/interface/IProject";
+import { slugify } from "@/lib/utils";
 import AvatarStack from "../../ContactMeSection/AvatarComp";
 
 interface ProjectDetailProps {
@@ -33,9 +34,8 @@ export default function WebDevProjectDetails({
     projectsDetailsData[projectId] || projectsDetailsData["proj-storyline"];
 
   const { data, loading } = useQuery<{ webProjects: IProjectWeb[] }>(
-    WEB_PROJECT_DETAIL_QUERY,
+    PROJECT_WEB_QUERY,
     {
-      variables: { id: projectId },
       skip: projectId.startsWith("proj-"), // skip query if it's a local mockup project ID
     }
   );
@@ -44,7 +44,9 @@ export default function WebDevProjectDetails({
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [projectId]);
 
-  const apiProject = data?.webProjects?.[0];
+  const apiProject = data?.webProjects?.find(
+    (p) => slugify(p.title) === projectId
+  );
 
   const displayProject = useMemo(() => {
     const leftImage = apiProject?.projectImage?.[0]?.url || localProject.detailLeftImage;

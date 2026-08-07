@@ -148,7 +148,7 @@ export default function DesignProjectSection({ projects }: DesignProjectSectionP
                 router.push(`/portfolio/design/${p.slug}`);
               }
             }}
-            className="group relative overflow-hidden h-[500px] lg:h-[800px] flex-none w-[85vw] sm:w-[520px] md:w-[600px] lg:w-[740px] rounded-4xl border-8 border-[#EDF0DE] bg-white pt-6 lg:pt-14 pl-6 lg:pl-14 shadow-sm cursor-pointer"
+            className="group relative overflow-hidden h-[500px] lg:h-[800px] flex-none w-[85vw] sm:w-[520px] md:w-[600px] lg:w-[600px] rounded-4xl border-8 border-[#EDF0DE] bg-white pt-6 lg:pt-14 pl-6 lg:pl-14 shadow-sm cursor-pointer"
           >
             <div className="pr-5 lg:pr-14">
               <div className="flex items-center justify-between">
