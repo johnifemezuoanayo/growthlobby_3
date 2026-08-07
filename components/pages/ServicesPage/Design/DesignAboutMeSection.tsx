@@ -150,7 +150,7 @@ export default function DesignAboutMeSection() {
                 priority
                 width={914}
                 height={1200}
-                src="/images/ceo.png"
+                src="/images/Ceo.png"
                 alt="John Ifemezuo speaking at an event"
                 className="h-[420px] w-full object-cover sm:h-[500px] lg:h-[560px]"
               />

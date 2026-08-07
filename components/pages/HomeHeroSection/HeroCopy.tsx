@@ -25,8 +25,8 @@ export function HeroCopy() {
             Available for work
           </span>
         </div>
-        <span className="h-3 w-px bg-white" />
-        <span className="text-[11px] pr-3 font-medium uppercase tracking-widest text-neutral-300">
+        <span className="h-3 w-px bg-white hidden lg:block" />
+        <span className="hidden lg:block text-[11px] pr-3 font-medium uppercase tracking-widest text-neutral-300">
           {HeroData.Headline}
         </span>
       </div>

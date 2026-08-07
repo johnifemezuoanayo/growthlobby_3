@@ -13,7 +13,7 @@ const stats = [
 
 export default function HomeAboutSection() {
   return (
-    <section className="w-full bg-white  px-5 py-16 lg:px-0 lg:py-24">
+    <section className="w-full bg-white  px-5 py-2 lg:px-0 lg:py-24">
       <div
         className="pointer-events-none absolute inset-0 opacity-90"
         // style={{
@@ -90,7 +90,7 @@ export default function HomeAboutSection() {
                 priority
                 width={914}
                 height={1200}
-                src="/images/ceo.png"
+                src="/images/Ceo.png"
                 alt="John Ifemezuo speaking at an event"
                 className="h-[420px] w-full object-cover sm:h-[500px] lg:h-[560px]"
               />
