@@ -47,7 +47,7 @@ export default function ProcessSection() {
           {steps.map((step, i) => (
             <div
               key={step.number}
-              className="relative overflow-hidden rounded-2xl bg-[#eeece2] pt-6 sm:pt-8 px-8 md:rounded-none md:first:rounded-l-2xl md:last:rounded-r-2xl"
+              className="relative overflow-hidden rounded-2xl bg-[#eeece2] pt-6 sm:pt-8 px-6 md:rounded-none md:first:rounded-l-2xl md:last:rounded-r-2xl"
               style={{
                 backgroundImage:
                   "radial-gradient(circle, rgba(0,0,0,0.12) 1px, transparent 1px)",
@@ -61,7 +61,7 @@ export default function ProcessSection() {
               </span>
 
               {/* Icon */}
-              <div className="relative mb-8">{step.icon}</div>
+              <div className="relative mb-4">{step.icon}</div>
 
               {/* Title */}
               <h3 className="relative lg:h-[80px] font-manrope text-2xl leading-tight text-neutral-900 sm:text-3xl md:text-[28px] font-semibold lg:text-3xl">
@@ -74,7 +74,7 @@ export default function ProcessSection() {
               </p>
 
               {/* Image */}
-              <div className="relative mt-8 overflow-hidden ">
+              <div className="relative mt-3 overflow-hidden ">
                 <img
                   src={step.image}
                   alt={step.title}

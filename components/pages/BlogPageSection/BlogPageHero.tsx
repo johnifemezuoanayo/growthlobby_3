@@ -49,8 +49,8 @@ function BlogPageHero({ posts, onSelectPost }: BlogPageHeroProps) {
           <div className="space-y-4 max-w-xl">
             {/* Available for work badge */}
             <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm bg-[#DCEAD6] text-[#2E581C] border border-[#C5D9BD] text-[11px] font-bold uppercase tracking-wider">
-              <span className="h-1.5 w-1.5 rounded-full bg-[#429E2D] animate-pulse" />
-              <span>Available for work</span>
+              <span className="h-1.5 w-1.5 rounded-full bg-[#546b4f] animate-pulse" />
+              <span>Blog</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl md:text-5xl font-bold text-zinc-950 tracking-tight leading-[1.05] font-sans">

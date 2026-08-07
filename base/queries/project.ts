@@ -2,7 +2,7 @@ import { gql } from "@apollo/client";
 
 export const PROJECT_QUERY = gql`
   query {
-    growthlobbyCaseStudies {
+    growthlobbyCaseStudies(first: 100) {
       id
       title
       description
@@ -78,7 +78,7 @@ export const FEATURED_PROJECT_QUERY = gql`
 
 export const PROJECT_WEB_QUERY = gql`
 query {
-    webProjects {
+    webProjects(first: 100) {
       id
       title
       description

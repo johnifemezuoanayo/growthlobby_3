@@ -12,8 +12,8 @@ function ContactMeSection() {
       id="contact-section"
       className=" relative isolate lg:py-20 bg-white overflow-x-hidden bg-[#060606] font-sans text-white selection:bg-brand-primary selection:text-black  [background-image:radial-gradient(circle,rgba(0,0,0,0.08)_1px,transparent_1px)] [background-size:14px_14px]"
     >
-      <div className="bg-black/20 max-w-7xl mx-auto rounded-2xl px-0 lg:p-3">
-        <div className="relative z-20 flex ts-dotgrid bg-[#7F9D05]  flex-col rounded-xl">
+      <div className="bg-black/20 max-w-7xl mx-auto lg:rounded-2xl px-0 lg:p-3">
+        <div className="relative z-20 flex ts-dotgrid bg-[#7F9D05]  flex-col lg:rounded-xl">
           <main className="relative flex flex-grow items-center justify-center px-4 py-12 sm:px-8 md:py-20 lg:px-16">
             <div className="grid w-full max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12 lg:gap-16">
               <motion.div

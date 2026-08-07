@@ -76,7 +76,7 @@ export default function DesignProjectDetails({
           {/* Back button */}
           <button
             id="back-to-portfolio-btn"
-            onClick={() => router.push("/portfolio/design")}
+            onClick={() => router.push("/portfolio/design/all-projects")}
             className="group inline-flex items-center gap-2 px-4 py-2 rounded-full bg-zinc-100 hover:bg-zinc-200 text-zinc-800 text-xs font-semibold tracking-wide transition-all duration-300"
           >
             <ArrowLeft className="h-4 w-4 group-hover:-translate-x-0.5 transition-transform duration-300" />
@@ -84,7 +84,7 @@ export default function DesignProjectDetails({
           </button>
 
           {/* Breadcrumbs */}
-          <div className="text-zinc-400 text-xs font-medium tracking-wider flex items-center gap-1.5 font-mono">
+          <div className="text-zinc-400 text-xs font-medium tracking-wider lg:flex items-center gap-1.5 font-mono">
             <span
               className="hover:text-zinc-600 cursor-pointer transition-colors"
               onClick={() => router.push("/portfolio/design")}
@@ -103,16 +103,18 @@ export default function DesignProjectDetails({
           </div>
 
           {/* Visit site link */}
-          <a
-            id="header-visit-site-link"
-            href={displayProject.visitLink}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hidden sm:inline-flex items-center gap-1.5 text-zinc-500 hover:text-zinc-900 text-xs font-semibold tracking-wider font-mono transition-colors"
-          >
-            <span>Launch Web App</span>
-            <ExternalLink className="h-3 w-3" />
-          </a>
+          {displayProject.visitLink && (
+            <a
+              id="header-visit-site-link"
+              href={displayProject.visitLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden sm:inline-flex items-center gap-1.5 text-zinc-500 hover:text-zinc-900 text-xs font-semibold tracking-wider font-mono transition-colors"
+            >
+              <span>Launch Web App</span>
+              <ExternalLink className="h-3 w-3" />
+            </a>
+          )}
         </div>
       </div>
 
@@ -127,9 +129,11 @@ export default function DesignProjectDetails({
               <span className="w-3 h-3 rounded-full bg-zinc-300"></span>
               <span className="w-3 h-3 rounded-full bg-zinc-300"></span>
             </div>
-            <div className="bg-white/80 border border-zinc-200/30 text-[10px] text-zinc-400 font-mono px-8 py-0.5 rounded-md max-w-xs truncate">
-              {displayProject.visitLink}
-            </div>
+            {displayProject.visitLink && (
+              <div className="bg-white/80 border border-zinc-200/30 text-[10px] text-zinc-400 font-mono px-8 py-0.5 rounded-md max-w-xs truncate">
+                {displayProject.visitLink}
+              </div>
+            )}
             <div className="w-12"></div>
           </div>
 
@@ -148,22 +152,24 @@ export default function DesignProjectDetails({
           </div>
 
           {/* Bottom Floating Visit Button */}
-          <div className="absolute bottom-6 right-6 z-10">
-            <a
-              id="live-visit-button"
-              href={displayProject.visitLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-xs tracking-wider uppercase text-zinc-950 transition-all duration-300 shadow-xl ${
-                displayProject.id === "proj-storyline"
-                  ? "bg-[#B4E615] hover:bg-[#c2f716]"
-                  : "bg-white hover:bg-zinc-100"
-              }`}
-            >
-              <span>Visit Site</span>
-              <ExternalLink className="h-4 w-4" />
-            </a>
-          </div>
+          {displayProject.visitLink && (
+            <div className="absolute bottom-6 right-6 z-10">
+              <a
+                id="live-visit-button"
+                href={displayProject.visitLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`inline-flex items-center gap-2 px-6 py-3.5 rounded-full font-bold text-xs tracking-wider uppercase text-zinc-950 transition-all duration-300 shadow-xl ${
+                  displayProject.id === "proj-storyline"
+                    ? "bg-[#B4E615] hover:bg-[#c2f716]"
+                    : "bg-white hover:bg-zinc-100"
+                }`}
+              >
+                <span>Visit Site</span>
+                <ExternalLink className="h-4 w-4" />
+              </a>
+            </div>
+          )}
         </div>
 
         {/* Introduction & Details Grid */}

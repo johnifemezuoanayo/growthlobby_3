@@ -67,7 +67,7 @@ function DesignHeroSection() {
                   size="large"
                   className=" bg-white text-black hover:bg-white"
                 >
-                  See all projects
+                  All projects
                 </NavButton>
               </div>
             </motion.div>

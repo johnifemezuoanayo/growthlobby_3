@@ -19,7 +19,7 @@ export default function AboutHero() {
         height={1200}
       />
 
-      <div className="relative w-full max-w-7xl mt-32 mx-auto grid lg:flex justify-between items-center">
+      <div className="relative w-full max-w-7xl mt-18 mx-auto grid lg:flex justify-between items-center">
         {/* Left Column: Copy & Call-to-Action */}
         <div className="flex flex-col  items-start space-y-8 z-10">
           <motion.div

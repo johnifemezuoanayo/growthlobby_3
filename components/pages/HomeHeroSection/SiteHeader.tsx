@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { AnimatePresence, motion } from "motion/react";
 import { BrandLogo } from "../../BrandLogo";
 import { navLinks } from "./data";
@@ -104,10 +104,18 @@ export function SiteHeader({
 
           <button
             onClick={onToggleMobileMenu}
-            className="cursor-pointer p-2 border rounded-full text-brand-color/80 transition-colors hover:text-brand-primary lg:hidden"
-            aria-label="Toggle menu"
+            className={`cursor-pointer p-2 border rounded-full transition-colors lg:hidden ${
+              isMobileMenuOpen
+                ? "text-white border-white bg-white/10"
+                : "text-white/80 border-white/20 hover:text-brand-primary hover:border-brand-primary/50"
+            }`}
+            aria-label={isMobileMenuOpen ? "Close menu" : "Open menu"}
           >
-            <Menu className="size-6" />
+            {isMobileMenuOpen ? (
+              <X className="size-6" />
+            ) : (
+              <Menu className="size-6" />
+            )}
           </button>
         </div>
       </header>
@@ -133,8 +141,8 @@ export function SiteHeader({
                   onClick={onCloseMobileMenu}
                   className={
                     isActive
-                      ? "py-2 font-bold uppercase tracking-wider text-brand-primary"
-                      : "py-2 font-medium uppercase tracking-wider text-neutral-300 hover:text-white"
+                      ? "py-2 text-2xl font-bold font-mono uppercase tracking-wider text-brand-primary"
+                      : "py-2 text-2xl font-medium font-mono uppercase tracking-wider text-neutral-300 hover:text-white"
                   }
                 >
                   {link.label}

@@ -69,7 +69,7 @@ function DevHero() {
                   size="large"
                   className=" bg-white text-black hover:bg-white"
                 >
-                  See all projects
+                  All Projects
                 </NavButton>
               </div>
             </motion.div>

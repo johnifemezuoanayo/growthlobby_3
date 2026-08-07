@@ -132,7 +132,7 @@ export default function DesignProjectSection({ projects }: DesignProjectSectionP
         onMouseMove={onMouseMoveDrag}
         onMouseUp={endDrag}
         onMouseLeave={endDrag}
-        className={`mt-12 flex gap-6 overflow-x-auto scroll-smooth px-6 -mb-8 md:px-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden select-none ${
+        className={`mt-12 flex gap-6 overflow-x-auto scroll-smooth px-6 -mb-18 md:px-10 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden select-none ${
           isDragging ? "cursor-none" : "cursor-none"
         }`}
       >
@@ -159,7 +159,7 @@ export default function DesignProjectSection({ projects }: DesignProjectSectionP
                   <ArrowUpRight className="h-5 w-5" />
                 </span>
               </div>
-              <h3 className="mt-6 max-w-md font-manrope font-medium text-xl text-neutral-900 md:text-3xl">
+              <h3 className="mt-6 min-h-[80px] max-w-md font-manrope font-medium text-xl text-neutral-900 md:text-3xl">
                 {p.title}
               </h3>
             </div>

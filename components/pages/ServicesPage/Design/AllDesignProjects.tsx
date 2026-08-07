@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
+import { useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "motion/react";
 import { ArrowUpRight, Inbox } from "lucide-react";
 import Image from "next/image";
@@ -25,6 +26,7 @@ interface AllDesignProjectsProps {
 }
 
 export default function AllDesignProjects({ projects }: AllDesignProjectsProps = {}) {
+  const router = useRouter();
   const [selectedCategory, setSelectedCategory] = useState("All");
 
   const mockProjects = [
@@ -162,7 +164,8 @@ export default function AllDesignProjects({ projects }: AllDesignProjectsProps =
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -20 }}
                     transition={{ duration: 0.4, ease: "easeOut" }}
-                    className="group flex flex-col justify-between bg-white rounded-3xl border-6 border-zinc-200/60 overflow-hidden hover:shadow-2xl hover:shadow-zinc-200/40 hover:-translate-y-1 transition-all duration-500"
+                    onClick={() => router.push(`/portfolio/design/${project.slug || project.id}`)}
+                    className="group flex flex-col justify-between bg-white rounded-3xl border-6 border-zinc-200/60 overflow-hidden hover:shadow-2xl hover:shadow-zinc-200/40 hover:-translate-y-1 transition-all duration-500 cursor-pointer"
                   >
                     {/* Top: Project text details */}
                     <div className="p-6 sm:p-8 flex items-start justify-between gap-4">
@@ -187,12 +190,15 @@ export default function AllDesignProjects({ projects }: AllDesignProjectsProps =
                       </div>
 
                       {/* Right: Round Arrow Button */}
-                      <Link
-                        href={`/portfolio/design/${project.slug || project.id}`}
+                      <div
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          router.push(`/portfolio/design/${project.slug || project.id}`);
+                        }}
                         className="flex-none w-[60px] h-[40px] rounded-full bg-[#B4E615] hover:bg-zinc-900 hover:text-white  border-zinc-200/50 flex items-center justify-center transition-all duration-300 group-hover:shadow-lg active:scale-95 cursor-pointer text-zinc-950"
                       >
                         <ArrowUpRight className="h-5 w-5" />
-                      </Link>
+                      </div>
                     </div>
 
                     {/* Bottom: Image mockup banner */}

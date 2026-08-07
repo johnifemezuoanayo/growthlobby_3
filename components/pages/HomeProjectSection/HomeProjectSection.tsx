@@ -34,7 +34,7 @@ interface ProjectSectionProps {
   projects?: IProjectWeb[];
 }
 
-export default function ProjectSection({ projects }: ProjectSectionProps = {}) {
+export default function aProjectSection({ projects }: ProjectSectionProps = {}) {
   const router = useRouter();
   const displayProjects = projects && projects.length > 0 ? projects.slice(0, 4) : DEFAULT_PROJECTS;
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -140,10 +140,10 @@ export default function ProjectSection({ projects }: ProjectSectionProps = {}) {
                 router.push(`/portfolio/development/${p.id}`);
               }
             }}
-            className={`group relative overflow-hidden h-[500px] lg:h-[725px] flex-none w-[85vw]  md:w-[600px] rounded-2xl lg:rounded-4xl border-6 lg:border-12 border-[#EDF0DE] pt-6 lg:pt-14 pl-6 lg:pl-14 shadow-sm cursor-pointer ${(p as any).bg || "bg-white"}`}
+            className={`group relative overflow-hidden h-[470px] lg:h-[725px] flex-none w-[85vw]  md:w-[600px] rounded-2xl lg:rounded-4xl border-6 lg:border-12 border-[#EDF0DE] pt-6 lg:pt-14 pl-6 lg:pl-14 shadow-sm cursor-pointer ${(p as any).bg || "bg-white"}`}
           >
-            <div className="pr-14">
-              <div className="flex items-center justify-between">
+            <div className="pr-5">
+              <div className="flex  items-center justify-between">
                 <span className=" bg-[#F0F1EC] font-mono capitalize rounded-full px-4 py-2 text-sm font-medium text-neutral-800">
                   {(p as any).sector || "Services"}
                 </span>
@@ -155,7 +155,7 @@ export default function ProjectSection({ projects }: ProjectSectionProps = {}) {
                 {p.title}
               </h3>
             </div>
-            <div className={`mt-5 overflow-hidden rounded-tl-4xl`}>
+            <div className={`mt-5 h-[300px] overflow-hidden rounded-tl-4xl`}>
               <Image
                 width={700}
                 height={800}
