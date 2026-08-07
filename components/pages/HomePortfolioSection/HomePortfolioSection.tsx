@@ -3,18 +3,9 @@
 import { useState } from "react";
 import Image from "next/image";
 import { section } from "motion/react-m";
-import NavButton from "../../ui/Navbar/NavButton";
 import PlayIcon from "../../Icons/PlayIcon";
 import PartnershipSvg from "../../Icons/PartnershipSvg";
 import { SectionBadge } from "@/components/ui/SectionBadge/SectionBadge";
-
-const YOUTUBE_VIDEOS = [
-  "jNQXAC9IVRw", // Do They Know It's Christmas
-  "9bZkp7q19f0", // PSY - GANGNAM STYLE
-  "kJQP7kiw9Vs", // Luis Fonsi - Despacito
-  "60nblzGoRAQ", // Adele - Hello
-  "kffacxfA7g4", // Justin Timberlake - Mirrors
-];
 
 const BRANDS = [
   { id: 1, name: "brand 1", path: "/images/brand 1.png" },
@@ -26,12 +17,8 @@ const BRANDS = [
 
 export default function HomePortfolioSection() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
-  const [selectedVideoId, setSelectedVideoId] = useState(YOUTUBE_VIDEOS[0]);
 
   const handlePlayClick = () => {
-    const randomVideo =
-      YOUTUBE_VIDEOS[Math.floor(Math.random() * YOUTUBE_VIDEOS.length)];
-    setSelectedVideoId(randomVideo);
     setIsVideoOpen(true);
   };
 
@@ -42,31 +29,42 @@ export default function HomePortfolioSection() {
         <div className="lg:-mt-[200px] mb-20 md:mb-32">
           <div className="relative w-full border-6 lg:border-12 overflow-hidden rounded-xl lg:rounded-4xl">
             {/* Video Overlay Background */}
-            <div className="relative aspect-video w-full">
-              <Image
-                src="/images/Video overlay.png"
-                alt="Video overlay"
-                fill
-                className="object-cover"
-                priority
+            <div className="relative aspect-video w-full bg-black group/video overflow-hidden">
+              <video
+                src="/video/project-preview.mp4"
+                autoPlay
+                loop
+                muted
+                playsInline
+                className="w-full h-full object-cover transition-transform duration-700 group-hover/video:scale-105"
               />
 
               {/* Play Button Overlay */}
-              <button
-                onClick={handlePlayClick}
-                className="absolute inset-0 max-w-full mx-auto flex items-center justify-center rounded-2xl "
-                aria-label="Play video"
-              >
-                <NavButton
-                  href="/contact"
-                  size="large"
-                  icon={<PlayIcon />}
-                  className=" bg-brand-primary text-black hover:bg-white rounded-full
-                      "
+              <div className="absolute inset-0 flex items-center justify-center bg-black/20 hover:bg-black/40 transition-colors duration-500">
+                <button
+                  onClick={handlePlayClick}
+                  className="flex flex-col items-center gap-4 transition-transform duration-300 transform hover:scale-105 active:scale-95"
+                  aria-label="Play video"
                 >
-                  Play Video
-                </NavButton>
-              </button>
+                  {/* Circular Play Button with premium design & ring hover */}
+                  <div className="w-20 h-20 md:w-24 md:h-24 flex items-center justify-center rounded-full bg-brand-primary text-black shadow-lg hover:shadow-[0_0_30px_rgba(251,191,36,0.5)] transition-all duration-300 relative group/btn">
+                    <span className="absolute inset-0 rounded-full border-2 border-brand-primary animate-ping opacity-20 pointer-events-none"></span>
+                    <svg
+                      width="28"
+                      height="28"
+                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      className="ml-1 text-black transition-transform duration-300 group-hover/btn:scale-110"
+                    >
+                      <path d="M8 5v14l11-7z" />
+                    </svg>
+                  </div>
+                  
+                  <span className="px-5 py-2.5 rounded-full text-xs md:text-sm font-semibold uppercase tracking-wider bg-black/60 text-white backdrop-blur-md shadow-md border border-white/10 hover:bg-black/80 transition-colors">
+                    Watch Full Video
+                  </span>
+                </button>
+              </div>
             </div>
           </div>
         </div>
@@ -74,16 +72,17 @@ export default function HomePortfolioSection() {
         {/* Video Modal */}
         {isVideoOpen && (
           <div
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 p-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 md:p-8 backdrop-blur-md"
             onClick={() => setIsVideoOpen(false)}
           >
             <div
-              className="relative aspect-video w-full max-w-4xl rounded-lg overflow-hidden"
+              className="relative w-full max-w-7xl aspect-video rounded-2xl overflow-hidden shadow-2xl border border-white/10"
               onClick={(e) => e.stopPropagation()}
             >
+              {/* Close Button */}
               <button
                 onClick={() => setIsVideoOpen(false)}
-                className="absolute top-4 right-4 z-10 rounded-full bg-black/50 p-2 text-white transition-colors hover:bg-black/70"
+                className="absolute top-4 right-4 z-10 rounded-full bg-black/60 p-3 text-white transition-all hover:bg-black/80 hover:scale-105 active:scale-95 border border-white/10"
                 aria-label="Close video"
               >
                 <svg
@@ -100,16 +99,12 @@ export default function HomePortfolioSection() {
                   />
                 </svg>
               </button>
-              <iframe
-                width="100%"
-                height="100%"
-                src={`https://www.youtube.com/embed/${selectedVideoId}?autoplay=1`}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen
-                className="absolute inset-0"
-              ></iframe>
+              <video
+                src="/video/project-preview.mp4"
+                autoPlay
+                controls
+                className="absolute inset-0 w-full h-full object-contain bg-black"
+              />
             </div>
           </div>
         )}
